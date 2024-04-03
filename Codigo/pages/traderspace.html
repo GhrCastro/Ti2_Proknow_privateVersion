@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/codigo/assets/css/btcTraderSpace.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script type="text/javascript" src="/codigo/assets/js/btcTraderSpace.js"></script>
+    <link rel="stylesheet" href="/codigo/assets/css/stylecardbarraroxa.css">
+    <link rel="stylesheet" href="/codigo/assets/css/pagecontenthub.css">
+    <link rel="stylesheet" href="/codigo/assets/css/sidenav.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+        integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+        integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" href="../assets/css/sidenav.css">
+    <link rel="stylesheet" href="../assets/css/stylenewsletter.css">
+    <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <title>Bitcoin</title>
+</head>
+
+<body>
+
+    <aside>
+        <div id="sidebar" class="sidebar d-flex flex-column flex-shrink-0 h-100 " onmouseover="toggleSidebar()"
+            onmouseout="toggleSidebar()">
+            <ul class="nav nav-pills nav-flush flex-column  mb-auto text-center ">
+                <li id="inicio" class="selected">
+                    <a href="./dashboard.html" class="nav-link py-3 rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-solid fa-home fa-xl mx-2"></i><span class="txt">Inicio</span></a>
+                </li>
+                <li id="content-hub">
+                    <a href="./contenthub.html" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-solid fa-book-open fa-xl mx-2"></i><span
+                            class="txt">Content
+                            Hub</span></a>
+                </li>
+                <li id="trader-space">
+                    <a href="#" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-solid fa-chart-line fa-xl mx-2"></i><span
+                            class="txt">Trader
+                            Space</span></a>
+                </li>
+                <li id="newsletter">
+                    <a href="./newsletter.html" class="nav-link py-3 rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-regular fa-newspaper fa-xl mx-2"></i><span
+                            class="txt">Newsletter</span></a>
+                </li>
+                <li id="journeys">
+                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
+                            class="txt">Journeys</span></a>
+                </li>
+            </ul>
+            <div class="dropdown"><a href="#"
+                    class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="thumbnail-profile">
+                        <img src="../assets/images/avatar.png">
+                    </div>
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li><a href="" class="dropdown-item text-dark">Perfil</a></li>
+                    <li><a href="" class="dropdown-item text-dark">Configuracoes</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a href="" class="dropdown-item text-dark " onclick="logout()">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </aside>
+
+    <header class="mb-3">
+        <div class="row">
+            <div class="col-lg-8 Ola">
+                <h2 class="text-secondary m-3 ">Seja bem-vindo, <span id="username" class="fw-bold"></span>!
+                </h2>
+            </div>
+            <div class="col-lg-4 d-flex align-items-center justify-content-end g-2">
+                <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search">
+                    <i class="fas fa-search text-secondary opacity-25"></i>
+                    <input type="text" class="input-search" placeholder="Buscar">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+@import './colorscontenthub.css';
+@import './loading.css';
+
+body {
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    height: 100vh;
+    min-height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+
+}
+
+.style12 {
+    height: 10px;
+    border: 0;
+    box-shadow: 0 5px 5px -5px #8c8b8b inset;
+}
+
+.control-comment {
+    width: 3rem;
+    height: 100%;
+    border-radius: 0.4rem;
+}
+
+div#comments {
+    max-height: 500px;
+    overflow: auto;
+    min-height: 0;
+    scroll-behavior: smooth;
+}
+
+div#card-videos {
+    max-height: 500px;
+    overflow: auto;
+    min-height: 0;
+}
+
+div#comments::-webkit-scrollbar,
+div#card-videos::-webkit-scrollbar {
+    width: 5px;
+    background-color: transparent
+}
+
+div#comments::-webkit-scrollbar-thumb,
+div#card-videos::-webkit-scrollbar-thumb {
+    background-color: #ddd;
+}
+
+.thumbnail-profile {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+.thumbnail-profile img {
+    width: 100%;
+    border-radius: 50%;
+}
+
+.div-search .fa-search {
+    margin-right: 5px;
+    font-size: 1.5rem;
+    width: 2rem;
+}
+
+.div-search .input-search {
+    width: 100%;
+    border: 0;
+}
+
+.div-search .input-search:focus {
+    outline: 0;
+}
+
+
+.div-content-video>* {
+    pointer-events: none;
+}
+
+.div-content-video:hover {
+    box-shadow: inset 0 0 1px 1px #4252E1 !important;
+    transition: all linear .2s !important;
+}
+
+.active-show {
+    background-color: #ff000073 !important;
+    transition: all linear .2s;
+}
+
+.active-show>* {
+    color: #ff0000 !important;
+    transition: all linear .2s;
+}
+
+.name-video {
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.like-comment:hover::before {
+    content: "\f004";
+    font-weight: 900;
+}
+
+.url-not-valid,
+.url-not-valid:focus {
+    background-color: rgba(255, 0, 0, 0.164);
+    color: #f00;
+    box-shadow: 0 0 0 0.25rem rgba(255, 0, 0, 0.26);
+}
+
+form:has(.url-not-valid) label[for=url-video]::after {
+    content: ' * The URL belongs to the YouTube domain';
+    color: #f00;
+}
+
+/* Adicione estas regras CSS no final do seu arquivo CSS */
+
+/* ... (seu código existente) ... */
+
+/* Adicione estas regras CSS para tornar a página responsiva */
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        padding-top: 15px;
+        position: relative;
+        transition: width 0.5s; /* Adiciona uma transição suave para a largura da barra lateral */
+    }
+
+    #main {
+        margin-left: 0;
+    }
+
+    .sidebar:hover .nav-link .txt {
+        display: inline;
+    }
+
+    .sidebar .nav-link {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .sidebar .nav {
+        flex-direction: row;
+    }
+
+    .dropdown {
+        position: static;
+        margin-top: 15px;
+        width: 100%; /* Garante que a dropdown ocupe toda a largura quando a barra lateral está fechada */
+    }
+
+    #sidebar:not(:hover) + .dropdown {
+        display: none;
+    }
+
+    .btn-toggle-nav a {
+        margin-left: 0; /* Remove a margem esquerda nos itens de navegação */
+    }
+
+    .btn-toggle-nav {
+        text-align: center; /* Centraliza os itens de navegação no modo responsivo */
+    }
+}

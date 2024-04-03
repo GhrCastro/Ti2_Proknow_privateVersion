@@ -1,0 +1,62 @@
+/* Adicione estas regras CSS ao seu arquivo existente */
+
+.dropdown {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+#sidebar {
+    z-index: 999;
+}
+
+.dropdown.active {
+    display: block; /* Exibe a dropdown quando a classe 'active' está presente */
+}
+
+/* Adicione estas regras CSS ao final do seu arquivo CSS */
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        padding-top: 15px;
+        position: relative;
+        transition: width 0.5s;
+    }
+
+    #main {
+        margin-left: 0;
+    }
+
+    .sidebar:hover .nav-link .txt {
+        display: inline;
+    }
+
+    .sidebar .nav-link {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .sidebar .nav {
+        flex-direction: row;
+    }
+
+    .dropdown {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        width: 100%;
+        display: none;
+    }
+
+    .dropdown.active {
+        display: block;
+        z-index: 1001; /* Garante que o dropdown sobreponha a interface */
+    }
+
+    #sidebar:not(:hover) .dropdown {
+        display: none;
+    }
+}

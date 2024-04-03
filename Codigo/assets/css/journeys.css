@@ -1,0 +1,46 @@
+@import './colorscontenthub.css';
+@import './loading.css';
+
+body {
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    height: 100vh;
+    min-height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+
+}
+
+.style12 {
+    height: 10px;
+    border: 0;
+    box-shadow: 0 5px 5px -5px #8c8b8b inset;
+}
+
+
+
+.active-show {
+    background-color: #ff000073 !important;
+    transition: all linear .2s;
+}
+
+.active-show>* {
+    color: #ff0000 !important;
+    transition: all linear .2s;
+}
+
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        padding-top: 15px;
+        position: relative;
+        transition: width 0.5s; /* Adiciona uma transição suave para a largura da barra lateral */
+    }
+
+
+}
