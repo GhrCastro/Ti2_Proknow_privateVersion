@@ -1,0 +1,163 @@
+
+.line {
+fill: none;
+stroke: #6C4CFC; /* Purple color for the line */
+stroke-width: 2;
+}
+
+/* Style the x-axis */
+.x-axis path,
+.x-axis line {
+  fill: none;
+  stroke: black; /* Light gray color for x-axis lines */
+  shape-rendering: crispEdges;
+}
+
+.x-axis text {
+  font-size: 12px;
+  fill: black; /* Text color for the x-axis labels */
+}
+
+/* Style the y-axis */
+.y-axis path,
+.y-axis line {
+  fill: none;
+  stroke: black; /* Light gray color for y-axis lines */
+  shape-rendering: crispEdges;
+}
+
+.y-axis text {
+  font-size: 12px;
+  fill: black; /* Text color for the y-axis labels */
+}
+
+/* Style the legend */
+.legend {
+  font-size: 16px;
+  text-align: right;
+  color: black; /* Text color for the legend text */
+}
+
+.pageTitle{
+  font-size: 2.56vw;
+  position: relative;
+  top: 12vh!important;
+  left: 3vw;
+}
+body{
+  background-color: white!important;
+  display: grid!important;
+}
+
+.xhc{
+background-color: #eaecee;
+}
+
+#myChart{
+  position: relative;
+  left: -7.1vw!important;
+  bottom: -6vh!important;
+  height: 57vh!important;
+  width: 47vw!important;
+}
+
+
+#chart_container{
+  border-radius: 12px;
+  padding: 0vh 10vw 8vh 10vw;
+  background-color: #fafafa;
+  position:relative;
+  left:-14.2vw;
+  top: 16vh;
+  width:87vw!important;
+  height:70vh!important;
+  
+}
+
+#chart_container2{
+  border-radius: 12px;
+  background-color: #fafafa;
+  position: relative;
+  right: -25.5vw;
+  top:-53.9vh;
+  width: 24vh;
+  height: 10.3vh;
+}
+
+#btnPages{
+  position: relative!important;
+  padding: 1vh 10vw 0vh 3.2vw;
+  
+}
+
+#btnPages2{
+  position: relative!important;
+  padding: 0.8vh 10vw 0vh 3.2vw;
+}
+
+#chart_newContainer{
+  border-radius: 12px;
+  background-color: #fafafa;
+  position: relative;
+  width: 87vw;
+  bottom:-10vh;
+  left: -14.2vw;
+  height: 69vh;
+  
+}
+
+#newChart{
+  position: relative;
+  height: 57vh!important;
+  width: 90vw!important;
+  right: -10vw;
+}
+
+#newChartChart{
+  position: relative;
+  height: 57vh!important;
+  right: -1vw;
+}
+
+@media screen and (max-width:1203px){
+  #mychart{
+    width: 50%!important;
+  }
+
+  #chart_container{
+    width: 70vw!important;
+  }
+
+  #chart_container2{
+    width: 14vw;
+    padding: 0 1vh 7vw 1vh;
+    position: relative;
+    left: 29.7vw;
+  }
+
+  #btnPages{
+    position: relative!important;
+    padding: 1vh 10vw 0vh 3.2vw;
+    
+  }
+  
+  #btnPages2{
+    position: relative!important;
+    padding: 0.8vh 10vw 0vh 3.2vw;
+  }
+
+  #newChart{
+    position: relative;
+    height: 57vh!important;
+    width: 70vw!important;
+    right: -10vw;
+  }
+  
+  #newChartChart{
+    position: relative;
+    height: 57vh!important;
+    width: 70vw;
+    right: -1vw;
+  }
+  
+}
