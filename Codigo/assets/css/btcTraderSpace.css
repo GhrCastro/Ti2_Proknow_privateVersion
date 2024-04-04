@@ -1,163 +1,177 @@
 
-.line {
-fill: none;
-stroke: #6C4CFC; /* Purple color for the line */
-stroke-width: 2;
+
+:root {
+  --gap-size: 32px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Trebuchet MS', Roboto,
+    Ubuntu, sans-serif;
+  color: #000;
 }
 
-/* Style the x-axis */
-.x-axis path,
-.x-axis line {
-  fill: none;
-  stroke: black; /* Light gray color for x-axis lines */
-  shape-rendering: crispEdges;
+      * {
+          box-sizing: border-box;
+      }
+
+body {
+  padding: 0;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
 }
 
-.x-axis text {
+header,
+footer {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.05);
+  gap: 12px;
+}
+
+
+
+header #row{
+  width: 100%;
+}
+
+header {
+  justify-content: space-between;
+  padding: 0 var(--gap-size);
+  gap: calc(var(--gap-size) * 2);
+  box-shadow: rgba(0, 0, 0, 0.05) 0 2px 6px 0;
+  flex-direction: row;
+}
+
+header #site-logo {
+  font-weight: 590;
+  font-size: 32px;
+  padding: 16px;
+  background: var(
+    --18-promo-gradient-02,
+    linear-gradient(90deg, #00bce5 0%, #2962ff 100%)
+  );
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+header input[type='search'] {
+  padding: 10px;
+  width: 100%;
+  height: 32px;
+  max-width: 400px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+}
+
+footer {
+  flex-direction: column;
+  padding: calc(var(--gap-size) * 0.5) var(--gap-size);
+  margin-top: var(--gap-size);
+  border-top: solid 2px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+}
+
+footer p,
+#powered-by-tv p {
+  margin: 0;
   font-size: 12px;
-  fill: black; /* Text color for the x-axis labels */
+  color: rgba(0, 0, 0, 0.6);
 }
 
-/* Style the y-axis */
-.y-axis path,
-.y-axis line {
-  fill: none;
-  stroke: black; /* Light gray color for y-axis lines */
-  shape-rendering: crispEdges;
+main {
+  display: grid;
+  width: 100%;
+  padding:  calc(var(--gap-size) * 1.5);
+  max-width: 960px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: var(--gap-size);
 }
 
-.y-axis text {
-  font-size: 12px;
-  fill: black; /* Text color for the y-axis labels */
+.span-full-grid,
+#symbol-info,
+#advanced-chart,
+#company-profile,
+#fundamental-data {
+  grid-column: span 2;
 }
 
-/* Style the legend */
-.legend {
-  font-size: 16px;
-  text-align: right;
-  color: black; /* Text color for the legend text */
+      .span-one-column,
+      #technical-analysis,
+#top-stories,
+#powered-by-tv {
+          grid-column: span 1;
+      }
+
+.skeleton,
+#ticker-tape,
+#symbol-info,
+#advanced-chart,
+#company-profile,
+#fundamental-data,
+#technical-analysis,
+#top-stories,
+#ticker-tape {
+  text-align: center;
+  padding: 16px;
+  font-size: 24px;
+  background: rgba(0, 0, 0, 0.075);
+  border-radius: 4px;
 }
 
-.pageTitle{
-  font-size: 2.56vw;
-  position: relative;
-  top: 12vh!important;
-  left: 3vw;
-}
-body{
-  background-color: white!important;
-  display: grid!important;
+#ticker-tape {
+  width: 100%;
+  margin-bottom: var(--gap-size);
+  height: 75px;
 }
 
-.xhc{
-background-color: #eaecee;
+#symbol-info {
 }
 
-#myChart{
-  position: relative;
-  left: -7.1vw!important;
-  bottom: -6vh!important;
-  height: 57vh!important;
-  width: 47vw!important;
+#advanced-chart {
+  height: 500px;
 }
 
-
-#chart_container{
-  border-radius: 12px;
-  padding: 0vh 10vw 8vh 10vw;
-  background-color: #fafafa;
-  position:relative;
-  left:-14.2vw;
-  top: 16vh;
-  width:87vw!important;
-  height:70vh!important;
-  
+#advanced-chart {
+  height: 500px;
 }
 
-#chart_container2{
-  border-radius: 12px;
-  background-color: #fafafa;
-  position: relative;
-  right: -25.5vw;
-  top:-53.9vh;
-  width: 24vh;
-  height: 10.3vh;
+#company-profile {
+  height:390px;
 }
 
-#btnPages{
-  position: relative!important;
-  padding: 1vh 10vw 0vh 3.2vw;
-  
+#fundamental-data {
+  height: 490px;
 }
 
-#btnPages2{
-  position: relative!important;
-  padding: 0.8vh 10vw 0vh 3.2vw;
+#technical-analysis,
+#top-stories {
+  height: 425px;
 }
 
-#chart_newContainer{
-  border-radius: 12px;
-  background-color: #fafafa;
-  position: relative;
-  width: 87vw;
-  bottom:-10vh;
-  left: -14.2vw;
-  height: 69vh;
-  
+#powered-by-tv {
+  display: flex;
+  background: #f8f9fd;
+  border: solid 1px #e0e3eb;
+  text-align: justify;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  padding: 16px;
+  border-radius: 6px;
 }
 
-#newChart{
-  position: relative;
-  height: 57vh!important;
-  width: 90vw!important;
-  right: -10vw;
+#powered-by-tv a, #powered-by-tv a:visited {
+  color: #2962ff;
 }
 
-#newChartChart{
-  position: relative;
-  height: 57vh!important;
-  right: -1vw;
-}
-
-@media screen and (max-width:1203px){
-  #mychart{
-    width: 50%!important;
+@media (max-width: 800px) {
+  main > section,
+  .span-full-grid,
+  #technical-analysis,
+  #top-stories,
+  #powered-by-tv {
+    grid-column: span 2;
   }
-
-  #chart_container{
-    width: 70vw!important;
-  }
-
-  #chart_container2{
-    width: 14vw;
-    padding: 0 1vh 7vw 1vh;
-    position: relative;
-    left: 29.7vw;
-  }
-
-  #btnPages{
-    position: relative!important;
-    padding: 1vh 10vw 0vh 3.2vw;
-    
-  }
-  
-  #btnPages2{
-    position: relative!important;
-    padding: 0.8vh 10vw 0vh 3.2vw;
-  }
-
-  #newChart{
-    position: relative;
-    height: 57vh!important;
-    width: 70vw!important;
-    right: -10vw;
-  }
-  
-  #newChartChart{
-    position: relative;
-    height: 57vh!important;
-    width: 70vw;
-    right: -1vw;
-  }
-  
 }
+
