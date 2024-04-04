@@ -1,0 +1,55 @@
+.wallet-modal{
+    background-color: #EDB529; 
+}
+
+.wallet-modal-body{
+    background-color: black;
+    border-radius: 20px;
+    width: 90%;
+    margin: 10px auto; 
+}
+
+.wallet-button{
+    border: none;
+    background-color: white;
+    width: 10px;
+    margin-right: 10px;
+}
+
+.wallet-button img{
+    width: 35px;
+}
+
+.div-valor{
+    color: white;
+    padding-left: 10px;
+}
+
+.div-valor button{
+    border: none;
+    background-color: black;
+    width: 10px;
+    margin-right: 10px;
+}
+
+.div-valor button img {
+    width: 30px;
+    margin-bottom: 15px ;
+}
+
+
+.div-button-wallet{
+    margin-top: 50px;
+    align-items: center;
+    justify-content:space-around;
+}
+
+.div-button-wallet button{
+    background-color: #EDB529;
+    border-color: #EDB529;
+    border-style: none;
+    color: white;
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+}
