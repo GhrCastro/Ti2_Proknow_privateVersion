@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="../assets/css/stylenewsletter.css">
     <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <script src="https://d3js.org/d3.v6.min.js"></script>
-    <title>Bitcoin</title>
+    <title>Trading View</title>
 </head>
 
 <body>
@@ -89,14 +89,13 @@
 
     </aside>
 
+
     <header class="mb-3">
-        <div class="row">
-            <div class="col-lg-8 Ola">
-                <h2 class="text-secondary m-3 ">Seja bem-vindo, <span id="username" class="fw-bold"></span>!
-                </h2>
+        <div id="row" class="row">
+            <div id="Ola" class="col-lg-8 Ola">
             </div>
-            <div class="col-lg-4 d-flex align-items-center justify-content-end g-2">
-                <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search">
+            <div id="srch" class="col-lg-4 d-flex align-items-center justify-content-end g-2">
+                <div id="innersrch" class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search">
                     <i class="fas fa-search text-secondary opacity-25"></i>
                     <input type="text" class="input-search" placeholder="Buscar">
                 </div>
@@ -104,6 +103,136 @@
         </div>
     </header>
 
+    <main>
+        <section id="symbol-info">Symbol Info
+            <div class="tradingview-widget-container">
+                <div class="tradingview-widget-container__widget"></div>
+                <script
+            type="text/javascript"
+            src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-info.js"
+            async
+    >
+            {
+            "symbol": "NASDAQ:AAPL",
+            "width": "100%",
+            "locale": "en",
+            "colorTheme": "light",
+            "isTransparent": true
+             }
+        </script>
+            </div>
+        </section>
+
+
+
+
+
+        <section id="advanced-chart">Advanced Chart
+            <!-- TradingView Widget BEGIN -->
+				<div
+                class="tradingview-widget-container"
+                style="height: 100%; width: 100%"
+            >
+                <div
+                    id="tradingview_ae7da"
+                    style="height: calc(100% - 32px); width: 100%"
+                ></div>
+                <script
+                    type="text/javascript"
+                    src="https://s3.tradingview.com/tv.js"
+                ></script>
+                <script type="text/javascript">
+                    new TradingView.widget({
+                        autosize: true,
+                        symbol: 'NASDAQ:AAPL',
+                        interval: 'D',
+                        timezone: 'Etc/UTC',
+                        theme: 'light',
+                        style: '1',
+                        locale: 'en',
+                        enable_publishing: false,
+                        hide_side_toolbar: false,
+                        allow_symbol_change: true,
+                        studies: ['STD;MACD'],
+                        container_id: 'tradingview_ae7da',
+                    });
+                </script>
+            </div>
+            <!-- TradingView Widget END -->
+        </section>
+
+        <section id="fundamental-data">Fundamental Data
+            <!-- TradingView Widget BEGIN -->
+				<div class="tradingview-widget-container">
+					<div class="tradingview-widget-container__widget"></div>
+					<script
+						type="text/javascript"
+						src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js"
+						async
+					>
+						  {
+						  "colorTheme": "light",
+						  "isTransparent": true,
+						  "largeChartUrl": "",
+						  "displayMode": "adaptive",
+						  "width": "100%",
+						  "height": "100%",
+						  "symbol": "NASDAQ:AAPL",
+						  "locale": "en"
+						}
+					</script>
+				</div>
+				<!-- TradingView Widget END -->
+        </section>
+        
+        <section id="technical-analysis">Technical Analysis
+            <!-- TradingView Widget BEGIN -->
+				<div class="tradingview-widget-container">
+					<div class="tradingview-widget-container__widget"></div>
+					<script
+						type="text/javascript"
+						src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js"
+						async
+					>
+						{
+						"interval": "15m",
+						"width": "100%",
+						"isTransparent": true,
+						"height": "100%",
+						"symbol": "NASDAQ:AAPL",
+						"showIntervalTabs": true,
+						"displayMode": "single",
+						"locale": "en",
+						"colorTheme": "light"
+						 }
+					</script>
+				</div>
+				<!-- TradingView Widget END -->
+        </section>
+        <section id="top-stories">Top Stories
+            <!-- TradingView Widget BEGIN -->
+				<div class="tradingview-widget-container">
+					<div class="tradingview-widget-container__widget"></div>
+					<script
+						type="text/javascript"
+						src="https://s3.tradingview.com/external-embedding/embed-widget-timeline.js"
+						async
+					>
+						  {
+						  "feedMode": "symbol",
+						  "symbol": "NASDAQ:AAPL",
+						  "colorTheme": "light",
+						  "isTransparent": true,
+						  "displayMode": "adaptive",
+						  "width": "100%",
+						  "height": "100%",
+						  "locale": "en"
+						}
+					</script>
+				</div>
+				<!-- TradingView Widget END -->
+        </section>
+    </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
