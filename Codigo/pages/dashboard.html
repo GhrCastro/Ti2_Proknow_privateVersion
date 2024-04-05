@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="../assets/css/stylecardbarraroxa.css">
     <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <link rel="stylesheet" href="../assets/css/sidenav.css">
+    <link rel="stylesheet" href="../assets/css/header.css"
 
     <title>Dashboard</title>
 </head>
@@ -48,9 +49,9 @@
                             Hub</span></a>
                 </li>
                 <li id="trader-space">
-                    <a href="./btcTraderSpace.html" class="nav-link py-3 rounded-0" aria-current="page"
-                        data-bs-toggle="tooltip" data-bs-placement="right"><i
-                            class="material-icons fa-solid fa-chart-line fa-xl mx-2"></i><span class="txt">Trader
+                    <a href="./btcTraderSpace.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-solid fa-chart-line fa-xl mx-2"></i><span
+                            class="txt">Trader
                             Space</span></a>
                 </li>
                 <li id="newsletter">
@@ -60,9 +61,8 @@
                             class="txt">Newsletter</span></a>
                 </li>
                 <li id="journeys">
-                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page"
-                        data-bs-toggle="tooltip" data-bs-placement="right"><i
-                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
+                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
                             class="txt">Journeys</span></a>
                 </li>
             </ul>
@@ -87,9 +87,51 @@
     </aside>
 
     <div class="pushed-content container-fluid h-100 mb-4 mt-3 px-4">
+
+        <!-- Código Header -->
         <header class="mb-3">
+<<<<<<< HEAD
             <div class="row">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center justify-content-end g-2">
+                <div class="col-lg-8 Ola">
+                    <h2 class="text-secondary m-3 ">Seja bem-vindo, <span id="username" class="fw-bold"></span>!
+                    </h2>
+                </div>
+                <div class="col-lg-4 d-flex align-items-center justify-content-end g-2">
+=======
+            <div class="row justify-content-between">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
+                    <h2>Seja Bem vindo, User</h2>
+                </div>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
+                    <div class="mx-5">
+                        <button class="wallet-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                            <img src="../assets/images/app-wallet-passes.png">
+                        </button>
+
+                        <div class="offcanvas offcanvas-end wallet-modal" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" >
+                            <div class="offcanvas-header ">
+                                <h3 class="offcanvas-title" id="offcanvasRightLabel">Carteira</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body wallet-modal-body">
+                                <div class="div-valor">
+                                    <button id="hidden-balance">
+                                        <img id="hidden-icon" src="../assets/images/disable-visualy-wallet.png">
+                                    </button>
+                                    <h4 id="balance">R$ 1920.89</h4>
+                                </div>
+                                <div class="d-flex div-button-wallet">
+                                    <button>
+                                        Depositar
+                                    </button>
+                                    <button>
+                                        Resgatar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+>>>>>>> a1c68856191f3eb157096cbe96ec9e788dc2d210
                     <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search">
                         <i class="fas fa-search text-secondary opacity-25"></i>
                         <input type="text" class="input-search" placeholder="Buscar">
@@ -97,18 +139,75 @@
                 </div>
             </div>
         </header>
+        <!-- --------------- -->
 
-        <div class="wrapper container-fluid" id="gastos">
-            <div class="card-body shadow p-3 mb-5 rounded bg-white">
-                <div class="card-title d-flex justify-content-between align-items-center px-3">
-                    <h4>Meus gastos</h4>
+
+        <div class="principal card shadow pb-5 p-1 mb-5 rounded h-300 d-flex">
+            <div class="card-title d-flex justify-content-between align-items-center px-3">
+                <h3 class="m-3">Dashboard</h3>
+                <i class="fa-solid fa-x fa-lg"></i>
+            </div>
+            <div class="row mb-2">
+                <div class="col-12">
+                    <div class="row g-0 flex-md-row">
+                        <div class="col d-flex flex-column position-static"
+                            style="margin-right: 2.5%; margin-left: 1%;">
+                            <div class="card-body shadow p-1 mb-5  rounded bg-white">
+                                <div class="card-title d-flex justify-content-between align-items-center px-3">
+                                    <h4>Lista de tarefas</h4>
+                                </div>
+                                <div class="card-item row">
+                                    <div class="row">
+                                        <div class="col-md-8 offset-md-2">
+                                            <form id="todo-form">
+                                                <div class="form-group"><input type="text" class="form-control"
+                                                        placeholder="Crie uma nova tarefa" id="task">
+                                                </div>
+                                                <button type="submit" class="btn btn-primary mt-3 ms-auto"
+                                                    style="font-family: 'Open Sans';">Adicionar tarefa</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-5" style="font-family: 'Open Sans';">
+                                        <div class="col-md-8 offset-md-2" style="font-family: 'Open Sans';">
+                                            <ul id="todo-list" class="list-group"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row g-0 flex-md-row" style="margin-right: 2.5%;">
+                                <div class="card-body shadow p-3 mb-5 bg-white rounded">
+
+                                    <div class="card-title d-flex justify-content-between align-items-center px-3">
+                                        <h4>Despesas na semana</h4>
+                                        <div class="row offset-md-4"><i class="fa-solid fa-bell fa-xl"></i></div>
+                                    </div>
+                                    <div class="card-items">
+                                        <canvas id="dados-card" width="400" height="200"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="gastos card-body">
-                    <canvas class="chart-container w-100" id="expensesIncomingsChart" style="height: 100vw;"></canvas>
+
+            </div>
+            <div class="wrapper container-fluid" id="gastos">
+                <div class="card-body shadow p-3 mb-5 rounded bg-white">
+                    <div class="card-title d-flex justify-content-between align-items-center px-3">
+                        <h4>Seus gastos</h4>
+                    </div>
+                    <div class="gastos card-body">
+                        <canvas class="chart-container w-100" id="expensesIncomingsChart"
+                            style="height: 15vw;"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="../assets/js/login.js"></script>
@@ -239,6 +338,23 @@
             }
             valor.innerHTML = fetchData();
         }
+    </script>
+
+    <script>
+        document.getElementById("hidden-balance").addEventListener("click", function() {
+            var balance = document.getElementById("balance");
+            var hidden_icon = document.getElementById("hidden-icon");
+            if (balance.classList.contains("hidden")) {
+                balance.classList.remove("hidden");
+                balance.innerText = "R$ 1920.89"; // Retorna o saldo original ao mostrar
+                hidden_icon.src = "../assets/images/disable-visualy-wallet.png"
+            } else {
+                balance.classList.add("hidden");
+                balance.innerText = "R$ ******"; // Substitui o saldo por asteriscos ao ocultar
+                hidden_icon.src = "../assets/images/enable-visualy-wallet.png"
+                
+            }
+        });
     </script>
 
 </body>

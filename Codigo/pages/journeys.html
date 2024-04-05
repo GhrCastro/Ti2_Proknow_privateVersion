@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <link rel="stylesheet" href="../assets/css/sidenav.css">
+    <link rel="stylesheet" href="../assets/css/badges.css">
 </head>
 
 <style>
@@ -73,13 +74,15 @@
                             Space</span></a>
                 </li>
                 <li id="newsletter">
-                    <a href="./newsletter.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
-                        data-bs-placement="right"><i class="material-icons fa-regular fa-newspaper fa-xl mx-2"></i><span
+                    <a href="./newsletter.html" class="nav-link py-3 rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-regular fa-newspaper fa-xl mx-2"></i><span
                             class="txt">Newsletter</span></a>
                 </li>
                 <li id="journeys">
-                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page" data-bs-toggle="tooltip"
-                        data-bs-placement="right"><i class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
+                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
                             class="txt">Journeys</span></a>
                 </li>
             </ul>
@@ -116,54 +119,62 @@
         <div class="container mt-5">
             <div class="row">
                 <!-- Chame a função createCard para criar os cards desejados -->
-
                 <script>
-                    // Função para criar um card com os elementos especificados
-                    function createCard(iconClasses, title, paragraph, iconSize = '2x', iconColor = 'black') {
+
+                    const badges = [
+                        { name: 'Sem freio', description: 'Tenha um incremento de 400% nos seus bônus mensais', icon: '/assets/images/startup.png', enabled: true },
+                    ]
+
+                    function createBadgeCard(badge) {
                         const cardContainer = document.createElement('div');
-                        cardContainer.classList.add('col-md-4', 'mb-4');
+                        cardContainer.classList.add('card-container', 'col-md-4', 'mb-4', 'my-2');
 
-                        const card = document.createElement('div');
-                        card.classList.add('card', 'h-100');
+                        const cardInner = document.createElement('div');
+                        cardInner.classList.add('card-inner');
 
-                        const cardBody = document.createElement('div');
-                        cardBody.classList.add('card-body', 'd-flex', 'flex-column', 'align-items-center');
+                        const cardFront = document.createElement('div');
+                        cardFront.classList.add('card-front', 'card');
+                        if (badge.enabled) {
+                            cardFront.classList.add('enabled'); // Adiciona a classe apenas se badge está habilitado
+                        }
 
-                        const iconContainer = document.createElement('div');
-                        iconContainer.classList.add('text-center');
+                        cardFront.classList.add('.card-front.enabled')
 
-                        const icon = document.createElement('i');
-                        icon.className = `fas ${iconClasses} fa-${iconSize}`;
-                        icon.style.color = iconColor;
+                        const cardBack = document.createElement('div');
+                        cardBack.classList.add('card-back', 'card', 'p-3');
 
-                        const cardTitle = document.createElement('h5');
-                        cardTitle.classList.add('card-title', 'font-weight-bold');
-                        cardTitle.innerText = title;
+                        let icon = document.createElement('img');
+                        icon.src = badge.icon; // A URL do ícone
+                        icon.alt = "Badge Icon";
+                        icon.classList.add('icon');
+                        const title = document.createElement('h5', 'h-50', 'mb-2');
+                        title.textContent = badge.name;
+                        title.classList.add('card-title');
 
-                        const cardText = document.createElement('p');
-                        cardText.classList.add('card-text');
-                        cardText.innerText = paragraph;
+                        cardFront.appendChild(icon);
+                        cardFront.appendChild(title);
+                        // Adiciona descrição no verso do card
+                        const requirements = document.createElement('b');
+                        requirements.textContent = 'Requisitos:';
+                        requirements.classList.add('card-text', 'align-self-start', 'mb-2');
 
-                        // Adicione os elementos ao card
-                        iconContainer.appendChild(icon);
-                        cardBody.appendChild(iconContainer);
-                        cardBody.appendChild(cardTitle);
-                        cardBody.appendChild(cardText);
+                        cardBack.appendChild(requirements);
 
-                        card.appendChild(cardBody);
-                        cardContainer.appendChild(card);
+                        const description = document.createElement('p');
+                        description.textContent = badge.description;
+                        description.classList.add('card-text');
 
-                        // Adicione o card à sua página
+                        cardBack.appendChild(description);
+
+                        cardInner.appendChild(cardFront);
+                        cardInner.appendChild(cardBack);
+                        cardContainer.appendChild(cardInner);
+
                         document.querySelector('.container .row').appendChild(cardContainer);
                     }
-
-
-                    // Exemplo de uso da função para criar dois cards
-                    createCard('fa-hat-wizard', 'Bien-venut', 'Tenha um incremento de 400% nos seus bonus mensais', '4x', 'grey');
-                    createCard('fa-heart', 'Fazendo savings!', 'Registre um saldo positivo por 3 meses seguidos', '4x', 'grey');
-                    createCard('fa-graduation-cap', 'Bom aluno', 'Assista a 3 videos do nosso Content-Hub', '4x', '#4252E1');
-
+                    badges.forEach(createBadgeCard);
                 </script>
+
             </div>
         </div>
     </main>
@@ -181,6 +192,8 @@
     <script src="../../assets/js/sidebar-loader.js"></script>
     <script src="https://kit.fontawesome.com/113fc1b747.js" crossorigin="anonymous"></script>
     <script src="../assets/js/login.js"></script>
+
+
 </body>
 
 </html>
