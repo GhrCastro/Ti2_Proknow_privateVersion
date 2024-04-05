@@ -1,0 +1,69 @@
+/* Estilo do contêiner do card */
+.card-container {
+  perspective: 1000px;
+  width: 20%;
+  height: 300px;
+}
+
+/* Estilo comum para a frente e o verso do card */
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  transform: rotateY(-0.5deg); /* Inclinação sutil */
+}
+
+.card-front, .card-back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* Organiza o conteúdo em coluna (verticalmente) */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Esconde o verso do card quando ele não estiver virado para frente */
+  background-color: #f8f9fa; /* Define uma cor de fundo padrão, ajuste conforme necessário */
+  color: white; /* Cor do texto, ajuste conforme necessário */
+}
+
+.card-front {
+  background-color: grey; /* Cor de fundo padrão para badges desabilitadas */
+}
+
+.card-front.enabled {
+  /* Cor de fundo para badges habilitadas com transparência */
+  background-color: rgba(226, 228, 248, 0.5); /* Exemplo com RGBA */
+  color: black;
+}
+
+/* Estilo do verso do card */
+.card-back {
+  background: #f8f9fa;
+  color: black;
+  transform: rotateY(180deg);
+}
+
+/* Estilo para girar o card */
+.card-container:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+
+
+/* Ajustes adicionais para alinhar texto e ícones */
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.icon {
+  max-width: 100%; /* Faz com que a imagem se ajuste à largura do card, mantendo a proporção */
+  max-height: 150px; /* Limita a altura da imagem para garantir que ela se ajuste bem no card */
+  object-fit: contain; /* Garante que a imagem seja redimensionada proporcionalmente */
+  margin-bottom: 20px; /* Espaço entre o ícone e o texto abaixo */
+}
