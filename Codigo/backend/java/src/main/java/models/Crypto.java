@@ -7,7 +7,6 @@ public class Crypto extends Moeda {
 	private BigDecimal volume24h;
 	private BigDecimal priceChange24h;
 	private BigDecimal marketCap;
-
 	private String chain;
 
 	public Crypto(int id, String name, BigDecimal amount, String symbol, BigDecimal priceUsd, BigDecimal volume24h,
@@ -17,7 +16,7 @@ public class Crypto extends Moeda {
 		this.volume24h = volume24h;
 		this.priceChange24h = priceChange24h;
 		this.marketCap = marketCap;
-		this.setChain(chain);
+		this.chain = chain;
 	}
 	
 	 // Getters e Setters
