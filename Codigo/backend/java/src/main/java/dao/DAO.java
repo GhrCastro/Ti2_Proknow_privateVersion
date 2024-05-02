@@ -3,21 +3,28 @@ package dao;
 import java.sql.Connection;
 
 import org.jdbi.v3.core.Jdbi;
+import org.jdbi.v3.core.statement.StatementException;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
 public class DAO {
-	private static Jdbi jdbi = null;
-	
-	public static Jdbi getJdbi() {
-		if(jdbi == null) {
-			String url = "jdbc:postgresql://proknow-server.postgres.database.azure.com:5432/postgres?user=undefined&password=root&sslmode=require";
-            String username = "undefined";
-            String password = "root";
-            
-            jdbi = Jdbi.create(url, username, password);
-            jdbi.installPlugin(new SqlObjectPlugin());
+	private Jdbi jdbi;
+
+	public DAO(Jdbi jdbi) {
+		this.jdbi = jdbi;
+	}
+
+	public DAO() { }
+
+	public Jdbi getJdbi() {
+		if (jdbi == null) {
+			String url = "jdbc:postgresql://proknow-db.postgres.database.azure.com:5432/postgres?user=adm&password=Proknow1!&sslmode=require";
+			String username = "adm";
+			String password = "Proknow1!";
+
+			jdbi = Jdbi.create(url, username, password);
+			jdbi.installPlugin(new SqlObjectPlugin());
 		}
 		return jdbi;
 	}
-	
+
 }
