@@ -1,5 +1,6 @@
 package dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 import models.Crypto;
 import org.jdbi.v3.sqlobject.customizer.Bind;
@@ -11,7 +12,7 @@ public interface CryptoDao {
     void createTable();
     
     @SqlUpdate("INSERT INTO crypto (id, name, ticker, priceUsd) VALUES (:id, :name, :ticker, :priceUsd)")
-    void insert(@Bind("id") int id, @Bind("name") String name, @Bind("ticker") String ticker, @Bind("priceUsd") double priceUsd);
+    void insert(@Bind("id") int id, @Bind("name") String name, @Bind("ticker") String ticker, @Bind("priceUsd") BigDecimal priceUsd);
 
     @SqlQuery("SELECT * FROM crypto WHERE id = 1")
     List<Crypto> listCryptos();
