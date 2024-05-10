@@ -17,6 +17,12 @@ public class Main {
 		JsonObject obj = JsonParser.parseString(data).getAsJsonObject();
 		System.out.println(obj);
 		
+<<<<<<< HEAD
+=======
+		
+        System.out.println("ok");
+
+>>>>>>> 394169a1be7395d3d2cedc8019a1d12c124c7977
 	}
 
 }
