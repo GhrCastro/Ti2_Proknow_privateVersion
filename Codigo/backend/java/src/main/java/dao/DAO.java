@@ -9,13 +9,11 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 public class DAO {
 	private Jdbi jdbi;
 
-	public DAO(Jdbi jdbi) {
-		this.jdbi = jdbi;
+	public DAO() {
+		this.jdbi = setupJdbi();
 	}
 
-	public DAO() { }
-
-	public Jdbi getJdbi() {
+	private Jdbi setupJdbi() {
 		if (jdbi == null) {
 			String url = "jdbc:postgresql://proknow-db.postgres.database.azure.com:5432/postgres?user=adm&password=Proknow1!&sslmode=require";
 			String username = "adm";
@@ -24,7 +22,11 @@ public class DAO {
 			jdbi = Jdbi.create(url, username, password);
 			jdbi.installPlugin(new SqlObjectPlugin());
 		}
+
 		return jdbi;
 	}
 
+	public Jdbi getJdbiContext() {
+		return jdbi;
+	}
 }
