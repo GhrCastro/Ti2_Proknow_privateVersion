@@ -21,7 +21,45 @@ public class Badge {
         this.linkImage = linkImage;
     }
 
+    // Getters
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public String getLinkImage() {
+        return linkImage;
+    }
+
+    // Setters
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public void setEnable(Boolean enable) {
         this.enable = enable;
+    }
+
+    public void setLinkImage(String linkImage) {
+        this.linkImage = linkImage;
     }
 }
