@@ -1,13 +1,14 @@
 package models;
 
-import java.util.Date;
+import models.Badge;
+import java.util.LinkedList;
+import java.util.UUID;
+import java.time.LocalDate;
 import java.text.SimpleDateFormat;
 
 public class Usuario {
 
-	public static int ultimo_id = 0;
-
-	private int id;
+	private UUID id;
 	private String name;
 	private String cpf;
 	private String email;
@@ -15,23 +16,11 @@ public class Usuario {
 	private String cellNumber;
 	private String password;
 	private double expenses;
-	private Date regDate;
-	// private String faceId;
+	private LocalDate regDate;
+	private LinkedList<Badge> Badges;
 
-	public Usuario() {
-
-		this.id = -1;
-		this.name = "";
-		this.cpf = "";
-		this.email = "";
-		this.salary = 0;
-		this.cellNumber = "";
-		this.password = "";
-		this.expenses = 0;
-	}
-
-	public Usuario(int id, String name, String cpf, String email, double salary, String cellNumber, String password,
-			double expenses, Date regDate) {
+	public Usuario(UUID id, String name, String cpf, String email, double salary, String cellNumber, String password,
+			double expenses, LocalDate regDate){
 
 		this.id = id;
 		this.name = name;
@@ -44,7 +33,7 @@ public class Usuario {
 		this.regDate = regDate;
 	}
 
-	public int getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -77,13 +66,11 @@ public class Usuario {
 		return expenses;
 	}
 
-	public Date getRegDate() {
+	public LocalDate getRegDate() {
 		return regDate;
 	}
-	// public double getFaceId() {
-	// return faceId;
 
-	public void setId(int id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
@@ -115,11 +102,7 @@ public class Usuario {
 		this.expenses = expenses;
 	}
 
-	public void setRegDate(Date regDate) {
+	public void setRegDate(LocalDate regDate) {
 		this.regDate = regDate;
 	}
-
-	// public void setFaceId(int faceId) {
-	// this.faceId = faceId;
-	// }
 }
