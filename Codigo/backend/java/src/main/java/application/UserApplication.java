@@ -21,9 +21,10 @@ public class UserApplication {
         post("/usuarios", (req, res) -> {
             res.type("application/json");
             Usuario usuario = gson.fromJson(req.body(), Usuario.class);
+            //System.out.println("###" + usuario);
             try {
                 usuarioService.addUsuario(usuario);
-                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Usuário criado com sucesso."));
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Usuário criado com sucesso." + usuario.getRegDate()));
             } catch (IllegalArgumentException e) {
                 res.status(400);
                 return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Dados do usuário inválidos."));

@@ -17,18 +17,12 @@
 
 // Badges badge = new Badges(id,name);
 
-<<<<<<< HEAD:Codigo/backend/java/src/main/java/services/interfaces/BadgesService.java
-// BadgesDao.insert(badge);
-// }
-// }
-=======
 //         BadgesDao.insert(badge);
 //     }    
 // }
-package services;
+//package services;
 
 
 
 
 
->>>>>>> service-and-application-layers:Codigo/backend/java/src/main/java/services/BadgesService.java
