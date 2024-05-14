@@ -1,4 +1,4 @@
-package application;
+/*package application;
 
 import static spark.Spark.*;
 
@@ -32,4 +32,4 @@ public class WalletApplication {
 
         // Outras rotas relacionadas a wallets podem ser adicionadas aqui
     }
-}
+}*/

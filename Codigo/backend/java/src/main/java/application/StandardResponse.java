@@ -1,3 +1,4 @@
+package application;
 
 class StandardResponse {
     private StatusResponse status;

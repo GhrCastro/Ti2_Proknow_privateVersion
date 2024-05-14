@@ -5,7 +5,7 @@ import java.util.List;
 import dao.CryptoDao;
 import dao.DAO;
 import models.Crypto;
-import services.interfaces.CryptoService;
+import services.CryptoService;
 
 public class CryptoService {
 

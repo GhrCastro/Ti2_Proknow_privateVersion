@@ -2,9 +2,8 @@ package main;
 import static spark.Spark.*;
 
 import com.google.gson.JsonParser;
-
+import application.UserApplication;
 import org.jdbi.v3.core.Jdbi;
-
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import dao.DAO;
@@ -24,9 +23,8 @@ public class Main {
 		
 		DAO dao = new DAO();
 		UsuarioService usuarioService = new UsuarioService(dao);
+		UserApplication userApplication =  new UserApplication(usuarioService);
+		userApplication.initializeRoutes();
 		
 	}
-
 }
-
-

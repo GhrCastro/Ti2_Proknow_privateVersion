@@ -1,4 +1,4 @@
-package services.interfaces;
+/*package services.interfaces;
 
 import models.Usuario;
 import dao.UsuarioDao;
@@ -32,4 +32,4 @@ public class UsuarioService {
             response.status(402);
         }
     }
-}
+}*/
