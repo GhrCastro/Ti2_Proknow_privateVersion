@@ -1,7 +1,7 @@
 package dao;
 
 import java.util.List;
-import models.Badges;
+import models.Badge;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
@@ -18,5 +18,5 @@ public interface BadgeDao {
     public void insert(@Bind("id") int id, @Bind("name") String name, @Bind("description") String description, @Bind("enable") Boolean enable,  @Bind("linkImage") String linkImage);
 
     @SqlQuery("SELECT * FROM badge WHERE id = 1")
-    public List<Badge> listBadges();    
+    public List<Badge> listBadge();    
 }
