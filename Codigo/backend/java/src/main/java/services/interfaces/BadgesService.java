@@ -1,3 +1,4 @@
+// package services.interfaces;
 // package services;
 
 // import models.Badges;
@@ -10,12 +11,12 @@
 
 // public class BadgesService {
 
-//     public void insertBadge(Request request, Response response){
-//         int id = Integer.parseInt(request.queryParams("id"));
-//         String name = request.queryParams("name");
+// public void insertBadge(Request request, Response response){
+// int id = Integer.parseInt(request.queryParams("id"));
+// String name = request.queryParams("name");
 
-//         Badges badge = new Badges(id,name);
+// Badges badge = new Badges(id,name);
 
-//         BadgesDao.insert(badge);
-//     }    
+// BadgesDao.insert(badge);
+// }
 // }
