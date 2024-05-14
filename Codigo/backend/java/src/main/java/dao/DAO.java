@@ -25,6 +25,8 @@ public class DAO {
 
 		return jdbi;
 	}
+	
+	
 
 	public Jdbi getJdbiContext() {
 		return jdbi;
