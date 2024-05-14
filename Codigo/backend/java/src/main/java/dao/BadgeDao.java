@@ -7,7 +7,6 @@ import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import javafx.scene.chart.PieChart.Data;
 
 public interface BadgeDao {
 

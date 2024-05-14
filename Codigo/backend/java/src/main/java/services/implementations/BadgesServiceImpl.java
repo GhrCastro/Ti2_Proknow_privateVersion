@@ -19,3 +19,6 @@
 //         BadgesDao.insert(badge);
 //     }    
 // }
+
+
+
