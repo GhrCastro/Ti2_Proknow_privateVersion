@@ -8,8 +8,6 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 
-import javafx.scene.chart.PieChart.Data;
-
 public interface UsuarioDao {
     @SqlUpdate("CREATE TABLE IF NOT EXISTS user (id INTEGER PRIMARY KEY, name VARCHAR, cpf VARCHAR , email VARCHAR, salary FLOAT, cellNumber VARCHAR, password VARCHAR, expenses VARCHAR, regDate DATE)")
     void createTable();
