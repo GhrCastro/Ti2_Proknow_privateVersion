@@ -17,6 +17,12 @@
 
 // Badges badge = new Badges(id,name);
 
-// BadgesDao.insert(badge);
+//         BadgesDao.insert(badge);
+//     }    
 // }
-// }
+//package services;
+
+
+
+
+

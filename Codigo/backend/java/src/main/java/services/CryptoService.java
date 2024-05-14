@@ -1,21 +1,20 @@
-package services.implementations;
+package services;
 
 import java.util.List;
 
 import dao.CryptoDao;
 import dao.DAO;
 import models.Crypto;
-import services.interfaces.CryptoService;
+import services.CryptoService;
 
-public class CryptoServiceImpl implements CryptoService {
+public class CryptoService {
 
 	private final CryptoDao crypto;
 
-	public CryptoServiceImpl(DAO dao) {
+	public CryptoService(DAO dao) {
 		this.crypto = dao.getJdbiContext().onDemand(CryptoDao.class);
 	}
 
-	@Override
 	public void createCryptoTable() {
 		try {
 			crypto.createTable();
@@ -25,7 +24,6 @@ public class CryptoServiceImpl implements CryptoService {
 
 	}
 
-	@Override
 	public void addCrypto(Crypto newCrypto) {
 		try {
 			crypto.insert(newCrypto.getId(), newCrypto.getName(), newCrypto.getSymbol(), newCrypto.getPriceUsd());
@@ -35,7 +33,6 @@ public class CryptoServiceImpl implements CryptoService {
 
 	}
 
-	@Override
 	public List<Crypto> getAllCryptoFromUser() {
 		return crypto.listCryptos();
 	}
