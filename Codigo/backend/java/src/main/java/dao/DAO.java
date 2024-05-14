@@ -7,6 +7,7 @@ import org.jdbi.v3.core.mapper.reflect.BeanMapper;
 import org.jdbi.v3.core.statement.StatementException;
 import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
+import models.UserBadge;
 import models.Usuario;
 
 public class DAO {
@@ -29,6 +30,7 @@ public class DAO {
 			jdbi = Jdbi.create(url, username, password);
 			jdbi.installPlugin(new SqlObjectPlugin());
 			jdbi.registerRowMapper(BeanMapper.factory(Usuario.class));
+			jdbi.registerRowMapper(BeanMapper.factory(UserBadge.class));
 		}
 		return jdbi;
 	}	
