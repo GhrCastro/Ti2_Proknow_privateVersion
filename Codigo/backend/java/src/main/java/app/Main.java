@@ -17,18 +17,12 @@ public class Main {
 		JsonObject obj = JsonParser.parseString(data).getAsJsonObject();
 		System.out.println(obj);
 		
-		DAO dao = new DAO();
-		Jdbi jdbi = dao.getJdbi();
-	
-		jdbi.useHandle(handle -> {
-			handle.createQuery("SELECT name, email FROM users")
-            .mapToMap()
-            .list()
-            .forEach(System.out::println);
-		});
+<<<<<<< HEAD
+=======
 		
         System.out.println("ok");
 
+>>>>>>> 394169a1be7395d3d2cedc8019a1d12c124c7977
 	}
 
 }
