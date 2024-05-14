@@ -5,8 +5,7 @@ import models.Badge;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
-import java.util.Date;
-import java.text.SimpleDateFormat;
+
 
 public interface BadgeDao {
 

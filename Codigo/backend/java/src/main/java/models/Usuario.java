@@ -1,125 +1,103 @@
 package models;
 
-import java.util.Date;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 
 public class Usuario {
 
-	public static int ultimo_id = 0;
+    private UUID id;
+    private String name;
+    private String cpf;
+    private String email;
+    private String password;
+    private Date regDate;
 
-	private int id;
-	private String name;
-	private String cpf;
-	private String email;
-	private double salary;
-	private String cellNumber;
-	private String password;
-	private double expenses;
-	private Date regDate;
-	// private String faceId;
+    public Usuario() {
+        this.id = UUID.randomUUID();
+        this.regDate = new Date();
+    }
 
-	public Usuario() {
+    public Usuario(String name, String cpf, String email, String password) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.cpf = cpf;
+        this.email = email;
+        this.password = hashPassword(password); 
+        this.regDate = new Date();
+    }
 
-		this.id = -1;
-		this.name = "";
-		this.cpf = "";
-		this.email = "";
-		this.salary = 0;
-		this.cellNumber = "";
-		this.password = "";
-		this.expenses = 0;
-	}
+    public UUID getId() {
+        return id;
+    }
 
-	public Usuario(int id, String name, String cpf, String email, double salary, String cellNumber, String password,
-			double expenses, Date regDate) {
+    public String getName() {
+        return name;
+    }
 
-		this.id = id;
-		this.name = name;
-		this.cpf = cpf;
-		this.email = email;
-		this.salary = salary;
-		this.cellNumber = cellNumber;
-		this.password = password;
-		this.expenses = expenses;
-		this.regDate = regDate;
-	}
+    public String getCpf() {
+        return cpf;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getCpf() {
-		return cpf;
-	}
+    public Date getRegDate() {
+        return regDate;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-	public double getSalary() {
-		return salary;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getCellNumber() {
-		return cellNumber;
-	}
+    public void setPassword(String password) {
+        this.password = hashPassword(password);
+    }
 
-	public String getPassword() {
-		return password;
+    public void setRegDate(Date regDate) {
+        this.regDate = regDate;
+    }
 
-	}
+    public String getFormattedDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        return dateFormat.format(regDate);
+    }
 
-	public double getExpenses() {
-		return expenses;
-	}
+    public boolean isValid() {
+        return name != null && !name.isEmpty() &&
+               cpf != null && !cpf.isEmpty() &&
+               email != null && !email.isEmpty() &&
+               password != null && !password.isEmpty();
+    }
 
-	public Date getRegDate() {
-		return regDate;
-	}
-	// public double getFaceId() {
-	// return faceId;
+    private String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashBytes = md.digest(password.getBytes());
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashBytes) {
+                sb.append(String.format("%02x", b));
+            }
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException("Erro ao hashear a senha", e);
+        }
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public void setSalary(double salary) {
-		this.salary = salary;
-	}
-
-	public void setCellNumber(String cellNumber) {
-		this.cellNumber = cellNumber;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public void setExpenses(double expenses) {
-		this.expenses = expenses;
-	}
-
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
-	}
-
-	// public void setFaceId(int faceId) {
-	// this.faceId = faceId;
-	// }
 }

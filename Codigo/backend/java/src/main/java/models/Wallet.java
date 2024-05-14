@@ -48,6 +48,34 @@ public class Wallet {
 		throw new Exception("Currency not found");
 	}
 
+	public void reverseTransaction(UUID transactionID) throws Exception {
+		for (Transaction tx : transactions) {
+			if (tx.getId().equals(transactionID) && !tx.isReversed()) {
+				BigDecimal amount = tx.getAmount();
+
+				Moeda currency = new Moeda();
+				if (tx.getFromWallet() != null) {
+					deposit(currency, amount);
+				} else if (tx.getToWallet() != null) {
+					withdraw(currency, amount);
+				}
+
+				tx.reverse();
+			}
+		}
+
+		throw new Exception("Transaction not found or already reversed");
+	}
+	
+	 public BigDecimal getBalance(String currency) {
+	        for (CurrencyBalance balance : balances) {
+	            if (balance.getCurrency().equals(currency)) {
+	                return balance.getAmount();
+	            }
+	        }
+	        return BigDecimal.ZERO;
+	    }
+
 	public UUID getUserId() {
 		return userId;
 	}
@@ -56,11 +84,10 @@ public class Wallet {
 		this.userId = userId;
 	}
 
-	
-	public List<Transaction> getTransactions(){
+	public List<Transaction> getTransactions() {
 		return transactions;
 	}
-	
+
 }
 
 class CurrencyBalance {
