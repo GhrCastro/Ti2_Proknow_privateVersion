@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 application\BadgeApplication.class
 dao\BadgeDao.class
 dao\WalletDao.class
@@ -5,6 +6,9 @@ main\Main.class
 models\Transaction.class
 dao\CryptoDao.class
 services\BadgeService.class
+=======
+dao\BadgeDao.class
+>>>>>>> f025dcfba5604765b05bade8ee86a5abba255f6e
 services\CryptoService.class
 dao\DAO.class
 models\PKWCoin.class
@@ -15,6 +19,12 @@ models\Crypto.class
 models\CurrencyBalance.class
 application\StatusResponse.class
 models\Usuario.class
+<<<<<<< HEAD
+=======
+dao\WalletDao.class
+main\Main.class
+models\UserCredentials.class
+>>>>>>> f025dcfba5604765b05bade8ee86a5abba255f6e
 application\StandardResponse.class
 models\Moeda.class
 dao\UsuarioDao.class
@@ -22,4 +32,9 @@ models\Badge.class
 services\UsuarioService.class
 models\Wallet.class
 dao\TransactionDao.class
+<<<<<<< HEAD
+=======
+models\Transaction.class
+dao\CryptoDao.class
+>>>>>>> f025dcfba5604765b05bade8ee86a5abba255f6e
 services\CryptoAPI.class
