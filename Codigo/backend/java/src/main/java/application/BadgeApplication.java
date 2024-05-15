@@ -18,18 +18,18 @@ public class BadgeApplication {
     }
 
     public void initializeRoutes() {
-        /*post("/badges", (req, res) -> { 
+        post("/badges", (req, res) -> { 
             res.type("application/json");
             Badge badge = gson.fromJson(req.body(), Badge.class);
-            //System.out.println("###" + usuario);
+            System.out.println("###" + badge.getId());
             try {
                 badgeService.addBadge(badge);
-                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Usuário criado com sucesso."));
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Badge criada com sucesso."));
             } catch (IllegalArgumentException e) {
                 res.status(400);
-                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Dados do usuário inválidos."));
+                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Dados da Badge inválidos."));
             }
-        });*/
+        });
 
         get("/badges/:id", (req, res) -> {
             res.type("application/json");

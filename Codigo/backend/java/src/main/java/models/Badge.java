@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Date;
 import java.util.UUID;
 import java.time.LocalDate;
 import java.text.SimpleDateFormat;
@@ -12,9 +13,12 @@ public class Badge {
     private Boolean enable;
     private String linkImage;
 
-    public Badge(UUID id, String name, String description, Boolean enable, String linkImage) {
+    public Badge() {
+        this.id = UUID.randomUUID();
+    }
 
-        this.id = id;
+    public Badge(String name, String description, Boolean enable, String linkImage) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.description = description;
         this.enable = enable;
