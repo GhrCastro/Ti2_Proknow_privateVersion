@@ -121,8 +121,10 @@
                 <!-- Chame a função createCard para criar os cards desejados -->
                 <script>
 
-                    const badges = [
-                        { name: 'Sem freio', description: 'Tenha um incremento de 400% nos seus bônus mensais', icon: '/assets/images/startup.png', enabled: true },
+                    const badges = [ // colocar o backend aqui  ###
+                        { name: 'O inicio de uma Jornada', description: 'Crie sua conta', icon: '/assets/images/startup.png', enabled: true },
+                        { name: 'Gerando conhecimento', description: 'Assista ao seu primeiro video', icon: '/assets/images/startup.png', enabled: true },
+                        { name: 'Sem freio', description: 'Tenha um incremento de 400% nos seus bônus mensais', icon: '/assets/images/startup.png', enabled: false },
                     ]
 
                     function createBadgeCard(badge) {
@@ -173,6 +175,9 @@
                         document.querySelector('.container .row').appendChild(cardContainer);
                     }
                     badges.forEach(createBadgeCard);
+
+                    
+
                 </script>
 
             </div>
@@ -192,6 +197,8 @@
     <script src="../../assets/js/sidebar-loader.js"></script>
     <script src="https://kit.fontawesome.com/113fc1b747.js" crossorigin="anonymous"></script>
     <script src="../assets/js/login.js"></script>
+
+
 
 
 </body>
