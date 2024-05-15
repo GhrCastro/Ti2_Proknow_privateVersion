@@ -5,15 +5,24 @@ import java.util.List;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
+import java.util.UUID;
 
 public interface BadgeDao {
 
-    @SqlUpdate("CREATE TABLE IF NOT EXISTS badges (id INTEGER PRIMARY KEY, name VARCHAR, description VARCHAR , enable bool, linkImage String)")
-    public void createTable();
-    
-    @SqlUpdate("INSERT INTO badges (id, name, description, enable, linkImage, howToUnlock) VALUES (:id, :name, :description, :enable, :linkImage)")
-    public void insert(@Bind("id") int id, @Bind("name") String name, @Bind("description") String description, @Bind("enable") Boolean enable,  @Bind("linkImage") String linkImage);
+    @SqlUpdate("CREATE TABLE IF NOT EXISTS badges (id UUID PRIMARY KEY, name VARCHAR, description VARCHAR , enable bool, linkImage VARCHAR)")
+    void createTable();
+
+    @SqlUpdate("INSERT INTO badges (id, name, description, enable, linkImage) VALUES (:id, :name, :description, :enable, :linkImage)")
+    void insert(@Bind("id") UUID id, @Bind("name") String name, @Bind("description") String description,
+            @Bind("enable") Boolean enable, @Bind("linkImage") String linkImage);
 
     @SqlQuery("SELECT * FROM badge WHERE id = 1")
-    public List<Badge> listBadge();    
+    List<Badge> listBadge();
+
+    @SqlUpdate("DELETE FROM users WHERE id = :id")
+    void delete(@Bind("id") UUID id);
+
+    @SqlQuery("SELECT * FROM users WHERE id = :id")
+    Badge findById(@Bind("id") UUID id);
+
 }
