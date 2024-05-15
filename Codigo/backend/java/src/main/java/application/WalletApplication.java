@@ -4,7 +4,7 @@ import static spark.Spark.*;
 
 import java.util.UUID;
 import com.google.gson.Gson;
-import services.WalletService;
+import services.interfaces.*;
 import models.Wallet;
 
 public class WalletApplication {

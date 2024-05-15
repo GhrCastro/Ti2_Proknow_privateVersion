@@ -5,14 +5,11 @@ import java.util.List;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
-<<<<<<< HEAD
 import java.time.LocalDate;
 import java.text.SimpleDateFormat;
 
 // Fimport javafx.scene.chart.PieChart.Data;
-=======
 
->>>>>>> service-and-application-layers
 
 public interface BadgeDao {
 
