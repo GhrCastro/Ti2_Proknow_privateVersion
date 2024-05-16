@@ -13,10 +13,14 @@ import services.*;
 public class UserApplication {
 
     private final UsuarioService usuarioService;
+    private final WalletService walletService;
+    private final RewardService rewardService;
     private final Gson gson = new Gson();
 
-    public UserApplication(UsuarioService usuarioService) {
+    public UserApplication(UsuarioService usuarioService, WalletService walletService, RewardService rewardService) {
         this.usuarioService = usuarioService;
+        this.walletService = walletService;
+        this.rewardService = rewardService;
     }
 
     public void initializeRoutes() {
@@ -51,6 +55,8 @@ public class UserApplication {
             //System.out.println("###" + usuario);
             try {
                 usuarioService.addUsuario(usuario);
+                walletService.createWallet(usuario.getId());
+                rewardService.rewardUser(usuario.getId(), "REGISTER");
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuario)));
             } catch (IllegalArgumentException e) {
                 res.status(400);
