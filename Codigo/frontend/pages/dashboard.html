@@ -90,17 +90,9 @@
 
         <!-- Código Header -->
         <header class="mb-3">
-<<<<<<< HEAD
-            <div class="row">
-                <div class="col-lg-8 Ola">
-                    <h2 class="text-secondary m-3 ">Seja bem-vindo, <span id="username" class="fw-bold"></span>!
-                    </h2>
-                </div>
-                <div class="col-lg-4 d-flex align-items-center justify-content-end g-2">
-=======
             <div class="row justify-content-between">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
-                    <h2>Seja Bem vindo, User</h2>
+                    <h2 id="welcomeUser">Seja Bem vindo, User</h2>
                 </div>
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
                     <div class="mx-5">
@@ -131,7 +123,6 @@
                             </div>
                         </div>
                     </div>
->>>>>>> a1c68856191f3eb157096cbe96ec9e788dc2d210
                     <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search">
                         <i class="fas fa-search text-secondary opacity-25"></i>
                         <input type="text" class="input-search" placeholder="Buscar">
@@ -341,9 +332,11 @@
     </script>
 
     <script>
+
+        var balance = document.getElementById("balance");
+        var hidden_icon = document.getElementById("hidden-icon");
+
         document.getElementById("hidden-balance").addEventListener("click", function() {
-            var balance = document.getElementById("balance");
-            var hidden_icon = document.getElementById("hidden-icon");
             if (balance.classList.contains("hidden")) {
                 balance.classList.remove("hidden");
                 balance.innerText = "R$ 1920.89"; // Retorna o saldo original ao mostrar
