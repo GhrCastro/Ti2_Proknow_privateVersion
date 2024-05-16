@@ -30,7 +30,7 @@ public class Main {
 		BadgeService badgeService = new BadgeService(dao);
 		BadgeApplication badgeApplication = new BadgeApplication(badgeService);
 		userApplication.initializeRoutes();
-		badgeApplication.initializeRoutes();
+		badgeApplication.initializeRoutes();		
 		
 	}
 }
