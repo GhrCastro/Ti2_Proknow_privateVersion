@@ -16,13 +16,13 @@ public interface BadgeDao {
     void insert(@Bind("id") UUID id, @Bind("name") String name, @Bind("description") String description,
             @Bind("enable") Boolean enable, @Bind("linkImage") String linkImage);
 
-    @SqlQuery("SELECT * FROM badge WHERE id = 1")
+    @SqlQuery("SELECT * FROM badges")
     List<Badge> listBadge();
 
-    @SqlUpdate("DELETE FROM users WHERE id = :id")
+    @SqlUpdate("DELETE FROM badges WHERE id = :id")
     void delete(@Bind("id") UUID id);
 
-    @SqlQuery("SELECT * FROM users WHERE id = :id")
+    @SqlQuery("SELECT * FROM badges WHERE id = :id")
     Badge findById(@Bind("id") UUID id);
 
 }
