@@ -17,7 +17,6 @@ public class TaskApplication {
 	}
 
 	public void initializeRoutes() {
-		// Rota para completar uma tarefa
 		post("/tasks/complete", (req, res) -> {
 			res.type("application/json");
 			UUID userId = UUID.fromString(req.queryParams("userId"));

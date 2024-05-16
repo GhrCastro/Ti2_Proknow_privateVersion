@@ -66,15 +66,15 @@ public class Wallet {
 
 		throw new Exception("Transaction not found or already reversed");
 	}
-	
-	 public BigDecimal getBalance(String currency) {
-	        for (CurrencyBalance balance : balances) {
-	            if (balance.getCurrency().equals(currency)) {
-	                return balance.getAmount();
-	            }
-	        }
-	        return BigDecimal.ZERO;
-	    }
+
+	public BigDecimal getBalance(String currency) {
+		for (CurrencyBalance balance : balances) {
+			if (balance.getCurrency().equals(currency)) {
+				return balance.getAmount();
+			}
+		}
+		return BigDecimal.ZERO;
+	}
 
 	public UUID getUserId() {
 		return userId;

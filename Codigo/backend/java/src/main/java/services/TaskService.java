@@ -10,6 +10,8 @@ public class TaskService {
 	}
 	
 	public void completeTask(UUID userId, String taskName) {
+		//adicionar a logica pra task e reward em pkw e/ou badge
+		
 		rewardService.rewardUser(userId, "COMPLETE_TASK");
 	}
 }
