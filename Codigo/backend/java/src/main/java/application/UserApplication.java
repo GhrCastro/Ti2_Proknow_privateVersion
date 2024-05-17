@@ -56,7 +56,7 @@ public class UserApplication {
             try {
                 usuarioService.addUsuario(usuario);
                 walletService.createWallet(usuario.getId());
-                rewardService.rewardUser(usuario.getId(), "REGISTER");
+                //rewardService.rewardUser(usuario.getId(), "REGISTER");
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuario)));
             } catch (IllegalArgumentException e) {
                 res.status(400);

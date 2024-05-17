@@ -26,8 +26,7 @@
     <link rel="stylesheet" href="../assets/css/stylecardbarraroxa.css">
     <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <link rel="stylesheet" href="../assets/css/sidenav.css">
-    <link rel="stylesheet" href="../assets/css/header.css"
-
+    <link rel="stylesheet" href="../assets/css/header.css" 
     <title>Dashboard</title>
 </head>
 
@@ -49,9 +48,9 @@
                             Hub</span></a>
                 </li>
                 <li id="trader-space">
-                    <a href="./btcTraderSpace.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
-                        data-bs-placement="right"><i class="material-icons fa-solid fa-chart-line fa-xl mx-2"></i><span
-                            class="txt">Trader
+                    <a href="./btcTraderSpace.html" class="nav-link py-3 rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-solid fa-chart-line fa-xl mx-2"></i><span class="txt">Trader
                             Space</span></a>
                 </li>
                 <li id="newsletter">
@@ -61,8 +60,9 @@
                             class="txt">Newsletter</span></a>
                 </li>
                 <li id="journeys">
-                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page" data-bs-toggle="tooltip"
-                        data-bs-placement="right"><i class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
+                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
                             class="txt">Journeys</span></a>
                 </li>
             </ul>
@@ -96,14 +96,17 @@
                 </div>
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
                     <div class="mx-5">
-                        <button class="wallet-button" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                        <button class="wallet-button" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                             <img src="../assets/images/app-wallet-passes.png">
                         </button>
 
-                        <div class="offcanvas offcanvas-end wallet-modal" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel" >
+                        <div class="offcanvas offcanvas-end wallet-modal" tabindex="-1" id="offcanvasRight"
+                            aria-labelledby="offcanvasRightLabel">
                             <div class="offcanvas-header ">
                                 <h3 class="offcanvas-title" id="offcanvasRightLabel">Carteira</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body wallet-modal-body">
                                 <div class="div-valor">
@@ -332,30 +335,7 @@
         }
     </script>
 
-    <script>
-
-        const user = getSessionUser();
-        console.log(user);
-
-        const userWallet = getInfoWallet(user.id);
-        console.log(userWallet)
-
-        var balance = document.getElementById("balance");
-        var hidden_icon = document.getElementById("hidden-icon");
-
-        document.getElementById("hidden-balance").addEventListener("click", function() {
-            if (balance.classList.contains("hidden")) {
-                balance.classList.remove("hidden");
-                balance.innerText = "R$ 1920.89"; // Retorna o saldo original ao mostrar
-                hidden_icon.src = "../assets/images/disable-visualy-wallet.png"
-            } else {
-                balance.classList.add("hidden");
-                balance.innerText = "R$ ******"; // Substitui o saldo por asteriscos ao ocultar
-                hidden_icon.src = "../assets/images/enable-visualy-wallet.png"
-                
-            }
-        });
-    </script>
+   
 
 </body>
 

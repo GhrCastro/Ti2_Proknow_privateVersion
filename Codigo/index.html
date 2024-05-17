@@ -118,12 +118,12 @@
 
                                     <div class="mb-3">
                                         <label for="Senha">Senha<span class="text-danger">*</span></label>
-                                        <input type="Senha" name="senha" class="form-control" id="newPassword"
+                                        <input type="password" name="senha" class="form-control" id="newPassword"
                                             placeholder="Insira uma senha">
                                     </div>
                                     <div class="mb-3">
                                         <label for="Senha">Confirme sua senha<span class="text-danger">*</span></label>
-                                        <input type="Senha" name="senha" class="form-control"
+                                        <input type="password" name="senha" class="form-control"
                                             id="newPasswordConfirmation" placeholder="Confirme sua senha">
                                     </div>
 
@@ -205,7 +205,7 @@
             event.preventDefault();
 
             // Captura dos valores dos campos de texto
-            let username = document.getElementById("email").value.trim();
+            let username = document.getElementById("emailLogin").value.trim();
             let password = document.getElementById("password").value.trim();
 
             // Verifica se ambos os campos estão preenchidos
@@ -286,14 +286,9 @@
             const passwordConfirmation = document.getElementById("newPasswordConfirmation").value.trim();
 
             const salario = document.getElementById('currency').value.trim();
-            //const bonus = document.getElementById('bonus').value.trim();
-            //const invest = document.getElementById('ativos').value.trim();
-            //const ativos = document.getElementById('ganhos').value.trim();
 
             const fixas = document.getElementById('fixas').value;
-            //const variados = document.getElementById('variados').value;
-            //const lazer = document.getElementById('lazer').value;
-
+        
             let user = createUser(cpf, password, name, email, cellNumber, salario, fixas);
             console.log(user);
 
