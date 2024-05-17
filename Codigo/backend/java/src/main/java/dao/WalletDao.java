@@ -15,8 +15,8 @@ public interface WalletDao {
     @SqlUpdate("CREATE TABLE IF NOT EXISTS wallet_balances (wallet_id UUID, currency VARCHAR, amount NUMERIC, PRIMARY KEY (wallet_id, currency))")
     void createWalletBalancesTable();
 
-    @SqlUpdate("INSERT INTO wallets (id, user_id) VALUES (:id, :userId)")
-    void insertWallet(@Bind("id") UUID id, @Bind("userId") UUID userId);
+    @SqlUpdate("INSERT INTO wallets (id, currency) VALUES (:id, :userId)")
+    void insertWallet(@Bind("id") UUID id, @Bind("currency") String currency);
 
     @SqlUpdate("INSERT INTO wallet_balances (wallet_id, currency, amount) VALUES (:walletId, :currency, :amount)")
     void insertWalletBalance(@Bind("walletId") UUID walletId, @Bind("currency") String currency, @Bind("amount") BigDecimal amount);

@@ -28,6 +28,7 @@ public class Wallet {
 		}
 		balances.add(new CurrencyBalance(currency, amount));
 	}
+	
 
 	public void withdraw(Moeda currency, BigDecimal amount) throws Exception {
 		for (CurrencyBalance balance : balances) {
@@ -74,7 +75,7 @@ public class Wallet {
 		return BigDecimal.ZERO;
 	}
 
-	public UUID getUserId() {
+	public UUID getOwnerId() {
 		return userId;
 	}
 

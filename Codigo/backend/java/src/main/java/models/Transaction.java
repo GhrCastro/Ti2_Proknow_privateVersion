@@ -22,6 +22,7 @@ public class Transaction {
 		this.createdAt = new Date();
 		this.isReversed = false;
 	}
+	
 
 	public void reverse() {
 		this.isReversed = true;

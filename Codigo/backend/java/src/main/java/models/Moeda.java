@@ -20,9 +20,7 @@ public class Moeda {
 		this.symbol = symbol;
 	}
 
-	private int generateRandomId() {
-		// Supondo que queremos IDs entre 1000 e 9999
-		
+	private int generateRandomId() {		
 		Random random = new Random();
 		
 		int min = 1;

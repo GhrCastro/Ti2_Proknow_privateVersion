@@ -27,9 +27,9 @@ public class WalletService {
 	public void createWallet(UUID owner) {
 		Wallet wallet = new Wallet(owner);
 		PKWCoin pkw = new PKWCoin();
-		walletDao.insertWallet(wallet.getUserId(), owner);
+		
 		wallet.deposit(pkw, BigDecimal.valueOf(150));
-		walletDao.insertWalletBalance(wallet.getUserId(), "PKW", BigDecimal.valueOf(150));
+		walletDao.insertWalletBalance(wallet.getOwnerId(), "PKW", BigDecimal.valueOf(150));
 	}
 
 	public Wallet getWalletByUserId(UUID owner) {
@@ -40,7 +40,7 @@ public class WalletService {
 		Wallet wallet = getWalletByUserId(owner);
 		if (wallet != null) {
 			wallet.deposit(new Moeda(), BigDecimal.valueOf(amount));
-			walletDao.updateWalletBalance(wallet.getUserId(), currency, wallet.getBalance(currency));
+			walletDao.updateWalletBalance(wallet.getOwnerId(), currency, wallet.getBalance(currency));
 		} else {
 			throw new Exception("Wallet not found");
 		}
@@ -50,7 +50,7 @@ public class WalletService {
 		Wallet wallet = getWalletByUserId(userId);
 		if (wallet != null) {
 			wallet.withdraw(new Moeda(), BigDecimal.valueOf(amount));
-			walletDao.updateWalletBalance(wallet.getUserId(), currency, wallet.getBalance(currency));
+			walletDao.updateWalletBalance(wallet.getOwnerId(), currency, wallet.getBalance(currency));
 		} else {
 			throw new Exception("Wallet not found");
 		}
