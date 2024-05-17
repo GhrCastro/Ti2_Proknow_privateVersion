@@ -51,14 +51,14 @@
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="Usuario">Usuario<span class="text-danger">*</span></label>
-                                    <input type="text" name="usuario" class="form-control" id="username"
-                                        placeholder="Insira um usuario">
+                                    <label for="Email">Email<span class="text-danger">*</span></label>
+                                    <input type="text" name="email" class="form-control" id="emailLogin"
+                                        placeholder="Insira seu Email">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="Senha">Senha<span class="text-danger">*</span></label>
-                                    <input type="Senha" name="senha" class="form-control" id="password"
+                                    <label for="password">Senha<span class="text-danger">*</span></label>
+                                    <input type="password" name="password" class="form-control" id="password"
                                         placeholder="Insira uma senha">
                                 </div>
                                 <div class="mb-3">
@@ -180,14 +180,8 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./assets/js/login.js"></script>
-    <script src="./assets/js/user.js"></script>
-    <script>
-
-
-
-
-    </script>
+    <script src="./frontend/assets/js/login.js"></script>
+ 
     <script>
 
         const cadastroButton = document.getElementById('cadastro-button');
@@ -200,9 +194,6 @@
         const passwordConfirmation = document.getElementById("newPasswordConfirmation").value.trim();
 
         const salario = document.getElementById('currency').value; // Valor do campo "salario"
-        //const bonus = document.getElementById('bonus').value;
-        //const invest = document.getElementById('ativos').value // Valor do campo "bonus"
-        //const ativos = document.getElementById('ganhos').value;
         const campoAdicional = document.getElementById('campoAdicional');
 
 
@@ -214,7 +205,7 @@
             event.preventDefault();
 
             // Captura dos valores dos campos de texto
-            let username = document.getElementById("username").value.trim();
+            let username = document.getElementById("email").value.trim();
             let password = document.getElementById("password").value.trim();
 
             // Verifica se ambos os campos estão preenchidos
@@ -268,29 +259,6 @@
             }
             avancarButton.addEventListener('click', avancaEtapa);
         });
-
-        /*function createIncoming(salario, bonus, invest, ativos) {
-
-            let objIncoming = {
-                salarios: salario,
-                bonus: bonus,
-                hasInvestments: invest === 'Sim' ? true : false,
-                investments: invest === 'Sim' ? ativos : null
-            }
-
-            return objIncoming;
-        }*/
-
-        /*function createExpenses(fixas, variados, lazer) {
-
-            let objExpenses = {
-                "fixas": fixas,
-                "variados": variados,
-                "lazer": lazer,
-            }
-
-            return objExpenses;
-        }*/
 
         function createUser(cpf, password, name, email, cellNumber, salario, fixas) {
 
@@ -348,12 +316,15 @@
                     body: JSON.stringify(user)
                 });
 
-                const data = await response.json();
+                const respBody = await response.json();
 
-                if (data) {
+                console.log(respBody.data);
+
+                if (respBody.data) {
                     alert('Usuário cadastrado com sucesso!');
                     $('#CadastroForm').modal('hide');
-                    window.location = './pages/dashboard.html';
+                    sessionStorage.setItem('usuario', JSON.stringify(respBody.data));
+                    window.location = './frontend/pages/dashboard.html';
                 }
 
             } catch (error) {

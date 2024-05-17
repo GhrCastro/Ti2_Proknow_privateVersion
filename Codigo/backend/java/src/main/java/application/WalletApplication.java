@@ -19,7 +19,7 @@ public class WalletApplication {
     public void initializeRoutes() {
         post("/wallets", (req, res) -> {
             res.type("application/json");
-            UUID userId = UUID.fromString(req.queryParams("userId"));
+            UUID userId = UUID.randomUUID();
             walletService.createWallet(userId);
             return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Carteira criada com sucesso."));
         });
