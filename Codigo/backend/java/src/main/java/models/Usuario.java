@@ -33,7 +33,8 @@ public class Usuario {
         this.email = email;
         this.salary = salary;
         this.cellNumber = cellNumber;
-        this.password = hashPassword(password); 
+        //this.password = hashPassword(password); 
+        this.password = password;
         this.expenses = expenses;
         this.regDate = new Date();
         //this.badges = new LinkedList<Badge>();
@@ -104,7 +105,8 @@ public class Usuario {
     }
 
     public void setPassword(String password) {
-        this.password = hashPassword(password);
+        //this.password = hashPassword(password);
+        this.password = password;
     }
 
     public void setExpenses(double expenses){
@@ -118,7 +120,7 @@ public class Usuario {
     // public void addBadge(Badge badge){
     //     badges.add(badge);
     // }
-
+        
     public String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         return dateFormat.format(regDate);

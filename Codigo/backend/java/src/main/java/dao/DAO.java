@@ -9,7 +9,7 @@ import org.jdbi.v3.sqlobject.SqlObjectPlugin;
 
 import models.UserBadge;
 import models.Usuario;
-import models.Badge;
+import models.Wallet;
 
 public class DAO {
 	private Jdbi jdbi;
@@ -35,7 +35,7 @@ public class DAO {
 			jdbi.installPlugin(new SqlObjectPlugin());
 			jdbi.registerRowMapper(BeanMapper.factory(Usuario.class));
 			jdbi.registerRowMapper(BeanMapper.factory(UserBadge.class));
-			jdbi.registerRowMapper(BeanMapper.factory(Badge.class));
+			jdbi.registerRowMapper(BeanMapper.factory(Wallet.class));
 		}
 		return jdbi;
 	}	

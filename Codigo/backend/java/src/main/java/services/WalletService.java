@@ -7,6 +7,7 @@ import dao.DAO;
 import models.Wallet;
 import models.Transaction;
 import models.Crypto;
+import models.Moeda;
 
 public class WalletService {
 
@@ -25,9 +26,8 @@ public class WalletService {
 	public void createWallet(UUID userId) {
 		Wallet wallet = new Wallet(userId);
 		walletDao.insertWallet(wallet.getUserId(), userId);
-		wallet.deposit(new Crypto(0, "Proknow Coin", BigDecimal.valueOf(150), "PKW", BigDecimal.ZERO, BigDecimal.ZERO,
-				BigDecimal.ZERO, BigDecimal.ZERO, ""), BigDecimal.valueOf(150));
-		walletDao.insertWalletBalance(wallet.getUserId(), "PKW", BigDecimal.valueOf(150));
+		//wallet.deposit(new Moeda(0, "Proknow Coin", BigDecimal.valueOf(150), "PKW"), BigDecimal.valueOf(150));
+		//walletDao.insertWalletBalance(wallet.getUserId(), "PKW", BigDecimal.valueOf(150));
 	}
 
 	public Wallet getWalletByUserId(UUID userId) {

@@ -1,5 +1,5 @@
-const LOGIN_URL = "login.html";
-const apiPath = "https://jsonserver-proknow.joopaulopaulo33.repl.co/usuarios";
+//const LOGIN_URL = "login.html";
+const apiPath = "http://localhost:4567/login";
 
 function generateUUID() {
     var d = new Date().getTime();
@@ -18,14 +18,17 @@ function generateUUID() {
 }
 
 
-function fetchData() {
+async function fetchData(user) {
     try {
-        return fetch(apiPath)
-            .then(response => response.json())
-            .then(data => {
-                
-                return data;
-            });
+        const response = await fetch(apiPath, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        });
+
+        return response.json();
     } catch (error) {
         console.log(error);
     }
@@ -33,28 +36,33 @@ function fetchData() {
 
 
 
-async function login(username, password) {
-    let users = await fetchData();
+async function login(email, password) {
 
-    for (const user of users) {
-        console.log(user.login, user.senha)
-        if (user.login === username && user.senha === password) {
-            sessionStorage.setItem("usuarioAtual", JSON.stringify(user));
-        
-            window.location = './pages/dashboard.html';
-
-            return true;
-        }
+    const user = {
+        "email": email,
+        "password": password
     }
 
-    return false;
+    let response = await fetchData(user);
+    console.log(response);
+
+    if (response.status == "SUCCESS") {
+        sessionStorage.setItem("usuario", JSON.stringify(response.data));
+
+        window.location = './frontend/pages/dashboard.html';
+
+        return true;
+    }else{
+        return false;
+    }
+
 }
 
 
 function logout() {
     console.log("logout")
-    sessionStorage.removeItem("usuarioAtual");
-    window.location = '../index.html';
+    window.location = '../../index.html';
+    sessionStorage.removeItem("usuario");
 }
 
 

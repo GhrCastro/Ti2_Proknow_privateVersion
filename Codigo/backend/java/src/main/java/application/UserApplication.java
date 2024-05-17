@@ -56,8 +56,8 @@ public class UserApplication {
             try {
                 usuarioService.addUsuario(usuario);
                 walletService.createWallet(usuario.getId());
-                rewardService.rewardUser(usuario.getId(), "REGISTER");
-                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Usuário criado com sucesso." + usuario.getId()));
+                //rewardService.rewardUser(usuario.getId(), "REGISTER");
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuario)));
             } catch (IllegalArgumentException e) {
                 res.status(400);
                 return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Dados do usuário inválidos."));
@@ -81,15 +81,15 @@ public class UserApplication {
             
             UserCredentials userCredentials = gson.fromJson(req.body(), UserCredentials.class);
 
-            System.out.println("###" + userCredentials.getEmail());
-            System.out.println("###" + userCredentials.getPassword());
+            //System.out.println("###" + userCredentials.getEmail());
+            //System.out.println("###" + userCredentials.getPassword());
 
             Usuario usuario = usuarioService.getUsuarioByEmail(userCredentials.getEmail());
             
             if(usuario != null){
-                System.out.println("###" + usuario.getPassword());
+                //System.out.println("###" + usuario.getPassword());
                 if(usuario.getPassword().equals(userCredentials.getPassword())){
-                    return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Login realizado com sucesso!"));
+                    return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuario)));
                 }else{
                     return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Senha incorreta"));
                 }

@@ -10,38 +10,35 @@ public class Wallet {
 	private List<CurrencyBalance> balances;
 	private List<Transaction> transactions;
 
+	public Wallet() {
+
+	}
+
 	public Wallet(UUID userId) {
 		this.setUserId(userId);
-		this.balances = new ArrayList<>();
-		this.transactions = new ArrayList<>();
+		this.balances = new ArrayList<CurrencyBalance>();
+		this.transactions = new ArrayList<Transaction>();
 	}
 
 	public void deposit(Moeda currency, BigDecimal amount) {
-		for (CurrencyBalance balance : balances) {
-			if (balance.getCurrency().equals(currency)) {
-				balance.setAmount(balance.getAmount().add(amount));
-				Transaction tx = new Transaction(null, this.userId, amount, currency.getName());
-				transactions.add(tx);
 
-				return;
-			}
-		}
+		Transaction tx = new Transaction(this.userId, this.userId, amount, currency.getName());
+		transactions.add(tx);
+
 		balances.add(new CurrencyBalance(currency, amount));
 	}
 
 	public void withdraw(Moeda currency, BigDecimal amount) throws Exception {
 		for (CurrencyBalance balance : balances) {
-			if (balance.getCurrency().equals(currency)) {
-				if (balance.getCurrency().equals(currency)) {
-					if (balance.getAmount().compareTo(amount) >= 0) {
-						balance.setAmount(balance.getAmount().subtract(amount));
-						Transaction tx = new Transaction(this.userId, null, amount, currency.getName());
-						transactions.add(tx);
+			if (balance.getCurrency().equals(currency.getName())) {
+				if (balance.getAmount().compareTo(amount) >= 0) {
+					balance.setAmount(balance.getAmount().subtract(amount));
+					Transaction tx = new Transaction(this.userId, null, amount, currency.getName());
+					transactions.add(tx);
 
-						return;
-					} else {
-						throw new Exception("Insufficient funds");
-					}
+					return;
+				} else {
+					throw new Exception("Insufficient funds");
 				}
 			}
 		}
@@ -66,15 +63,15 @@ public class Wallet {
 
 		throw new Exception("Transaction not found or already reversed");
 	}
-	
-	 public BigDecimal getBalance(String currency) {
-	        for (CurrencyBalance balance : balances) {
-	            if (balance.getCurrency().equals(currency)) {
-	                return balance.getAmount();
-	            }
-	        }
-	        return BigDecimal.ZERO;
-	    }
+
+	public BigDecimal getBalance(String currency) {
+		for (CurrencyBalance balance : balances) {
+			if (balance.getCurrency().equals(currency)) {
+				return balance.getAmount();
+			}
+		}
+		return BigDecimal.ZERO;
+	}
 
 	public UUID getUserId() {
 		return userId;
