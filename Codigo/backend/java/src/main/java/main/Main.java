@@ -38,6 +38,5 @@ public class Main {
 		new CryptoApplication(cryptoService).initializeRoutes();
 		new WalletApplication(walletService).initializeRoutes();
 		new BadgeApplication(badgeService).initializeRoutes();
-
 	}
 }
