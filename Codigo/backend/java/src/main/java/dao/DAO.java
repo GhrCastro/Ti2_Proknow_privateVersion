@@ -28,6 +28,8 @@ public class DAO {
 			// String username = "adm";
 			// String password = "Proknow1!";
 
+			
+
 			jdbi = Jdbi.create(url, username, password);
 			jdbi.installPlugin(new SqlObjectPlugin());
 			jdbi.registerRowMapper(BeanMapper.factory(Usuario.class));

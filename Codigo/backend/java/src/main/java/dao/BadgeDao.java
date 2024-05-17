@@ -24,5 +24,4 @@ public interface BadgeDao {
 
     @SqlQuery("SELECT * FROM users WHERE id = :id")
     Badge findById(@Bind("id") UUID id);
-
 }
