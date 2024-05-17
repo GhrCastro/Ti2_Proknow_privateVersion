@@ -202,7 +202,8 @@
     </div>
 
     <script src="../assets/js/login.js"></script>
-    <script src="../assets/js/user_info.js"></script>
+    <script src="../assets/js/getUser.js"></script>
+    <script src="../assets/js/getInfoWallet.js"></script>
     <script src="../assets/js/component/barra-roxa.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -332,6 +333,12 @@
     </script>
 
     <script>
+
+        const user = getSessionUser();
+        console.log(user);
+
+        const userWallet = getInfoWallet(user.id);
+        console.log(userWallet)
 
         var balance = document.getElementById("balance");
         var hidden_icon = document.getElementById("hidden-icon");
