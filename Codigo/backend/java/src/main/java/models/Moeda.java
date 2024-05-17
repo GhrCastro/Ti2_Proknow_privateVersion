@@ -9,8 +9,8 @@ public class Moeda {
 	private String symbol;
 	
 	public Moeda() { }
-	public Moeda(int id, String name, BigDecimal amount, String symbol) { 
-		this.id = id;
+	public Moeda(String name, BigDecimal amount, String symbol) { 
+		this.id = (int) Math.random();
 		this.name = name;
 		this.amount = amount;
 		this.symbol = symbol;

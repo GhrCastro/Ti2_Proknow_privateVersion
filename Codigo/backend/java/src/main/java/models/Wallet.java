@@ -11,14 +11,14 @@ public class Wallet {
 	private List<Transaction> transactions;
 
 	public Wallet(UUID userId) {
-		this.setUserId(userId);
+		this.setWalletOwner(userId);
 		this.balances = new ArrayList<>();
 		this.transactions = new ArrayList<>();
 	}
 
 	public void deposit(Moeda currency, BigDecimal amount) {
 		for (CurrencyBalance balance : balances) {
-			if (balance.getCurrency().equals(currency)) {
+			if (balance.getCurrency().equals(currency.getName())) {
 				balance.setAmount(balance.getAmount().add(amount));
 				Transaction tx = new Transaction(null, this.userId, amount, currency.getName());
 				transactions.add(tx);
@@ -31,22 +31,20 @@ public class Wallet {
 
 	public void withdraw(Moeda currency, BigDecimal amount) throws Exception {
 		for (CurrencyBalance balance : balances) {
-			if (balance.getCurrency().equals(currency)) {
-				if (balance.getCurrency().equals(currency)) {
-					if (balance.getAmount().compareTo(amount) >= 0) {
-						balance.setAmount(balance.getAmount().subtract(amount));
-						Transaction tx = new Transaction(this.userId, null, amount, currency.getName());
-						transactions.add(tx);
+			if (balance.getCurrency().equals(currency.getName())) {
+				if (balance.getAmount().compareTo(amount) >= 0) {
+					balance.setAmount(balance.getAmount().subtract(amount));
+					Transaction tx = new Transaction(this.userId, null, amount, currency.getName());
+					transactions.add(tx);
 
-						return;
-					} else {
-						throw new Exception("Insufficient funds");
-					}
+					return;
+				} else {
+					throw new Exception("Insufficient funds");
 				}
 			}
 		}
-		throw new Exception("Currency not found");
 	}
+	
 
 	public void reverseTransaction(UUID transactionID) throws Exception {
 		for (Transaction tx : transactions) {
@@ -80,7 +78,7 @@ public class Wallet {
 		return userId;
 	}
 
-	public void setUserId(UUID userId) {
+	public void setWalletOwner(UUID userId) {
 		this.userId = userId;
 	}
 

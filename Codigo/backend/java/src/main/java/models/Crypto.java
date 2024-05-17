@@ -11,7 +11,7 @@ public class Crypto extends Moeda {
 
 	public Crypto(int id, String name, BigDecimal amount, String symbol, BigDecimal priceUsd, BigDecimal volume24h,
 			BigDecimal priceChange24h, BigDecimal marketCap, String chain) {
-		super(id, name, amount, symbol);
+		super(name, amount, symbol);
 		this.priceUsd = priceUsd;
 		this.volume24h = volume24h;
 		this.priceChange24h = priceChange24h;

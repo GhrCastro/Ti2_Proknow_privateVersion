@@ -7,6 +7,8 @@ import dao.DAO;
 import models.Wallet;
 import models.Transaction;
 import models.Crypto;
+import models.Moeda;
+import models.PKWCoin;
 
 public class WalletService {
 
@@ -22,23 +24,22 @@ public class WalletService {
 		walletDao.createWalletBalancesTable();
 	}
 
-	public void createWallet(UUID userId) {
-		Wallet wallet = new Wallet(userId);
-		walletDao.insertWallet(wallet.getUserId(), userId);
-		wallet.deposit(new Crypto(0, "Proknow Coin", BigDecimal.valueOf(150), "PKW", BigDecimal.ZERO, BigDecimal.ZERO,
-				BigDecimal.ZERO, BigDecimal.ZERO, ""), BigDecimal.valueOf(150));
+	public void createWallet(UUID owner) {
+		Wallet wallet = new Wallet(owner);
+		PKWCoin pkw = new PKWCoin();
+		walletDao.insertWallet(wallet.getUserId(), owner);
+		wallet.deposit(pkw, BigDecimal.valueOf(150));
 		walletDao.insertWalletBalance(wallet.getUserId(), "PKW", BigDecimal.valueOf(150));
 	}
 
-	public Wallet getWalletByUserId(UUID userId) {
-		return walletDao.findWalletByUserId(userId);
+	public Wallet getWalletByUserId(UUID owner) {
+		return walletDao.findWalletByUserId(owner);
 	}
 
-	public void deposit(UUID userId, String currency, double amount) throws Exception {
-		Wallet wallet = getWalletByUserId(userId);
+	public void deposit(UUID owner, String currency, double amount) throws Exception {
+		Wallet wallet = getWalletByUserId(owner);
 		if (wallet != null) {
-			wallet.deposit(new Crypto(0, currency, BigDecimal.valueOf(amount), "", BigDecimal.ZERO, BigDecimal.ZERO,
-					BigDecimal.ZERO, BigDecimal.ZERO, ""), BigDecimal.valueOf(amount));
+			wallet.deposit(new Moeda(), BigDecimal.valueOf(amount));
 			walletDao.updateWalletBalance(wallet.getUserId(), currency, wallet.getBalance(currency));
 		} else {
 			throw new Exception("Wallet not found");
@@ -48,8 +49,7 @@ public class WalletService {
 	public void withdraw(UUID userId, String currency, double amount) throws Exception {
 		Wallet wallet = getWalletByUserId(userId);
 		if (wallet != null) {
-			wallet.withdraw(new Crypto(0, currency, BigDecimal.valueOf(amount), "", BigDecimal.ZERO, BigDecimal.ZERO,
-					BigDecimal.ZERO, BigDecimal.ZERO, ""), BigDecimal.valueOf(amount));
+			wallet.withdraw(new Moeda(), BigDecimal.valueOf(amount));
 			walletDao.updateWalletBalance(wallet.getUserId(), currency, wallet.getBalance(currency));
 		} else {
 			throw new Exception("Wallet not found");
