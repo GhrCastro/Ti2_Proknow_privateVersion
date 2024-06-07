@@ -6,17 +6,16 @@ import java.util.List;
 import java.util.UUID;
 
 public class Wallet {
+	private UUID id;
 	private UUID userId;
-	private UUID walletId;
 	private List<CurrencyBalance> balances;
 	private List<Transaction> transactions;
 
 	public Wallet() {
-
 	}
 
 	public Wallet(UUID userId) {
-		this.walletId = UUID.randomUUID();
+		this.id = UUID.randomUUID();
 		this.userId = userId;
 		this.balances = new ArrayList<CurrencyBalance>();
 		this.transactions = new ArrayList<Transaction>();
@@ -83,7 +82,9 @@ public class Wallet {
 		return userId;
 	}
 
-	public UUID getWalletId() { return walletId; }
+	public UUID getWalletId() {
+		return id;
+	}
 
 	public void setWalletOwner(UUID userId) {
 		this.userId = userId;
@@ -101,4 +102,3 @@ public class Wallet {
 		this.transactions = transactions;
 	}
 }
-

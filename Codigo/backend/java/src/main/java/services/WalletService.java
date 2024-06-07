@@ -37,12 +37,27 @@ public class WalletService {
 
         wallet.deposit(pkw, BigDecimal.valueOf(150));
         walletDao.insertWallet(wallet.getWalletId(), ownerId);
-        walletDao.insertWalletBalance(wallet.getOwnerId(), pkw.getName(), BigDecimal.valueOf(150));
+        walletDao.insertWalletBalance(wallet.getWalletId(), pkw.getName(), BigDecimal.valueOf(150));
     }
 
 
     public Wallet getWalletByUserId(UUID userId) {
+        System.out.println("Entrei aqui\n");
         Wallet wallet = walletDao.findWalletByUserId(userId);
+
+        if (wallet != null) {
+            List<CurrencyBalance> balances = walletDao.findWalletBalances(wallet.getOwnerId());
+            wallet.setBalances(balances);
+            List<Transaction> transactions = walletDao.listWalletTransactions(wallet.getOwnerId());
+            wallet.setTransactions(transactions);
+        }
+        return wallet;
+    }
+
+    public Wallet getWalletById(UUID id) {
+        System.out.println("Entrei aqui\n");
+        Wallet wallet = walletDao.findWalletByUserId(id);
+
         if (wallet != null) {
             List<CurrencyBalance> balances = walletDao.findWalletBalances(wallet.getOwnerId());
             wallet.setBalances(balances);
@@ -87,19 +102,15 @@ public class WalletService {
         }
 
         try {
-            // Realiza o saque da carteira de origem
             fromWallet.withdraw(moeda, BigDecimal.valueOf(amount));
             walletDao.updateWalletBalance(fromWallet.getOwnerId(), currency, fromWallet.getBalance(currency));
 
-            // Realiza o depósito na carteira de destino
             toWallet.deposit(moeda, BigDecimal.valueOf(amount));
             walletDao.updateWalletBalance(toWallet.getOwnerId(), currency, toWallet.getBalance(currency));
 
-            // Registra a transação
             Transaction tx = new Transaction(fromWallet.getOwnerId(), toWallet.getOwnerId(), BigDecimal.valueOf(amount), currency);
             transactionDao.insert(tx.getId(), tx.getToWallet(), tx.getFromWallet(), tx.getCreatedAt(), tx.getAmount(), tx.getCurrency(), tx.isReversed());
         } catch (Exception e) {
-            // Reverte a transação em caso de erro
             fromWallet.deposit(moeda, BigDecimal.valueOf(amount));
             walletDao.updateWalletBalance(fromWallet.getOwnerId(), currency, fromWallet.getBalance(currency));
             throw new Exception("Erro ao realizar transferência: " + e.getMessage());

@@ -39,13 +39,13 @@ public class WalletApplication {
             return "OK";
         });
 
-        post("/wallets", (req, res) -> {
-            res.type("application/json");
-            UUID userId = UUID.randomUUID();
-            UUID walletId = UUID.randomUUID();
-            walletService.createWallet(userId);
-            return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Carteira criada com sucesso."));
-        });
+//        post("/wallets", (req, res) -> {
+//            res.type("application/json");
+//            UUID userId = UUID.randomUUID();
+//            UUID walletId = UUID.randomUUID();
+//            walletService.createWallet(userId);
+//            return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Carteira criada com sucesso."));
+//        });
 
         get("/wallets/:userId", (req, res) -> {
             res.type("application/json");

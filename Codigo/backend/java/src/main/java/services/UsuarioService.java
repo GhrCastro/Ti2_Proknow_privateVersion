@@ -1,21 +1,23 @@
 package services;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
 import dao.DAO;
 import dao.UsuarioDao;
+import dao.WalletDao;
+import models.Moeda;
 import models.UserBadge;
 import models.Usuario;
 import models.Wallet;
 
 public class UsuarioService {
     private final UsuarioDao usuarioDao;
-    private final WalletService walletService;
-
+    private final WalletDao walletDao;
     public UsuarioService(DAO dao) {
         this.usuarioDao = dao.getJdbiContext().onDemand(UsuarioDao.class);
-        this.walletService = new WalletService(dao);
+        this.walletDao = dao.getJdbiContext().onDemand(WalletDao.class);
         createTablesIfNotExists();
     }
 
@@ -27,13 +29,16 @@ public class UsuarioService {
     public void addUsuario(Usuario usuario) {
         if (usuario.isValid()) {
             try {
-                walletService.createWallet(usuario.getId());
-                Wallet wallet = walletService.getWalletByUserId(usuario.getId());
-                if (wallet == null) {
-                    throw new RuntimeException("Failed to create wallet for user");
-                }
+                Wallet wallet = new Wallet(usuario.getId());
+                Moeda pkw = new Moeda("PKW");
+
+                wallet.deposit(pkw, BigDecimal.valueOf(150));
+                walletDao.insertWallet(wallet.getWalletId(), usuario.getId());
+                walletDao.insertWalletBalance(wallet.getWalletId(), pkw.getName(), BigDecimal.valueOf(150));
+
                 usuarioDao.insert(usuario.getId(), usuario.getName(), usuario.getCpf(), usuario.getEmail(),
-                        usuario.getSalary(), usuario.getCellNumber(), usuario.getPassword(), usuario.getExpenses(), usuario.getRegDate(), wallet.getOwnerId());
+                        usuario.getSalary(), usuario.getCellNumber(), usuario.getPassword(), usuario.getExpenses(), usuario.getRegDate(), wallet.getWalletId());
+
             } catch (Exception e) {
                 System.err.println("Error creating user and wallet: " + e.getMessage());
                 e.printStackTrace();
