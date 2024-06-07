@@ -7,8 +7,11 @@ public class Moeda {
 	private String name;
 	private BigDecimal amount;
 	private String symbol;
-	
-	public Moeda() { }
+
+    public Moeda(String name) {
+        this.name = name;
+    }
+
 	public Moeda(int id, String name, BigDecimal amount, String symbol) { 
 		this.id = id;
 		this.name = name;

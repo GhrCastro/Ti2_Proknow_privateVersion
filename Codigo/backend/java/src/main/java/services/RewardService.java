@@ -31,7 +31,7 @@ public class RewardService {
 	            }
 	            if (rewardAmount.compareTo(BigDecimal.ZERO) > 0) {
 	                wallet.deposit(new PKWCoin(), rewardAmount);
-	                walletDao.updateWalletBalance(wallet.getUserId(), "PKW", wallet.getBalance("PKW"));
+	                walletDao.updateWalletBalance(wallet.getOwnerId(), "PKW", wallet.getBalance("PKW"));
 	            }
 		}
 	}

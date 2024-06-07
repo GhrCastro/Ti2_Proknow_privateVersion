@@ -1,8 +1,12 @@
 package dao;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 import models.Wallet;
+import models.CurrencyBalance;
+import models.Transaction;
+import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;
 import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
@@ -22,8 +26,17 @@ public interface WalletDao {
     void insertWalletBalance(@Bind("walletId") UUID walletId, @Bind("currency") String currency, @Bind("amount") BigDecimal amount);
 
     @SqlQuery("SELECT * FROM wallets WHERE user_id = :userId")
+    @RegisterBeanMapper(Wallet.class)
     Wallet findWalletByUserId(@Bind("userId") UUID userId);
+
+    @SqlQuery("SELECT * FROM wallet_balances WHERE wallet_id = :walletId")
+    @RegisterBeanMapper(CurrencyBalance.class)
+    List<CurrencyBalance> findWalletBalances(@Bind("walletId") UUID walletId);
 
     @SqlUpdate("UPDATE wallet_balances SET amount = :amount WHERE wallet_id = :walletId AND currency = :currency")
     void updateWalletBalance(@Bind("walletId") UUID walletId, @Bind("currency") String currency, @Bind("amount") BigDecimal amount);
+
+    @SqlQuery("SELECT * FROM transactions WHERE from_wallet = :walletId OR to_wallet = :walletId")
+    @RegisterBeanMapper(Transaction.class)
+    List<Transaction> listWalletTransactions(@Bind("walletId") UUID walletId);
 }
