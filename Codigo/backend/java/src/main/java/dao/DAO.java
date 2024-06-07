@@ -22,8 +22,6 @@ public class DAO {
 	private Jdbi setupJdbi() {
 		if (jdbi == null) {
 
-			
-
 			String url = "jdbc:postgresql://proknow-db.postgres.database.azure.com:5432/postgres?user=adm&password=Proknow1!&sslmode=require";
 			String username = "adm";
 			String password = "Proknow1!";
