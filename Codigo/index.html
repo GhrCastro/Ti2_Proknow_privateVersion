@@ -51,14 +51,14 @@
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="Usuario">Usuario<span class="text-danger">*</span></label>
-                                    <input type="text" name="usuario" class="form-control" id="username"
-                                        placeholder="Insira um usuario">
+                                    <label for="Email">Email<span class="text-danger">*</span></label>
+                                    <input type="text" name="email" class="form-control" id="emailLogin"
+                                        placeholder="Insira seu Email">
                                 </div>
 
                                 <div class="mb-3">
-                                    <label for="Senha">Senha<span class="text-danger">*</span></label>
-                                    <input type="Senha" name="senha" class="form-control" id="password"
+                                    <label for="password">Senha<span class="text-danger">*</span></label>
+                                    <input type="password" name="password" class="form-control" id="password"
                                         placeholder="Insira uma senha">
                                 </div>
                                 <div class="mb-3">
@@ -95,9 +95,9 @@
 
                                 <div class="etapa etapa1">
                                     <div class="mb-3">
-                                        <label for="Usuario">Usuario<span class="text-danger">*</span></label>
-                                        <input type="text" name="usuario" class="form-control" id="newUsername"
-                                            placeholder="Insira um usuario">
+                                        <label for="Usuario">Cpf<span class="text-danger">*</span></label>
+                                        <input type="text" name="usuario" class="form-control" id="cpf"
+                                            placeholder="Insira seu cpf">
                                     </div>
                                     <div class="mb-3">
                                         <label for="Nome">Nome completo<span class="text-danger">*</span></label>
@@ -111,13 +111,19 @@
                                     </div>
 
                                     <div class="mb-3">
+                                        <label for="Nome">Telefone<span class="text-danger">*</span></label>
+                                        <input type="text" name="cellNumber" class="form-control" id="cellNumber"
+                                            placeholder="Insira seu telefone">
+                                    </div>
+
+                                    <div class="mb-3">
                                         <label for="Senha">Senha<span class="text-danger">*</span></label>
-                                        <input type="Senha" name="senha" class="form-control" id="newPassword"
+                                        <input type="password" name="senha" class="form-control" id="newPassword"
                                             placeholder="Insira uma senha">
                                     </div>
                                     <div class="mb-3">
                                         <label for="Senha">Confirme sua senha<span class="text-danger">*</span></label>
-                                        <input type="Senha" name="senha" class="form-control"
+                                        <input type="password" name="senha" class="form-control"
                                             id="newPasswordConfirmation" placeholder="Confirme sua senha">
                                     </div>
 
@@ -134,39 +140,6 @@
                                             Por favor, insira seu salário!
                                         </div>
                                     </div>
-                                    <div class="mb-3">
-                                        <label for="bonus" class="form-label">Informe quaisquer bônus
-                                            mensal<span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="bonus" oninput="formatarMoeda(this)"
-                                            placeholder="Insira aqui seus bônus!" value="" required>
-                                        <div class="invalid-feedback">
-                                            Por favor, insira seus bonus!
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="ativos" class="form-label">Você possui algum tipo de
-                                            investimento?<span class="text-danger">*</span></label>
-                                        <select class="form-select" id="ativos" required>
-                                            <option value="">Escolha uma opção</option>
-                                            <option>Sim</option>
-                                            <option>Não</option>
-                                        </select>
-                                    </div>
-                                    <form class="needs-validation" novalidate>
-                                        <div class="row g-3 mb-2 my-3" id="campoAdicional" style="display: none;">
-                                            <div class="col-md-10">
-                                                <label for="ganhos" class="form-label">Insira os ganhos provenientes
-                                                    destes
-                                                    investimentos<span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="ganhos"
-                                                    oninput="formatarMoeda(this)" placeholder="Insira aqui seus ganhos"
-                                                    value="" required>
-                                                <div class="invalid-feedback">
-                                                    Por favor, insira seus ganhos!
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                                 <div class="etapa etapa3" style="display: none;">
                                     <div class="mb-3">
@@ -176,25 +149,6 @@
                                             placeholder="Insira aqui suas despesas" value="" required>
                                         <div class="invalid-feedback">
                                             Por favor, insira suas despesas fixas!
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="variados" class="form-label">Informe seus gastos variados<span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="variados"
-                                            oninput="formatarMoeda(this)"
-                                            placeholder="Insira aqui seus gastos variados!" value="" required>
-                                        <div class="invalid-feedback">
-                                            Por favor, insira seus gastos variados!
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="lazer" class="form-label">Informe quanto gasta com lazer<span
-                                                class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" id="lazer" oninput="formatarMoeda(this)"
-                                            placeholder="Insira aqui seus gastos com lazer!" value="" required>
-                                        <div class="invalid-feedback">
-                                            Por favor, insira seus gastos com lazer!
                                         </div>
                                     </div>
                                 </div>
@@ -226,29 +180,20 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./assets/js/login.js"></script>
-    <script src="./assets/js/user.js"></script>
-    <script>
-
-
-
-
-    </script>
+    <script src="./frontend/assets/js/login.js"></script>
+ 
     <script>
 
         const cadastroButton = document.getElementById('cadastro-button');
         const avancarButton = document.getElementById('avancar-button');
 
-        const username = document.getElementById("newUsername").value.trim();
+        const cpf = document.getElementById("cpf").value.trim();
         const name = document.getElementById("nome").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("newPassword").value.trim();
         const passwordConfirmation = document.getElementById("newPasswordConfirmation").value.trim();
 
         const salario = document.getElementById('currency').value; // Valor do campo "salario"
-        const bonus = document.getElementById('bonus').value;
-        const invest = document.getElementById('ativos').value // Valor do campo "bonus"
-        const ativos = document.getElementById('ganhos').value;
         const campoAdicional = document.getElementById('campoAdicional');
 
 
@@ -260,7 +205,7 @@
             event.preventDefault();
 
             // Captura dos valores dos campos de texto
-            let username = document.getElementById("username").value.trim();
+            let username = document.getElementById("emailLogin").value.trim();
             let password = document.getElementById("password").value.trim();
 
             // Verifica se ambos os campos estão preenchidos
@@ -272,7 +217,7 @@
             let user = await login(username, password);
 
             if (user) {
-                console.log("finalmente caralho", user);
+                console.log("finalmente caralho", user); // olha a lingua
             } else {
                 alert('Usuário ou senha incorretos');
             }
@@ -315,38 +260,16 @@
             avancarButton.addEventListener('click', avancaEtapa);
         });
 
-        function createIncoming(salario, bonus, invest, ativos) {
-
-            let objIncoming = {
-                salarios: salario,
-                bonus: bonus,
-                hasInvestments: invest === 'Sim' ? true : false,
-                investments: invest === 'Sim' ? ativos : null
-            }
-
-            return objIncoming;
-        }
-
-        function createExpenses(fixas, variados, lazer) {
-
-            let objExpenses = {
-                "fixas": fixas,
-                "variados": variados,
-                "lazer": lazer,
-            }
-
-            return objExpenses;
-        }
-
-        function createUser(username, password, name, email, salario, bonus, invest, ativos, fixas, variados, lazer) {
+        function createUser(cpf, password, name, email, cellNumber, salario, fixas) {
 
             let user = {
-                "login": username,
-                "senha": password,
-                "nome": name,
+                "cpf": cpf,
+                "password": password,
+                "name": name,
                 "email": email,
-                "incomings": createIncoming(salario, bonus, invest, ativos),
-                "expenses": createExpenses(fixas, variados, lazer)
+                "cellNumber": cellNumber,
+                "salary": salario,
+                "expenses": fixas
             }
 
 
@@ -355,24 +278,21 @@
 
         async function postUser() {
 
-            const username = document.getElementById("newUsername").value.trim();
+            const cpf = document.getElementById("cpf").value.trim();
             const name = document.getElementById("nome").value.trim();
             const email = document.getElementById("email").value.trim();
+            const cellNumber = document.getElementById("cellNumber").value.trim();
             const password = document.getElementById("newPassword").value.trim();
             const passwordConfirmation = document.getElementById("newPasswordConfirmation").value.trim();
 
             const salario = document.getElementById('currency').value.trim();
-            const bonus = document.getElementById('bonus').value.trim();
-            const invest = document.getElementById('ativos').value.trim();
-            const ativos = document.getElementById('ganhos').value.trim();
 
             const fixas = document.getElementById('fixas').value;
-            const variados = document.getElementById('variados').value;
-            const lazer = document.getElementById('lazer').value;
+        
+            let user = createUser(cpf, password, name, email, cellNumber, salario, fixas);
+            console.log(user);
 
-            let user = createUser(username, password, name, email, salario, bonus, invest, ativos, fixas, variados, lazer);
-
-            if (username.length === 0 || password.length === 0 || passwordConfirmation.length === 0 || nome.length === 0 || email.length === 0) {
+            if (cpf.length === 0 || password.length === 0 || passwordConfirmation.length === 0 || nome.length === 0 || email.length === 0) {
                 alert('Por favor, preencha todos os campos.');
                 return;
             }
@@ -383,7 +303,7 @@
             }
 
             try {
-                const response = await fetch(apiPath, {
+                const response = await fetch("http://localhost:4567/usuarios", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -391,12 +311,15 @@
                     body: JSON.stringify(user)
                 });
 
-                const data = await response.json();
+                const respBody = await response.json();
 
-                if (data) {
+                console.log(respBody.data);
+
+                if (respBody.data) {
                     alert('Usuário cadastrado com sucesso!');
                     $('#CadastroForm').modal('hide');
-                    window.location = './pages/dashboard.html';
+                    sessionStorage.setItem('usuario', JSON.stringify(respBody.data));
+                    window.location = './frontend/pages/dashboard.html';
                 }
 
             } catch (error) {

@@ -13,20 +13,51 @@ import services.*;
 public class UserApplication {
 
     private final UsuarioService usuarioService;
+    private final WalletService walletService;
+    private final RewardService rewardService;
     private final Gson gson = new Gson();
 
-    public UserApplication(UsuarioService usuarioService) {
+    public UserApplication(UsuarioService usuarioService, WalletService walletService, RewardService rewardService) {
         this.usuarioService = usuarioService;
+        this.walletService = walletService;
+        this.rewardService = rewardService;
     }
 
     public void initializeRoutes() {
+
+        //Código para desbloqueio do CORS
+        before((request, response) -> {
+            response.header("Access-Control-Allow-Origin", "*");
+            response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+            response.header("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
+            response.header("Access-Control-Allow-Credentials", "true");
+        });
+
+        // Opções para CORS com preflight
+        options("/*", (request, response) -> {
+            String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
+            if (accessControlRequestHeaders != null) {
+                response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
+            }
+
+            String accessControlRequestMethod = request.headers("Access-Control-Request-Method");
+            if (accessControlRequestMethod != null) {
+                response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
+            }
+
+            return "OK";
+        });
+        //--------------------------------------------------------//
+
         post("/usuarios", (req, res) -> {
             res.type("application/json");
             Usuario usuario = gson.fromJson(req.body(), Usuario.class);
             //System.out.println("###" + usuario);
             try {
                 usuarioService.addUsuario(usuario);
-                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Usuário criado com sucesso." + usuario.getRegDate()));
+                walletService.createWallet(usuario.getId());
+                //rewardService.rewardUser(usuario.getId(), "REGISTER");
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuario)));
             } catch (IllegalArgumentException e) {
                 res.status(400);
                 return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Dados do usuário inválidos."));
@@ -50,15 +81,15 @@ public class UserApplication {
             
             UserCredentials userCredentials = gson.fromJson(req.body(), UserCredentials.class);
 
-            System.out.println("###" + userCredentials.getEmail());
-            System.out.println("###" + userCredentials.getPassword());
+            //System.out.println("###" + userCredentials.getEmail());
+            //System.out.println("###" + userCredentials.getPassword());
 
             Usuario usuario = usuarioService.getUsuarioByEmail(userCredentials.getEmail());
             
             if(usuario != null){
-                System.out.println("###" + usuario.getPassword());
+                //System.out.println("###" + usuario.getPassword());
                 if(usuario.getPassword().equals(userCredentials.getPassword())){
-                    return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Login realizado com sucesso!"));
+                    return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuario)));
                 }else{
                     return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Senha incorreta"));
                 }

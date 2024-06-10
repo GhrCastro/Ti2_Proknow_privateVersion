@@ -1,4 +1,4 @@
-/*package application;
+package application;
 
 import static spark.Spark.*;
 
@@ -17,7 +17,13 @@ public class WalletApplication {
     }
 
     public void initializeRoutes() {
-        // Rota para obter a carteira de um usuário
+        post("/wallets", (req, res) -> {
+            res.type("application/json");
+            UUID userId = UUID.randomUUID();
+            walletService.createWallet(userId);
+            return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Carteira criada com sucesso."));
+        });
+
         get("/wallets/:userId", (req, res) -> {
             res.type("application/json");
             UUID userId = UUID.fromString(req.params(":userId"));
@@ -30,6 +36,32 @@ public class WalletApplication {
             }
         });
 
-        // Outras rotas relacionadas a wallets podem ser adicionadas aqui
+        post("/wallets/:userId/deposit", (req, res) -> {
+            res.type("application/json");
+            UUID userId = UUID.fromString(req.params(":userId"));
+            String currency = req.queryParams("currency");
+            double amount = Double.parseDouble(req.queryParams("amount"));
+            try {
+                walletService.deposit(userId, currency, amount);
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Depósito realizado com sucesso."));
+            } catch (Exception e) {
+                res.status(400);
+                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao realizar depósito: " + e.getMessage()));
+            }
+        });
+
+        post("/wallets/:userId/withdraw", (req, res) -> {
+            res.type("application/json");
+            UUID userId = UUID.fromString(req.params(":userId"));
+            String currency = req.queryParams("currency");
+            double amount = Double.parseDouble(req.queryParams("amount"));
+            try {
+                walletService.withdraw(userId, currency, amount);
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Saque realizado com sucesso."));
+            } catch (Exception e) {
+                res.status(400);
+                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao realizar saque: " + e.getMessage()));
+            }
+        });
     }
-}*/
+}
