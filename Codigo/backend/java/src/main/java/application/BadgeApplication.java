@@ -18,7 +18,10 @@ public class BadgeApplication {
     }
 
     public void initializeRoutes() {
-        post("/badges", (req, res) -> { 
+
+        
+
+        post("/badges", (req, res) -> {
             res.type("application/json");
             Badge badge = gson.fromJson(req.body(), Badge.class);
             System.out.println("###" + badge.getId());
@@ -43,25 +46,30 @@ public class BadgeApplication {
             }
         });
 
-        get("/badges", (req, res) -> { 
+        get("/badges", (req, res) -> {
             res.type("application/json");
-            return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(badgeService.getAllBadges())));
+            return gson
+                    .toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(badgeService.getAllBadges())));
         });
 
-        /*put("/badges/:id", (req, res) -> { 
-            res.type("application/json");
-            UUID id = UUID.fromString(req.params(":id"));
-            Badge badge = gson.fromJson(req.body(), Badge.class);
-            try {
-                badgeService.updateBadge(id, badge);
-                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Badge atualizada com sucesso."));
-            } catch (IllegalArgumentException e) {
-                res.status(400);
-                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Dados da badge inválidos."));
-            }
-        });*/
+        /*
+         * put("/badges/:id", (req, res) -> {
+         * res.type("application/json");
+         * UUID id = UUID.fromString(req.params(":id"));
+         * Badge badge = gson.fromJson(req.body(), Badge.class);
+         * try {
+         * badgeService.updateBadge(id, badge);
+         * return gson.toJson(new StandardResponse(StatusResponse.SUCCESS,
+         * "Badge atualizada com sucesso."));
+         * } catch (IllegalArgumentException e) {
+         * res.status(400);
+         * return gson.toJson(new StandardResponse(StatusResponse.ERROR,
+         * "Dados da badge inválidos."));
+         * }
+         * });
+         */
 
-        delete("/badges/:id", (req, res) -> { 
+        delete("/badges/:id", (req, res) -> {
             res.type("application/json");
             UUID id = UUID.fromString(req.params(":id"));
             Badge badge = badgeService.getBadgeById(id);
