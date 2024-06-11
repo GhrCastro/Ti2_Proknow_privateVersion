@@ -12,7 +12,7 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 public interface TransactionDao {
 
-    @SqlUpdate("CREATE TABLE IF NOT EXISTS transactions (id UUID PRIMARY KEY, from_wallet UUID, to_wallet UUID, created_at TIMESTAMP, amount NUMERIC, currency VARCHAR, is_reversed BOOLEAN)")
+    @SqlUpdate("CREATE TABLE IF NOT EXISTS transactions (id UUID PRIMARY KEY, from_wallet UUID REFERENCES wallets(id), to_wallet UUID REFERENCES wallets(id), created_at TIMESTAMP, amount NUMERIC, currency VARCHAR, is_reversed BOOLEAN)")
     void createTable();
 
     @SqlUpdate("INSERT INTO transactions (id, from_wallet, to_wallet, created_at, amount, currency, is_reversed) VALUES (:id, :fromWallet, :toWallet, :createdAt, :amount, :currency, :isReversed)")

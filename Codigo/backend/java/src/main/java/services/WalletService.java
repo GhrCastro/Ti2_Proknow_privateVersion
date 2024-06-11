@@ -42,7 +42,7 @@ public class WalletService {
 
 
     public Wallet getWalletByUserId(UUID userId) {
-        System.out.println("Entrei aqui\n");
+
         Wallet wallet = walletDao.findWalletByUserId(userId);
 
         if (wallet != null) {
@@ -54,18 +54,6 @@ public class WalletService {
         return wallet;
     }
 
-    public Wallet getWalletById(UUID id) {
-        System.out.println("Entrei aqui\n");
-        Wallet wallet = walletDao.findWalletByUserId(id);
-
-        if (wallet != null) {
-            List<CurrencyBalance> balances = walletDao.findWalletBalances(wallet.getOwnerId());
-            wallet.setBalances(balances);
-            List<Transaction> transactions = walletDao.listWalletTransactions(wallet.getOwnerId());
-            wallet.setTransactions(transactions);
-        }
-        return wallet;
-    }
 
     public void deposit(UUID owner, String currency, double amount) throws Exception {
         Wallet wallet = getWalletByUserId(owner);
@@ -73,6 +61,7 @@ public class WalletService {
         if (wallet != null && moeda != null) {
             wallet.deposit(moeda, BigDecimal.valueOf(amount));
             walletDao.updateWalletBalance(wallet.getOwnerId(), currency, wallet.getBalance(currency));
+
             Transaction tx = new Transaction(wallet.getOwnerId(), null, BigDecimal.valueOf(amount), currency);
             transactionDao.insert(tx.getId(), tx.getToWallet(), tx.getFromWallet(), tx.getCreatedAt(), tx.getAmount(), tx.getCurrency(), tx.isReversed());
         } else {

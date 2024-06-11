@@ -15,6 +15,7 @@ import models.Wallet;
 public class UsuarioService {
     private final UsuarioDao usuarioDao;
     private final WalletDao walletDao;
+
     public UsuarioService(DAO dao) {
         this.usuarioDao = dao.getJdbiContext().onDemand(UsuarioDao.class);
         this.walletDao = dao.getJdbiContext().onDemand(WalletDao.class);
