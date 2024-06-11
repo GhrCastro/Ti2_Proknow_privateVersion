@@ -24,4 +24,24 @@ public interface BadgeDao {
 
     @SqlQuery("SELECT * FROM badges WHERE id = :id")
     Badge findById(@Bind("id") UUID id);
+
+    @SqlUpdate("UPDATE badges SET enable = true WHERE id = :id AND name = :name")
+    void updateBadge(@Bind("id") UUID id, @Bind("name") String name);
+
+
+
+    // parte de atualização
+    // Login: o id em localhost, colocar os booleans das badges
+    // User{
+    //      id: akhdagbbdasda
+    //      badge2(video): false
+    //      badge3: false
+    //  }
+    // 
+    // Vídeo:
+    // document.querryselector(".video").addenvetlistener("clcik", function Ganahr Badge() { delay(3000) bage2 = true; alert(Parabens você ganhou uma badge")}) 
+    // toda vez que ele entrar na página de víde ele checa no LOCALHOST pra ver se já tem a badge
+    // ele chega se a badge é false, se for false muda pra true e solta um alert("Parabens avoce receveu uam nova badge")
+    //
+    //
 }

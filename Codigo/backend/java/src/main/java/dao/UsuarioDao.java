@@ -46,6 +46,7 @@ public interface UsuarioDao {
     //---------------------------------------------//
 
     //Metodos tabela users_badges
+    
     @SqlUpdate("CREATE TABLE IF NOT EXISTS users_badges (user_id UUID, badge_id UUID, PRIMARY KEY(user_id, badge_id))")
     void createUserBadgesTable();
 
