@@ -6,25 +6,31 @@ import java.util.List;
 import java.util.UUID;
 
 public class Wallet {
+	private UUID id;
 	private UUID userId;
 	private List<CurrencyBalance> balances;
 	private List<Transaction> transactions;
 
 	public Wallet() {
-
 	}
 
 	public Wallet(UUID userId) {
-		this.setUserId(userId);
+		this.id = UUID.randomUUID();
+		this.userId = userId;
 		this.balances = new ArrayList<CurrencyBalance>();
 		this.transactions = new ArrayList<Transaction>();
 	}
 
 	public void deposit(Moeda currency, BigDecimal amount) {
+		for (CurrencyBalance balance : balances) {
+			if (balance.getCurrency().equals(currency.getName())) {
+				balance.setAmount(balance.getAmount().add(amount));
+				Transaction tx = new Transaction(null, this.userId, amount, currency.getName());
+				transactions.add(tx);
 
-		Transaction tx = new Transaction(this.userId, this.userId, amount, currency.getName());
-		transactions.add(tx);
-
+				return;
+			}
+		}
 		balances.add(new CurrencyBalance(currency, amount));
 	}
 
@@ -42,7 +48,6 @@ public class Wallet {
 				}
 			}
 		}
-		throw new Exception("Currency not found");
 	}
 
 	public void reverseTransaction(UUID transactionID) throws Exception {
@@ -50,7 +55,7 @@ public class Wallet {
 			if (tx.getId().equals(transactionID) && !tx.isReversed()) {
 				BigDecimal amount = tx.getAmount();
 
-				Moeda currency = new Moeda();
+				Moeda currency = new Moeda(tx.getCurrency());
 				if (tx.getFromWallet() != null) {
 					deposit(currency, amount);
 				} else if (tx.getToWallet() != null) {
@@ -73,11 +78,15 @@ public class Wallet {
 		return BigDecimal.ZERO;
 	}
 
-	public UUID getUserId() {
+	public UUID getOwnerId() {
 		return userId;
 	}
 
-	public void setUserId(UUID userId) {
+	public UUID getWalletId() {
+		return id;
+	}
+
+	public void setWalletOwner(UUID userId) {
 		this.userId = userId;
 	}
 
@@ -85,27 +94,11 @@ public class Wallet {
 		return transactions;
 	}
 
-}
-
-class CurrencyBalance {
-	private Moeda currency;
-	private BigDecimal amount;
-
-	public CurrencyBalance(Moeda currency, BigDecimal amount) {
-		this.currency = currency;
-		this.amount = amount;
+	public void setBalances(List<CurrencyBalance> balances) {
+		this.balances = balances;
 	}
 
-	// Getters and Setters
-	public String getCurrency() {
-		return currency.getName();
-	}
-
-	public BigDecimal getAmount() {
-		return amount;
-	}
-
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
+	public void setTransactions(List<Transaction> transactions) {
+		this.transactions = transactions;
 	}
 }
