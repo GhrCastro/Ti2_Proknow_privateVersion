@@ -52,6 +52,7 @@ public class BadgeApplication {
                     .toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(badgeService.getAllBadges())));
         });
 
+
         /*
          * put("/badges/:id", (req, res) -> {
          * res.type("application/json");
@@ -79,6 +80,23 @@ public class BadgeApplication {
             } else {
                 res.status(404);
                 return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Badge não encontrada."));
+            }
+        });
+
+        // User Badge update
+        post("/badges/update-badge", (req,res) -> {
+            res.type("application/json");
+            UUID id = UUID.fromString(req.params(":id"));
+            Badge badge = badgeService.getBadgeById(id); // Vai ter que ser uma lista ou vetor de badges
+            BadgeService badgeservice = gson.fromJson(req.body(), BadgeService.class);
+            
+            try {
+                badgeservice.updateBadge(id, badge.getName());
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Badge atualizado com Sucesso!"));
+            } catch (Exception e) {
+                // TODO: handle exception
+                res.status(400);
+                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao aatualizar Badge do usuário."));
             }
         });
     }

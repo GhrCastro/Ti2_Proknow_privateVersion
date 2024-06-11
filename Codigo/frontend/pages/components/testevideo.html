@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Vide</title>
+</head>
+<style>
+    Section {
+        background-color: lightcoral;
+    }
+</style>
+
+<body>
+    <Section>
+        <div class="video">
+            <iframe width="600" height="300" src="https://www.youtube.com/embed/nTFpK0VClBo?si=KFIJhJ4v9jLO8XAE"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </Section>
+</body>
+<script>
+    let videobutton = document.querySelector(".video");
+
+    videobutton.addEventListener("click", function SetBadge2() {
+
+        const userBadge = localStorage.getItem('userBadge');
+
+        if (!userBadge.badge2) {
+
+            setTimeout(10000);
+
+            fetch("localhost:4567", () => { })
+            //faz o fetch para alterar com a função de update e passa o nome que nesse caso é o "Gerando Conhecimento" e o ID -> (id, nome)
+            alert("Você ganhou uma nova badge");
+        }
+    })
+
+    // document.querryselector(".video").addenvetlistener("clcik", function Ganahr Badge() { delay(3000) bage2 = true; alert(Parabens você ganhou uma badge")}) 
+
+</script>
+
+</html>

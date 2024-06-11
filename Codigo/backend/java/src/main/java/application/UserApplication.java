@@ -5,6 +5,7 @@ import static spark.Spark.*;
 import java.util.UUID;
 import com.google.gson.Gson;
 
+import models.Badge;
 import models.UserBadge;
 import models.UserCredentials;
 import models.Usuario;
