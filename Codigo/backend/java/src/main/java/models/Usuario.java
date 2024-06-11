@@ -19,6 +19,7 @@ public class Usuario {
     private String password;
     private double expenses;
     private Date regDate;
+    private Wallet wallet;
     //private LinkedList<Badge> badges;
 
     public Usuario() {
@@ -37,6 +38,7 @@ public class Usuario {
         this.password = password;
         this.expenses = expenses;
         this.regDate = new Date();
+        this.wallet = new Wallet(this.id);
         //this.badges = new LinkedList<Badge>();
     }
 
@@ -75,6 +77,8 @@ public class Usuario {
     public Date getRegDate() {
         return regDate;
     }
+
+    public Wallet getWallet() { return wallet; }
 
     // public LinkedList<Badge> getBadges(){
     //     return badges;
