@@ -59,7 +59,7 @@ public class WalletApplication {
             }
         });
 
-        post("/wallets/:userId/deposit", (req, res) -> {
+        post("/wallets/deposit/:userId", (req, res) -> {
             res.type("application/json");
             UUID userId = UUID.fromString(req.params(":userId"));
             String currency = req.queryParams("currency");
@@ -73,7 +73,7 @@ public class WalletApplication {
             }
         });
 
-        post("/wallets/:userId/withdraw", (req, res) -> {
+        post("/wallets/withdraw/:userId", (req, res) -> {
             res.type("application/json");
             UUID userId = UUID.fromString(req.params(":userId"));
             String currency = req.queryParams("currency");
