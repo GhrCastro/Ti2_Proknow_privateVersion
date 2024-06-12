@@ -18,7 +18,7 @@ public class WalletApplication {
     }
 
     public void initializeRoutes() {
-        before((request, response) -> {
+        /*before((request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
             response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             response.header("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
@@ -37,7 +37,7 @@ public class WalletApplication {
             }
 
             return "OK";
-        });
+        });*/
 
 //        post("/wallets", (req, res) -> {
 //            res.type("application/json");

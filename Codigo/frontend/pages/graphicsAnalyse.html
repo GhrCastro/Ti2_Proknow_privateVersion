@@ -31,7 +31,6 @@
 </head>
 
 <body>
-
     <aside>
         <div id="sidebar" class="sidebar d-flex flex-column flex-shrink-0 h-100 " onmouseover="toggleSidebar()"
             onmouseout="toggleSidebar()">
@@ -65,12 +64,6 @@
                             class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
                             class="txt">Journeys</span></a>
                 </li>
-                <li id="journeys">
-                    <a href="./graphicsAnalyse.html" class="nav-link py-3  rounded-0" aria-current="page"
-                        data-bs-toggle="tooltip" data-bs-placement="right"><i
-                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
-                            class="txt">AI Analyse</span></a>
-                </li>
             </ul>
             <div class="dropdown"><a href="#"
                     class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle"
@@ -89,7 +82,8 @@
                 </ul>
             </div>
         </div>
-
+    
+    
     </aside>
 
     <div class="pushed-content container-fluid h-100 mb-4 mt-3 px-4">
@@ -98,7 +92,7 @@
         <header class="mb-3">
             <div class="row justify-content-between">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
-                    <h2 id="welcomeUser">Seja Bem vindo, User</h2>
+                    <h2 id="welcomeUser"></h2>
                 </div>
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
                     <div class="mx-5">
@@ -139,80 +133,89 @@
                 </div>
             </div>
         </header>
-        <!-- --------------- -->
 
-
-        <div class="principal card shadow pb-5 p-1 mb-5 rounded h-300 d-flex">
-            <div class="card-title d-flex justify-content-between align-items-center px-3">
-                <h3 class="m-3">Dashboard</h3>
-                <i class="fa-solid fa-x fa-lg"></i>
+        <div>
+            <div class="mb-3">
+                <label for="formFile" class="form-label">Anexe a imagem de seu Gráfico aqui!</label>
+                <input class="form-control" type="file" id="formFile">
             </div>
-            <div class="row mb-2">
-                <div class="col-12">
-                    <div class="row g-0 flex-md-row">
-                        <div class="col d-flex flex-column position-static"
-                            style="margin-right: 2.5%; margin-left: 1%;">
-                            <div class="card-body shadow p-1 mb-5  rounded bg-white">
-                                <div class="card-title d-flex justify-content-between align-items-center px-3">
-                                    <h4>Lista de tarefas</h4>
-                                </div>
-                                <div class="card-item row">
-                                    <div class="row">
-                                        <div class="col-md-8 offset-md-2">
-                                            <form id="todo-form">
-                                                <div class="form-group"><input type="text" class="form-control"
-                                                        placeholder="Crie uma nova tarefa" id="task">
-                                                </div>
-                                                <button type="submit" class="btn btn-primary mt-3 ms-auto"
-                                                    style="font-family: 'Open Sans';">Adicionar tarefa</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5" style="font-family: 'Open Sans';">
-                                        <div class="col-md-8 offset-md-2" style="font-family: 'Open Sans';">
-                                            <ul id="todo-list" class="list-group"></ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row g-0 flex-md-row" style="margin-right: 2.5%;">
-                                <div class="card-body shadow p-3 mb-5 bg-white rounded">
-
-                                    <div class="card-title d-flex justify-content-between align-items-center px-3">
-                                        <h4>Despesas na semana</h4>
-                                        <div class="row offset-md-4"><i class="fa-solid fa-bell fa-xl"></i></div>
-                                    </div>
-                                    <div class="card-items">
-                                        <canvas id="dados-card" width="400" height="200"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
+            
+            <div class="mb-3"> 
+                <img id="preview" src="#" alt="Preview da Imagem" style="display:none;"/>
             </div>
-            <div class="wrapper container-fluid" id="gastos">
-                <div class="card-body shadow p-3 mb-5 rounded bg-white">
-                    <div class="card-title d-flex justify-content-between align-items-center px-3">
-                        <h4>Seus gastos</h4>
-                    </div>
-                    <div class="gastos card-body">
-                        <canvas class="chart-container w-100" id="expensesIncomingsChart"
-                            style="height: 15vw;"></canvas>
-                    </div>
-                </div>
+
+            <div class="mb-3">
+                <button type="button" id="btnSubmit" class="btn btn-warning">Analisar</button>
             </div>
+
         </div>
-    </div>
+</body>
 
-    <script src="../assets/js/login.js"></script>
-    <script src="../assets/js/getUser.js"></script>
-    <script src="../assets/js/getInfoWallet.js"></script>
+
+<script>
+
+    document.getElementById('formFile').addEventListener('change', function() {
+    const file = this.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(event) {
+            const imgElement = document.getElementById('preview');
+            imgElement.src = event.target.result;
+            imgElement.style.display = 'block';
+        }
+        reader.readAsDataURL(file);
+    }
+    });
+
+    document.getElementById('btnSubmit').addEventListener('click', async function() {
+        const input = document.getElementById('formFile');
+
+        const file = input.files[0];
+        let predictions = [];
+
+        if(file){
+
+            await fetch('https://analisador-proknow.cognitiveservices.azure.com/customvision/v3.0/Prediction/9830bce3-f815-4a6d-829e-10e2bcdf65d4/classify/iterations/Iteration2/image',{
+                headers: {
+                    'Prediction-Key': '25c88134ce364f8bad6090c03f958b60',
+                    'Content-Type': 'application/octet-stream'
+                },
+                method: 'POST',
+                body: file
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                predictions = data.predictions
+            })
+            .catch((error) => {
+                console.error(error);
+            })
+        }else{
+            console.log("Insira um arquivo!");
+        }
+
+        let biggerPrecision;
+        if(predictions.length > 0){
+            biggerPrecision = predictions[0];
+            predictions.forEach(predict => {
+                if(predict.probability > biggerPrecision.probability){
+                    biggerPrecision = predict;
+                }
+            });
+        }
+
+        console.log(biggerPrecision)
+
+    });
+
+  
+</script>
+
+
+
+
+
     <script src="../assets/js/component/barra-roxa.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -229,120 +232,3 @@
         integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/113fc1b747.js" crossorigin="anonymous"></script>
-
-
-
-
-    <script>
-
-        let tasks = [];
-
-        const todoForm = document.getElementById('todo-form');
-        const taskInput = document.getElementById('task');
-        const todoList = document.getElementById('todo-list');
-
-        todoForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            if (taskInput.value.trim() == '') {
-                alert('Por favor, entre com uma tarefa!');
-                return;
-            }
-
-            const objTask = tasks.push({
-                id: tasks.length + 1,
-                task: taskInput.value.trim(),
-                done: false,
-            });
-
-            taskInput.value = '';
-
-            displayTasks();
-            registerTask(objTask);
-        });
-
-        function displayTasks() {
-            todoList.innerHTML = '';
-            tasks.forEach(task => {
-                const listItem = document.createElement('li');
-                listItem.classList.add('list-group-item', 'd-flex', 'justify-content-between', 'align-items-center');
-
-                if (task.done) {
-                    listItem.classList.add("done");
-                }
-
-                listItem.id = `task-${task.id}`;
-                listItem.innerHTML = `<span>${task.task}</span>
-                    <hr>
-                    <div>
-                        <button class="btn btn-success btn-sm w-100" onclick="toggleDone(${task.id})" style="height: 2rem; width= 12rem;">Marcar como feita</button>
-                    </div>
-                    <div>
-                        <button class="btn btn-danger btn-sm w-100" onclick="deleteTask(${task.id})" style="height: 2rem; width= 12rem;">Deletar tarefa</button>
-                    </div>`;
-
-                todoList.appendChild(listItem);
-            });
-        }
-
-        function toggleDone(id) {
-            const task = tasks.find(task => task.id == id);
-            if (task) {
-                task.done = !task.done;
-                displayTasks();
-            }
-        }
-
-        function deleteTask(id) {
-            tasks = tasks.filter(task => task.id !== id);
-            displayTasks();
-        }
-    </script>
-
-    <script>
-        // Supondo que você tenha algum código para controlar a abertura/fechamento da sidebar
-        const sidebar = document.querySelector('.sidebar');
-        const pushedContent = document.querySelector('.pushed-content');
-
-        function toggleSidebar() {
-            sidebar.classList.toggle('sidebar-open');
-            pushedContent.classList.toggle('pushed-content-open');
-        }
-
-        function adjustChartHeight() {
-            const chartContainer = document.querySelector('.chart-container');
-            chartContainer.style.height = `${window.innerHeight * 0.5}px`;
-        }
-
-        // Atualiza a altura do contêiner quando a janela é redimensionada
-        window.addEventListener('resize', adjustChartHeight);
-
-        // Inicializa a altura do gráfico
-        adjustChartHeight();
-    </script>
-
-    <script>
-        const valor = document.getElementById('valor');
-
-        function fetchData() {
-            try {
-                fetch('https://jsonserver-proknow.joopaulopaulo33.repl.co/usuarios')
-                    .then(response => response.json())
-                    .then(data => {
-                        return data.map(user => {
-                            console.log(user.incomings.salario);
-                            return user.incomings.salario;
-                        })
-                    })
-
-            } catch (error) {
-                console.log(error)
-            }
-            valor.innerHTML = fetchData();
-        }
-    </script>
-
-   
-
-</body>
-
-</html>
