@@ -134,7 +134,7 @@
             </div>
         </header>
 
-        <div>
+        <div style="width: 80%; ">
             <div class="mb-3">
                 <label for="formFile" class="form-label">Anexe a imagem de seu Gráfico aqui!</label>
                 <input class="form-control" type="file" id="formFile">
@@ -144,8 +144,13 @@
                 <img id="preview" src="#" alt="Preview da Imagem" style="display:none;"/>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3" style="margin-top: 100px;">
                 <button type="button" id="btnSubmit" class="btn btn-warning">Analisar</button>
+            </div>
+
+            <div class="mb-3">
+                <label style="padding-right: 10px;">Resposta da Analise:</label>
+                <input type="text" id="respInput" disabled placeholder="" style="width: 100%; margin-top: 10px;"/>
             </div>
 
         </div>
@@ -169,6 +174,7 @@
 
     document.getElementById('btnSubmit').addEventListener('click', async function() {
         const input = document.getElementById('formFile');
+        const inputResp = document.getElementById('respInput')
 
         const file = input.files[0];
         let predictions = [];
@@ -206,7 +212,7 @@
         }
 
         console.log(biggerPrecision)
-
+        inputResp.placeholder = biggerPrecision.tagName;
     });
 
   
