@@ -26,7 +26,8 @@
     <link rel="stylesheet" href="../assets/css/stylecardbarraroxa.css">
     <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <link rel="stylesheet" href="../assets/css/sidenav.css">
-    <link rel="stylesheet" href="../assets/css/header.css" 
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/aiPage.css"> 
     <title>Dashboard</title>
 </head>
 
@@ -134,23 +135,23 @@
             </div>
         </header>
 
-        <div style="width: 80%; ">
+        <div id="div-content" >
             <div class="mb-3">
-                <label for="formFile" class="form-label">Anexe a imagem de seu Gráfico aqui!</label>
+                <h4>Anexe a imagem de seu Gráfico aqui!</h4>
                 <input class="form-control" type="file" id="formFile">
             </div>
             
             <div class="mb-3"> 
-                <img id="preview" src="#" alt="Preview da Imagem" style="display:none;"/>
+                <img id="preview" src="#" alt="Preview da Imagem" />
             </div>
 
-            <div class="mb-3" style="margin-top: 100px;">
+            <div class="mb-3" style="margin-top: 80px;">
                 <button type="button" id="btnSubmit" class="btn btn-warning">Analisar</button>
             </div>
 
             <div class="mb-3">
                 <label style="padding-right: 10px;">Resposta da Analise:</label>
-                <input type="text" id="respInput" disabled placeholder="" style="width: 100%; margin-top: 10px;"/>
+                <input type="text" id="respInput" disabled placeholder="">
             </div>
 
         </div>
@@ -199,6 +200,7 @@
             })
         }else{
             console.log("Insira um arquivo!");
+            inputResp.placeholder = "Insira um arquivo!"
         }
 
         let biggerPrecision;
@@ -209,10 +211,10 @@
                     biggerPrecision = predict;
                 }
             });
+            console.log(biggerPrecision)
+            inputResp.placeholder = biggerPrecision.tagName;
         }
 
-        console.log(biggerPrecision)
-        inputResp.placeholder = biggerPrecision.tagName;
     });
 
   
