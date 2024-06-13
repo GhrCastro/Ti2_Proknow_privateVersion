@@ -23,24 +23,62 @@
     </Section>
 </body>
 <script>
+
     let videobutton = document.querySelector(".video");
+    videobutton.addEventListener("click", async function () {
 
-    videobutton.addEventListener("click", function SetBadge2() {
+        setTimeout(10000); //tempo        
 
-        const userBadge = localStorage.getItem('userBadge');
-
-        if (!userBadge.badge2) {
-
-            setTimeout(10000);
-
-            fetch("localhost:4567", () => { })
-            //faz o fetch para alterar com a função de update e passa o nome que nesse caso é o "Gerando Conhecimento" e o ID -> (id, nome)
-            alert("Você ganhou uma nova badge");
+        const userBadge = {
+            'user_id': '1b1a7844-0099-4cfd-8e8c-d54bef51f633',
+            'badge_id': '8d3b5e64-738f-4d54-88a0-f1ccbf7146f2'
         }
-    })
 
-    // document.querryselector(".video").addenvetlistener("clcik", function Ganahr Badge() { delay(3000) bage2 = true; alert(Parabens você ganhou uma badge")}) 
+        await fetch("http://localhost:4567/usuarios-badges", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userBadge)
+        })
+            .then(response => {
+                console.log(response)
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+        alert("Parabens! Você ganhou uma nova badge!");
+    })
 
 </script>
 
 </html>
+
+
+<!-- fetch("localhost:4567/badges/update-badge/:id/:badgeName", {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json' //nao pode ser json
+    },
+    body: JSON.stringify(credenciais) //credencias = email/senha, no seu caso é o atributo enable
+})
+.then(response => {
+    if (response.ok) {
+        return response.json(); 
+    } else {
+        throw new Error('Email ou senha incorretos.');
+    }
+})
+
+.then(data => {
+    // Se o login for bem-sucedido, armazenar token e outras informações relevantes
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('usuario', JSON.stringify(data.usuario));
+
+    alert('Login bem-sucedido!'); //deu tudo certo
+})
+.catch(error => {
+    // Se ocorrer um erro durante o login
+    alert('Erro ao fazer login: ' + error.message);
+}); -->
