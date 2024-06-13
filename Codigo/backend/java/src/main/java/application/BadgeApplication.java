@@ -2,6 +2,7 @@ package application;
 
 import static spark.Spark.*;
 
+import java.util.List;
 import java.util.UUID;
 import com.google.gson.Gson;
 
@@ -18,8 +19,6 @@ public class BadgeApplication {
     }
 
     public void initializeRoutes() {
-
-        
 
         post("/badges", (req, res) -> {
             res.type("application/json");
@@ -52,7 +51,6 @@ public class BadgeApplication {
                     .toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(badgeService.getAllBadges())));
         });
 
-
         /*
          * put("/badges/:id", (req, res) -> {
          * res.type("application/json");
@@ -83,21 +81,33 @@ public class BadgeApplication {
             }
         });
 
+        // MEXER AQUI
         // User Badge update
-        post("/badges/update-badge", (req,res) -> {
-            res.type("application/json");
-            UUID id = UUID.fromString(req.params(":id"));
-            Badge badge = badgeService.getBadgeById(id); // Vai ter que ser uma lista ou vetor de badges
-            BadgeService badgeservice = gson.fromJson(req.body(), BadgeService.class);
-            
-            try {
-                badgeservice.updateBadge(id, badge.getName());
-                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Badge atualizado com Sucesso!"));
-            } catch (Exception e) {
-                // TODO: handle exception
-                res.status(400);
-                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao aatualizar Badge do usuário."));
-            }
-        });
+        // patch("/badges/update-badge/:id", (req, res) -> { // post
+        //     res.type("application/json");
+
+        //     UUID id = UUID.fromString(req.params(":id"));
+        //     // String name = req.params(":badgeName");
+
+        //     // Encontrar a badge que se deseja fazer update pelo seu ID
+        //     Badge badgeToUpdate = badgeService.getBadgeById(id);            
+
+        //     if (badgeToUpdate == null) {
+        //         res.status(404);
+        //         return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Badge não encontrada."));            }
+                
+        //     try {
+        //         // Atualizar o campo 'enable' da badge
+        //         badgeToUpdate.setEnable();                
+                                
+
+        //         // badgeService.updateBadge(id, name);
+        //         return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Badge atualizado com Sucesso!"));
+        //     } catch (Exception e) {
+        //         // TODO: handle exception
+        //         res.status(400);
+        //         return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao aatualizar Badge do usuário."));
+        //     }
+        // });
     }
 }

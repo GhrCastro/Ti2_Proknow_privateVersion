@@ -3,10 +3,14 @@ package models;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
+//import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedList;
 import java.util.UUID;
 //import models.Badge;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.lang.reflect.Type;
 
 public class Usuario {
 
@@ -20,26 +24,26 @@ public class Usuario {
     private double expenses;
     private Date regDate;
     private Wallet wallet;
-    //private LinkedList<Badge> badges;
+    // private ArrayList<Badge> badges;
 
     public Usuario() {
         this.id = UUID.randomUUID();
         this.regDate = new Date();
     }
 
-    public Usuario(String name, String cpf, String email, double salary, String cellNumber, String password, double expenses) {
+    public Usuario(String name, String cpf, String email, double salary, String cellNumber, String password,
+            double expenses) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.cpf = cpf;
         this.email = email;
         this.salary = salary;
         this.cellNumber = cellNumber;
-        //this.password = hashPassword(password); 
         this.password = password;
         this.expenses = expenses;
         this.regDate = new Date();
         this.wallet = new Wallet(this.id);
-        //this.badges = new LinkedList<Badge>();
+        // this.badges = new ArrayList<>();
     }
 
     public UUID getId() {
@@ -78,16 +82,18 @@ public class Usuario {
         return regDate;
     }
 
-    public Wallet getWallet() { return wallet; }
+    public Wallet getWallet() {
+        return wallet;
+    }
 
-    // public LinkedList<Badge> getBadges(){
-    //     return badges;
+    // public ArrayList<Badge> getBadges() {
+    // return badges;
     // }
 
-    public void setId(UUID id){
+    public void setId(UUID id) {
         this.id = id;
     }
-    
+
     public void setName(String name) {
         this.name = name;
     }
@@ -109,11 +115,11 @@ public class Usuario {
     }
 
     public void setPassword(String password) {
-        //this.password = hashPassword(password);
+        // this.password = hashPassword(password);
         this.password = password;
     }
 
-    public void setExpenses(double expenses){
+    public void setExpenses(double expenses) {
         this.expenses = expenses;
     }
 
@@ -121,10 +127,10 @@ public class Usuario {
         this.regDate = regDate;
     }
 
-    // public void addBadge(Badge badge){
-    //     badges.add(badge);
+    // public void addBadge(Badge badge) {
+    // badges.add(badge);
     // }
-        
+
     public String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         return dateFormat.format(regDate);
@@ -132,9 +138,9 @@ public class Usuario {
 
     public boolean isValid() {
         return name != null && !name.isEmpty() &&
-               cpf != null && !cpf.isEmpty() &&
-               email != null && !email.isEmpty() &&
-               password != null && !password.isEmpty();
+                cpf != null && !cpf.isEmpty() &&
+                email != null && !email.isEmpty() &&
+                password != null && !password.isEmpty();
     }
 
     private String hashPassword(String password) {
@@ -151,5 +157,15 @@ public class Usuario {
         }
     }
 
+    // Methods to convert badges to and from JSON
+    // public String badgesToJson() {
+    // Gson gson = new Gson();
+    // return gson.toJson(badges);
+    // }
 
+    // public void badgesFromJson(String json) {
+    // Gson gson = new Gson();
+    // Type badgeListType = new TypeToken<ArrayList<Badge>>() {}.getType();
+    // this.badges = gson.fromJson(json, badgeListType);
+    // }
 }

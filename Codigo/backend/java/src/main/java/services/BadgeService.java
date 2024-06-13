@@ -35,7 +35,7 @@ public class BadgeService {
         badgeDao.insert(badge.getId(),badge.getName(), badge.getDescription(),badge.getEnable(),badge.getLinkImage());
     }
 
-    public void updateBadge (UUID id, String name){
-        badgeDao.updateBadge(id,name);
+    public void updateBadge (UUID id){
+        badgeDao.updateBadge(id);
     }
 }

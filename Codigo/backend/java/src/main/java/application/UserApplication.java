@@ -26,11 +26,12 @@ public class UserApplication {
 
     public void initializeRoutes() {
 
-        //Código para desbloqueio do CORS
+        // Código para desbloqueio do CORS
         before((request, response) -> {
             response.header("Access-Control-Allow-Origin", "*");
             response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            response.header("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
+            response.header("Access-Control-Allow-Headers",
+                    "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
             response.header("Access-Control-Allow-Credentials", "true");
         });
 
@@ -48,15 +49,20 @@ public class UserApplication {
 
             return "OK";
         });
-        //--------------------------------------------------------//
+        // --------------------------------------------------------//
 
         post("/usuarios", (req, res) -> {
             res.type("application/json");
             Usuario usuario = gson.fromJson(req.body(), Usuario.class);
-            //System.out.println("###" + usuario);
+            // System.out.println("###" + usuario);
             try {
                 usuarioService.addUsuario(usuario);
-                //rewardService.rewardUser(usuario.getId(), "REGISTER");
+
+                // Recebe badge cadastro
+                usuarioService.addUserBadge(usuario.getId(), UUID.fromString("c081aab6-f162-49b4-b5b5-f5ba9b8e9214"));
+
+                // rewardService.rewardUser(usuario.getId(), "REGISTER");
+                
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuario)));
             } catch (IllegalArgumentException e) {
                 res.status(400);
@@ -78,22 +84,22 @@ public class UserApplication {
 
         post("/login", (req, res) -> {
             res.type("application/json");
-            
+
             UserCredentials userCredentials = gson.fromJson(req.body(), UserCredentials.class);
 
-            //System.out.println("###" + userCredentials.getEmail());
-            //System.out.println("###" + userCredentials.getPassword());
+            // System.out.println("###" + userCredentials.getEmail());
+            // System.out.println("###" + userCredentials.getPassword());
 
             Usuario usuario = usuarioService.getUsuarioByEmail(userCredentials.getEmail());
-            
-            if(usuario != null){
-                //System.out.println("###" + usuario.getPassword());
-                if(usuario.getPassword().equals(userCredentials.getPassword())){
+
+            if (usuario != null) {
+                // System.out.println("###" + usuario.getPassword());
+                if (usuario.getPassword().equals(userCredentials.getPassword())) {
                     return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuario)));
-                }else{
+                } else {
                     return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Senha incorreta"));
                 }
-            }else{
+            } else {
                 res.status(404);
                 return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Usuário não encontrado."));
             }
@@ -101,7 +107,8 @@ public class UserApplication {
 
         get("/usuarios", (req, res) -> {
             res.type("application/json");
-            return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuarioService.getAllUsuarios())));
+            return gson.toJson(
+                    new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuarioService.getAllUsuarios())));
         });
 
         put("/usuarios/:id", (req, res) -> {
@@ -130,8 +137,8 @@ public class UserApplication {
             }
         });
 
-        //users-badges
-        post("/usuarios-badges", (req,res) -> {
+        // users-badges
+        post("/usuarios-badges", (req, res) -> {
             res.type("application/json");
             UserBadge userBadge = gson.fromJson(req.body(), UserBadge.class);
 
@@ -145,20 +152,20 @@ public class UserApplication {
             }
         });
 
-        get("/usuarios-badges/:id", (req,res) -> {
+        get("/usuarios-badges/:id", (req, res) -> {
             res.type("application/json");
             UUID user_id = UUID.fromString(req.params(":id"));
 
             try {
-                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuarioService.getAllUserBadges(user_id))));
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS,
+                        gson.toJsonTree(usuarioService.getAllUserBadges(user_id))));
             } catch (Throwable e) {
                 // TODO: handle exception
                 e.printStackTrace();
                 res.status(400);
-                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao vincular Badge ao usuário." + e));
+                return gson
+                        .toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao vincular Badge ao usuário." + e));
             }
         });
     }
 }
-
-
