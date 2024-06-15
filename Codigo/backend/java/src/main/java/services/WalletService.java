@@ -1,14 +1,12 @@
 package services;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 import dao.MoedaDao;
 import dao.TransactionDao;
 import dao.WalletDao;
-import dao.BadgeDao;
 import dao.DAO;
 import models.*;
 
@@ -44,30 +42,75 @@ public class WalletService {
     }
 
     public Wallet getWalletByUserId(UUID userId) {
+        UUID walletId = walletDao.findWalletByUserId(userId);
 
-        Wallet wallet = walletDao.findWalletByUserId(userId);
-
-        if (wallet != null) {
-            List<CurrencyBalance> balances = walletDao.findWalletBalances(wallet.getOwnerId());
+        if (walletId != null) {
+            List<CurrencyBalance> balances = walletDao.findWalletBalances(walletId);
+            List<Transaction> transactions = walletDao.listWalletTransactions(walletId);
+            Wallet wallet = new Wallet();
+            wallet.setId(walletId);
+            wallet.setUserId(userId);
             wallet.setBalances(balances);
-            List<Transaction> transactions = walletDao.listWalletTransactions(wallet.getOwnerId());
             wallet.setTransactions(transactions);
+            return wallet;
         }
-        return wallet;
+
+        return null;
     }
 
-    public void deposit(UUID owner, String currency, double amount) throws Exception {
-        Wallet wallet = getWalletByUserId(owner);
-        Moeda moeda = moedaDao.findMoedaByName(currency);
-        if (wallet != null && moeda != null) {
-            wallet.deposit(moeda, BigDecimal.valueOf(amount));
-            walletDao.updateWalletBalance(wallet.getOwnerId(), currency, wallet.getBalance(currency));
+    public void deposit(UUID owner, UUID recipient, String currency, double amount) throws Exception {
+        Usuario fromUser = usuarioService.getUsuarioById(owner);
+        Usuario toUser = usuarioService.getUsuarioById(recipient);
 
-            Transaction tx = new Transaction(wallet.getOwnerId(), null, BigDecimal.valueOf(amount), currency);
-            transactionDao.insert(tx.getId(), tx.getToWallet(), tx.getFromWallet(), tx.getCreatedAt(), tx.getAmount(),
+        System.out.println(fromUser);
+        System.out.println("\n");
+        System.out.println(toUser);
+
+        Wallet ownerWallet = null;
+        Wallet recipientWallet = null;
+        Moeda moeda = null;
+        try {
+            ownerWallet = getWalletByUserId(fromUser.getId());
+            recipientWallet = getWalletByUserId(toUser.getId());
+            moeda = moedaDao.findMoedaByName(currency);
+
+            if (ownerWallet == null) {
+                throw new IllegalArgumentException("Owner wallet not found");
+            }
+            if (recipientWallet == null) {
+                throw new IllegalArgumentException("Recipient wallet not found");
+            }
+            if (moeda == null) {
+                throw new IllegalArgumentException("Currency not found");
+            }
+
+            ownerWallet.withdraw(moeda, BigDecimal.valueOf(amount));
+            walletDao.updateWalletBalance(ownerWallet.getWalletId(), currency, ownerWallet.getBalance(currency));
+
+            recipientWallet.deposit(moeda, BigDecimal.valueOf(amount));
+            walletDao.updateWalletBalance(recipientWallet.getWalletId(), currency, recipientWallet.getBalance(currency));
+
+            Transaction tx = new Transaction(ownerWallet.getOwnerId(), recipientWallet.getWalletId(), BigDecimal.valueOf(amount), currency);
+            transactionDao.insert(tx.getId(), tx.getFromWallet(), tx.getToWallet(), tx.getCreatedAt(), tx.getAmount(),
                     tx.getCurrency(), tx.isReversed());
-        } else {
-            throw new Exception("Wallet or currency not found");
+
+        } catch (IllegalArgumentException e) {
+            System.err.println("Validation error: " + e.getMessage());
+            throw e;
+        } catch (Exception e) {
+            System.err.println("Error during deposit: " + e.getMessage());
+            e.printStackTrace();
+
+            if (ownerWallet != null && moeda != null) {
+                try {
+                    ownerWallet.deposit(moeda, BigDecimal.valueOf(amount));
+                    walletDao.updateWalletBalance(ownerWallet.getWalletId(), currency, ownerWallet.getBalance(currency));
+                } catch (Exception rollbackException) {
+                    System.err.println("Error during rollback: " + rollbackException.getMessage());
+                    rollbackException.printStackTrace();
+                }
+            }
+            throw new RuntimeException("Failed to complete deposit transaction", e);
         }
     }
 

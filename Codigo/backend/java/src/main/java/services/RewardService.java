@@ -15,8 +15,9 @@ public class RewardService {
 	}
 	
 	public void rewardUser(UUID userId, String action) {
-		Wallet wallet = walletDao.findWalletByUserId(userId);
-		if(wallet != null) {
+		var walletId = walletDao.findWalletByUserId(userId);
+		if(walletId != null) {
+			Wallet wallet = new Wallet();
 			 BigDecimal rewardAmount;
 	            switch (action) {
 	                case "REGISTER":
