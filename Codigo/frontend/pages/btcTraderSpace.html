@@ -7,7 +7,6 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/codigo/frontend/assets/css/btcTraderSpace.css">
     <script type="text/javascript" src="/codigo/frontend/assets/js/btcTraderSpace.js"></script>
-    <link rel="stylesheet" href="/codigo/frontend/assets/css/stylecardbarraroxa.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -22,10 +21,13 @@
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+
     <link rel="stylesheet" href="../assets/css/sidenav.css">
-    <link rel="stylesheet" href="../assets/css/stylecardbarraroxa.css">
     <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <link rel="stylesheet" href="../assets/css/header.css">
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
@@ -33,25 +35,24 @@
     <title>Trading View</title>
 </head>
 
-<body>
-
+<body class="d-flex">
     <aside>
         <div id="sidebar" class="sidebar d-flex flex-column flex-shrink-0 h-100 " onmouseover="toggleSidebar()"
             onmouseout="toggleSidebar()">
-            <ul class="nav nav-pills nav-flush flex-column  mb-auto text-center ">
+            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center ">
                 <li id="inicio" class="selected">
-                    <a href="./dashboard.html" class="nav-link py-3 rounded-0" aria-current="page"
-                        data-bs-toggle="tooltip" data-bs-placement="right"><i
-                            class="material-icons fa-solid fa-home fa-xl mx-2"></i><span class="txt">Inicio</span></a>
+                    <a href="/Codigo/frontend/pages/dashboard.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-solid fa-home fa-xl mx-2"></i><span
+                            class="txt">Inicio</span></a>
                 </li>
                 <li id="content-hub">
-                    <a href="./contenthub.html" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
+                    <a href="#" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
                         data-bs-placement="right"><i class="material-icons fa-solid fa-book-open fa-xl mx-2"></i><span
                             class="txt">Content
                             Hub</span></a>
                 </li>
                 <li id="trader-space">
-                    <a href="#" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                    <a href="./btcTraderSpace.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
                         data-bs-placement="right"><i class="material-icons fa-solid fa-chart-line fa-xl mx-2"></i><span
                             class="txt">Trader
                             Space</span></a>
@@ -63,9 +64,8 @@
                             class="txt">Newsletter</span></a>
                 </li>
                 <li id="journeys">
-                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page"
-                        data-bs-toggle="tooltip" data-bs-placement="right"><i
-                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
+                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
                             class="txt">Journeys</span></a>
                 </li>
             </ul>
@@ -77,23 +77,22 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a href="" class="dropdown-item text-dark">Perfil</a></li>
-                    <li><a href="" class="dropdown-item text-dark">Configuracoes</a></li>
+                    <li><a href="#" class="dropdown-item text-dark">Perfil</a></li>
+                    <li><a href="#" class="dropdown-item text-dark">Configuracoes</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a href="" class="dropdown-item text-dark " onclick="logout()">Sair</a></li>
+                    <li><a href="#" class="dropdown-item text-dark" onclick="logout()">Sair</a></li>
                 </ul>
             </div>
         </div>
 
     </aside>
 
-
-    <div class="pushed-content container-fluid h-100 mb-4 mt-3 px-4">
-
+    <main class="flex-grow-1">
+        
         <header class="mb-3">
-            <div class="row justify-content-between">
+        <div class="row justify-content-between">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
                     <h2 id="welcomeUser">Seja Bem vindo, User</h2>
                 </div>
@@ -109,7 +108,7 @@
                             <div class="offcanvas-header ">
                                 <h3 class="offcanvas-title" id="offcanvasRightLabel">Carteira</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                        aria-label="Close"></button>
+                                        aria-label="Close"></button> 
                             </div>
                             <div class="offcanvas-body wallet-modal-body">
                                 <div class="div-valor">
@@ -136,10 +135,10 @@
                 </div>
             </div>
         </header>
+    
+    
 
-    </div>
-
-        <main>
+        
             <section id="symbol-info">Symbol Info
                 <div class="tradingview-widget-container">
                     <div class="tradingview-widget-container__widget"></div>
@@ -247,8 +246,8 @@
                 </div>
                 <!-- TradingView Widget END -->
             </section>
-
-    
+        
+        </div>
     </main>
     <script src="../assets/js/getUser.js"></script>
     <script src="../assets/js/getInfoWallet.js"></script>
