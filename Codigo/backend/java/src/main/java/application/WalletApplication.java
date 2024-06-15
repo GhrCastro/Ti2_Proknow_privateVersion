@@ -18,26 +18,26 @@ public class WalletApplication {
     }
 
     public void initializeRoutes() {
-        /*before((request, response) -> {
-            response.header("Access-Control-Allow-Origin", "*");
-            response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-            response.header("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
-            response.header("Access-Control-Allow-Credentials", "true");
-        });
+        // before((request, response) -> {
+        //     response.header("Access-Control-Allow-Origin", "*");
+        //     response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+        //     response.header("Access-Control-Allow-Headers", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin,");
+        //     response.header("Access-Control-Allow-Credentials", "true");
+        // });
 
-        options("/*", (request, response) -> {
-            String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
-            if (accessControlRequestHeaders != null) {
-                response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
-            }
+        // options("/*", (request, response) -> {
+        //     String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
+        //     if (accessControlRequestHeaders != null) {
+        //         response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
+        //     }
 
-            String accessControlRequestMethod = request.headers("Access-Control-Request-Method");
-            if (accessControlRequestMethod != null) {
-                response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
-            }
+        //     String accessControlRequestMethod = request.headers("Access-Control-Request-Method");
+        //     if (accessControlRequestMethod != null) {
+        //         response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
+        //     }
 
-            return "OK";
-        });*/
+        //     return "OK";
+        // });
 
 //        post("/wallets", (req, res) -> {
 //            res.type("application/json");
@@ -51,6 +51,7 @@ public class WalletApplication {
             res.type("application/json");
             UUID userId = UUID.fromString(req.params(":userId"));
             Wallet wallet = walletService.getWalletByUserId(userId);
+
             if (wallet != null) {
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(wallet)));
             } else {
@@ -59,13 +60,15 @@ public class WalletApplication {
             }
         });
 
-        post("/wallets/deposit/:userId", (req, res) -> {
+        post("/wallets/deposit/fromUser/:fromUser/toUser/:toUser", (req, res) -> {
+            System.out.println(" oi oi oio io i oioi");
             res.type("application/json");
-            UUID userId = UUID.fromString(req.params(":userId"));
-            String currency = req.queryParams("currency");
+            UUID fromUser = UUID.fromString(req.params(":fromUser"));
+            UUID toUser = UUID.fromString(req.params(":toUser"));
+            String name = req.queryParams("name");
             double amount = Double.parseDouble(req.queryParams("amount"));
             try {
-                walletService.deposit(userId, currency, amount);
+                walletService.deposit(fromUser, toUser, name, amount);
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Depósito realizado com sucesso."));
             } catch (Exception e) {
                 res.status(400);

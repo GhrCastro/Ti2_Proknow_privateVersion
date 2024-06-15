@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.text.SimpleDateFormat;
 
 public class Badge {
-
+        
     private UUID id;
     private String name;
     private String description;
@@ -59,8 +59,8 @@ public class Badge {
         this.description = description;
     }
 
-    public void setEnable(Boolean enable) {
-        this.enable = enable;
+    public void setEnable() {
+        this.enable = true;
     }
 
     public void setLinkImage(String linkImage) {

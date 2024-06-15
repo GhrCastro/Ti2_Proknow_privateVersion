@@ -38,7 +38,11 @@ public class UsuarioService {
                 walletDao.insertWalletBalance(wallet.getWalletId(), pkw.getName(), BigDecimal.valueOf(150));
 
                 usuarioDao.insert(usuario.getId(), usuario.getName(), usuario.getCpf(), usuario.getEmail(),
-                        usuario.getSalary(), usuario.getCellNumber(), usuario.getPassword(), usuario.getExpenses(), usuario.getRegDate(), wallet.getWalletId());
+                        usuario.getSalary(), usuario.getCellNumber(), usuario.getPassword(), usuario.getExpenses(),
+                        usuario.getRegDate(), wallet.getWalletId());
+
+                // Recebe badge cadastro
+                //usuarioDao.insertUserBadge(usuario.getId(), UUID.fromString("c081aab6-f162-49b4-b5b5-f5ba9b8e9214"));
 
             } catch (Exception e) {
                 System.err.println("Error creating user and wallet: " + e.getMessage());
@@ -67,7 +71,8 @@ public class UsuarioService {
             Usuario existingUsuario = usuarioDao.findById(id);
             if (existingUsuario != null) {
                 usuarioDao.update(id, usuario.getName(), usuario.getCpf(), usuario.getEmail(), usuario.getSalary(),
-                        usuario.getCellNumber(), usuario.getPassword(), usuario.getExpenses(), usuario.getRegDate(), usuario.getWallet().getOwnerId());
+                        usuario.getCellNumber(), usuario.getPassword(), usuario.getExpenses(), usuario.getRegDate(),
+                        usuario.getWallet().getOwnerId());
             } else {
                 throw new IllegalArgumentException("Usuário não encontrado");
             }
@@ -80,7 +85,7 @@ public class UsuarioService {
         usuarioDao.delete(id);
     }
 
-    //users-badges
+    // users-badges
     public void addUserBadge(UUID user_id, UUID badge_id) throws Exception {
 
         try {
@@ -91,6 +96,7 @@ public class UsuarioService {
         }
     }
 
+    // retorna todas as badges que o usuario possui enabled
     public List<UserBadge> getAllUserBadges(UUID user_id) throws Exception {
         try {
             System.out.println("Fetching badges for user ID: " + user_id);

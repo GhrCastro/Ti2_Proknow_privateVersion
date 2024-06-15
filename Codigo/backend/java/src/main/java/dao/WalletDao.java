@@ -25,9 +25,9 @@ public interface WalletDao {
     @SqlUpdate("INSERT INTO wallet_balances (wallet_id, currency, amount) VALUES (:walletId, :currency, :amount)")
     void insertWalletBalance(@Bind("walletId") UUID walletId, @Bind("currency") String currency, @Bind("amount") BigDecimal amount);
 
-    @SqlQuery("SELECT id, user_id AS userId FROM wallets WHERE user_id = :userId")
+    @SqlQuery("SELECT id FROM wallets WHERE user_id = :userId")
     @RegisterBeanMapper(Wallet.class)
-    Wallet findWalletByUserId(@Bind("userId") UUID userId);
+    UUID findWalletByUserId(@Bind("userId") UUID userId);
 
     @SqlQuery("SELECT id, user_id AS userId FROM wallets WHERE id = :id")
     @RegisterBeanMapper(Wallet.class)

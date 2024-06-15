@@ -187,19 +187,3 @@ main {
     outline: 0;
 }
 
-#sidebar{
-    position: fixed;
-}
-
-.pushed-content {
-    margin-left: 100px;
- }
-
- .pushed-content {
-    transition: margin-left 0.3s ease; /* Adiciona uma transição suave */
- }
- 
- .pushed-content-open {
-    margin-left: 300px;
- }
- 

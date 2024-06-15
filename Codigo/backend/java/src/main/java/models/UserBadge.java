@@ -4,8 +4,7 @@ import java.util.UUID;
 
 public class UserBadge {
     
-    private UUID user_id;
-    
+    private UUID user_id;    
     private UUID badge_id;
 
     public UserBadge(){

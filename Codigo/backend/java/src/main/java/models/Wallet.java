@@ -31,7 +31,7 @@ public class Wallet {
 				return;
 			}
 		}
-		balances.add(new CurrencyBalance(currency, amount));
+		balances.add(new CurrencyBalance(currency.getName(), amount));
 	}
 
 	public void withdraw(Moeda currency, BigDecimal amount) throws Exception {
@@ -100,5 +100,13 @@ public class Wallet {
 
 	public void setTransactions(List<Transaction> transactions) {
 		this.transactions = transactions;
+	}
+
+	public void setId(UUID walletId) {
+		this.id = walletId;
+	}
+
+	public void setUserId(UUID userId) {
+		this.userId = userId;
 	}
 }
