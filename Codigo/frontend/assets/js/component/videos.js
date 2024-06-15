@@ -29,7 +29,7 @@ export async function Highlights(data){
         var link = `${split[0]}/watch?v=${split[1]}`
         
         highlights += `
-            <div class="col-lg-4 col-md-6 col-sm-12 d-flex pb-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex pb-4" id="video-card">
                 <div class="card w-100 shadow">
                     <div class="card-horizontal">
                         <div class="card-body">
@@ -45,7 +45,7 @@ export async function Highlights(data){
                             <h4 class="card-title">${json.title}</h4>
                             <p class="card-text">${json.describe}</p>
                             <p class="text-end fw-bold">
-                                <a href="${link}" target="_blank" class="card-link text-end">Read More →</a>
+                                <a href="${link}" target="_blank" class="card-link text-end" style="text-decoration:none; color:orange;">Assista no youtube →</a>
                             </p>
                         </div>
                     </div>

@@ -113,6 +113,27 @@ nav .btn-primary {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+.carousel-caption3{
+    position: absolute;
+    top: 30%;
+    left: 28%;
+    transform: translate(-62%, -50%);
+    text-align:left;
+    color: rgb(255, 255, 255);
+    padding: 15px;
+    font-size: 12px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgb(51, 2, 116);
+}
+
+.carousel-caption3 h5{
+    font-size:large;
+}
+
+.carousel-caption3 p{
+    font-size: small;
+}
+
 .carousel-caption2 p{
     font-size: small;
 }

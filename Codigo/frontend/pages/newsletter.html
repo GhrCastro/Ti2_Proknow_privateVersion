@@ -27,7 +27,6 @@
 
     <link rel="stylesheet" href="../assets/css/sidenav.css">
     <link rel="stylesheet" href="../assets/css/stylenewsletter.css">
-    <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
 </head>
 
 <body class="d-flex">
@@ -76,7 +75,7 @@
                     <li>
                         <hr class="dropdown-divider" style = "color: lightgray;">
                     </li>
-                    <li><a href="../index.html" class="dropdown-item text-dark" onclick="logout()">Sair</a></li>
+                    <li><a href="/Codigo/index.html" class="dropdown-item text-dark" onclick="logout()">Sair</a></li>
                 </ul>
             </div>
         </div>
@@ -88,18 +87,19 @@
         <header>
             <div class="row">
                 <div class="col-lg-8">
-                    <h2 class="text-secondary m-3">Seja bem vindo, <span id="username" class="fw-bold"></span>!</h2>
+                    <h2 class="text-wrng m-3">Seja bem vindo, <span id="username" class="fw-bold"></span>!</h2>
                 </div>
                 <div class="col-lg-4 d-flex align-items-center justify-content-end ">
-                    <div class="d-flex rounded-5 shadow py-3 px-4 mr-5 div-search">
-                        <i class="fas fa-search text-secondary opacity-25"></i>
-                        <input type="text" class="input-search" placeholder="Buscar">
+                    <div class="d-flex rounded-5 shadow py-3 px-4 mr-5 div-search" id="barra_busca">
+                        <i class="fas fa-search text-light opacity-75" id="lupa"></i>
+                        <input type="text" class="input-search text-light" placeholder="Buscar">
                     </div>
                 </div>
             </div>
             <hr class="style12">
 
         </header>
+
         <div class="container-fluid my-5">
             <div class="container-fluid">
                 <h4 class="text-start fw-bold display-6 mb-3">Newsletter</h4>
@@ -122,14 +122,19 @@
             </div>
         </div>
 
+        
+    <footer class="footer mt-auto py-3">
+        <p><a id="footer-link"
+                href="https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20232-g10-falta-de-educacao-financeira"
+                >&copy; 2024 PROKNOW.</a> Todos os direitos reservados.</p>
+    </footer>
     </main>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
         integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
         crossorigin="anonymous"></script>
     <script type="module" src="./../assets/js/script.js"></script>
-    <script src="../../assets/js/sidebar-loader.js"></script>
-    <script type="module" src="<script type="module" src="../assets/models/user.js"></script>"></script>
+    <script type="module" src="<script type=module" src="../assets/models/user.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
@@ -140,7 +145,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
     integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
     crossorigin="anonymous"></script>
-<script src="../../assets/js/sidebar-loader.js"></script>
 <script src="https://kit.fontawesome.com/113fc1b747.js" crossorigin="anonymous"></script>
 <script type="module" src="../assets/js/scriptcontenthub.js"></script>
 <script type="module" src="../assets/models/user.js"></script>
