@@ -59,8 +59,8 @@ public class Badge {
         this.description = description;
     }
 
-    public void setEnable() {
-        this.enable = true;
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
     }
 
     public void setLinkImage(String linkImage) {
