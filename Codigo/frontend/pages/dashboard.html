@@ -23,10 +23,12 @@
         crossorigin="anonymous"></script>
     <!-- Fim dos Scripts -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <link rel="stylesheet" href="../assets/css/stylecardbarraroxa.css">
+    
+    
     <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <link rel="stylesheet" href="../assets/css/sidenav.css">
-    <link rel="stylesheet" href="../assets/css/header.css" 
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="/Codigo/frontend/assets/css/stylecardbarraroxa.css">
     <title>Dashboard</title>
 </head>
 
@@ -35,22 +37,22 @@
     <aside>
         <div id="sidebar" class="sidebar d-flex flex-column flex-shrink-0 h-100 " onmouseover="toggleSidebar()"
             onmouseout="toggleSidebar()">
-            <ul class="nav nav-pills nav-flush flex-column  mb-auto text-center ">
+            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center ">
                 <li id="inicio" class="selected">
-                    <a href="./dashboard.html" class="nav-link py-3 rounded-0" aria-current="page"
-                        data-bs-toggle="tooltip" data-bs-placement="right"><i
-                            class="material-icons fa-solid fa-home fa-xl mx-2"></i><span class="txt">Inicio</span></a>
+                    <a href="../pages/dashboard.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-solid fa-home fa-xl mx-2"></i><span
+                            class="txt">Inicio</span></a>
                 </li>
                 <li id="content-hub">
-                    <a href="./contenthub.html" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
+                    <a href="#" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
                         data-bs-placement="right"><i class="material-icons fa-solid fa-book-open fa-xl mx-2"></i><span
                             class="txt">Content
                             Hub</span></a>
                 </li>
                 <li id="trader-space">
-                    <a href="./btcTraderSpace.html" class="nav-link py-3 rounded-0" aria-current="page"
-                        data-bs-toggle="tooltip" data-bs-placement="right"><i
-                            class="material-icons fa-solid fa-chart-line fa-xl mx-2"></i><span class="txt">Trader
+                    <a href="./btcTraderSpace.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-solid fa-chart-line fa-xl mx-2"></i><span
+                            class="txt">Trader
                             Space</span></a>
                 </li>
                 <li id="newsletter">
@@ -60,9 +62,8 @@
                             class="txt">Newsletter</span></a>
                 </li>
                 <li id="journeys">
-                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page"
-                        data-bs-toggle="tooltip" data-bs-placement="right"><i
-                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
+                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
                             class="txt">Journeys</span></a>
                 </li>
             </ul>
@@ -74,8 +75,8 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a href="" class="dropdown-item text-dark">Perfil</a></li>
-                    <li><a href="" class="dropdown-item text-dark">Configuracoes</a></li>
+                    <li><a href="#" class="dropdown-item text-dark">Perfil</a></li>
+                    <li><a href="#" class="dropdown-item text-dark">Configuracoes</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
@@ -86,6 +87,8 @@
 
     </aside>
 
+
+    <main class="flex-grow-1">
     <div class="pushed-content container-fluid h-100 mb-4 mt-3 px-4">
 
         <!-- Código Header -->
@@ -203,6 +206,7 @@
             </div>
         </div>
     </div>
+    </main>
 
     <script src="../assets/js/login.js"></script>
     <script src="../assets/js/getUser.js"></script>
