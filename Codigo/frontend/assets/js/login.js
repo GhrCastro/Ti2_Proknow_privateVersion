@@ -43,6 +43,7 @@ async function login(email, password) {
         "password": password
     }
 
+    console.log(user)
     let response = await fetchData(user);
     console.log(response);
 

@@ -31,6 +31,10 @@ aside{
     border-radius: 10px;
 }
 
+.input-search.text-light{
+    text-shadow:2px 2px 3px rgba(44, 12, 63, 0.911)!important;
+}
+
 .input-search::placeholder {
     color: rgb(255, 253, 252);
     opacity: 75%;
@@ -180,11 +184,6 @@ form:has(.url-not-valid) label[for=url-video]::after {
     color: #f00;
 }
 
-/* Adicione estas regras CSS no final do seu arquivo CSS */
-
-/* ... (seu código existente) ... */
-
-/* Adicione estas regras CSS para tornar a página responsiva */
 
 @media (max-width: 768px) {
     .sidebar {

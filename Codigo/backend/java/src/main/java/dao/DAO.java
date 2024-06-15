@@ -22,11 +22,9 @@ public class DAO {
 	private Jdbi setupJdbi() {
 		if (jdbi == null) {
 
-			String url =
-			"jdbc:postgresql://proknow.postgres.database.azure.com:5432/proknow?user=andreLuiz&password=Proknow123&sslmode=require";
+			String url = "jdbc:postgresql://proknow.postgres.database.azure.com:5432/proknow?user=andreLuiz&password=Proknow123&sslmode=require";
 			String username = "andreLuiz";
 			String password = "Proknow123";
-
 
 			jdbi = Jdbi.create(url, username, password);
 			jdbi.installPlugin(new SqlObjectPlugin());

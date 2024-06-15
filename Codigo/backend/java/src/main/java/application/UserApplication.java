@@ -84,7 +84,6 @@ public class UserApplication {
 
         post("/login", (req, res) -> {
             res.type("application/json");
-
             UserCredentials userCredentials = gson.fromJson(req.body(), UserCredentials.class);
 
             // System.out.println("###" + userCredentials.getEmail());
