@@ -1,0 +1,173 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    background-color: #edeae28e;
+    color: #343a40;
+    background: linear-gradient(to bottom, #dfdee6, #f7eac9);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #85679c1a;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #db9201;
+    opacity: 80%;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn-link {
+    border: transparent; 
+    background-color: white;
+}
+
+.btn-link a:hover {
+    color: hsl(282, 70%, 52%);
+}
+
+nav .btn-primary {
+    background-color: #dd7e12ea;
+    border: none;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(to bottom, #ff9604bb, #dd7e12ea);
+}
+
+#parag {
+    color: #f7f7f7;
+    background-color: transparent;
+}
+#Lead{
+    padding-top: 100px;
+}
+#Lead h2{
+    margin-top: 10px;
+    color: #ad6122;
+}
+
+#buttonO {
+    opacity: 100%;
+}
+
+nav .btn-primary:hover,
+.main-content .btn-primary:hover,
+.modal-footer .btn-primary:hover,
+.button-login .btn:hover {
+    background-color: #dd7e12ea;
+    background: linear-gradient(to bottom, #fbc876, hsla(282, 70%, 52%, 0.397));
+}
+
+.main-content {
+    display:   flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-image: url("/Codigo/frontend/assets/images/icon1.jpg"), url("/Codigo/frontend/assets/images/proknow_Bg_image6.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-size: 50% 100%, 50% 100%;
+    background-position: left, right,top;
+    width: 100%;
+    height: 100vh;
+}
+
+.main-content h2 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #f8930575;
+}
+
+.main-content .lead {
+    font-size: 1.25rem;
+    color: #6c757d;
+    max-width: 600px;
+    margin: 20px 0;
+}
+
+.main-content .btn-primary {
+    background-color: #dd7e12;
+    border: none;
+    font-size: 1rem;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(to bottom, #ff9604bb, #dd7e12ea);
+}
+
+.modal-content {
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.modal-header {
+    background-color: #dd7e12ea;
+    color: #fff;
+    border-bottom: none;
+    background: linear-gradient(to bottom, #ff9604bb, #dd7e12ea);
+}
+
+.modal-header .btn-close {
+    color: #fff;
+    filter: invert(1);
+}
+
+.modal-body label {
+    font-weight: 600;
+    color: #343a40;
+}
+
+.modal-body input.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    transition: border-color 0.3s ease;
+}
+
+.modal-body input.form-control:focus {
+    border-color: #dd7e12ea;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.modal-footer .btn-primary {
+    background-color: #dd7e12ea;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(to bottom, #ff9604bb, #dd7e12ea);
+}
+
+.button-login .btn {
+    background-color: #dd7e12ea;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(to bottom, #ff9604bb, #dd7e12ea);
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+}
+
+.footer p {
+    margin: 0;
+    color: #6c757d;
+}
+
+.footer a {
+    color: #dd7e12ea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #dd7e12ea;
+}

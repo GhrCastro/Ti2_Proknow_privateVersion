@@ -80,12 +80,12 @@
         <header>
             <div class="row">
                 <div class="col-lg-8">
-                    <h2 class="text-secondary m-3">Seja bem vindo, <span id="username" class="fw-bold"></span>!</h2>
+                    <h2 class="text-wrng m-3">Seja bem vindo, <span id="username" class="fw-bold"></span>!</h2>
                 </div>
                 <div class="col-lg-4 d-flex align-items-center justify-content-end g-2">
-                    <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search">
-                        <i class="fas fa-search text-secondary opacity-25"></i>
-                        <input type="text" class="input-search" placeholder="Buscar">
+                    <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search" id="barra_busca">
+                        <i class="fas fa-search text-light opacity-25" id="lupa"></i>
+                        <input type="text" class="input-search text-light" placeholder="Buscar">
                     </div>
                 </div>
             </div>
@@ -98,9 +98,9 @@
                 <div class="row flex-row-reverse px-2">
                     <div class="col-lg-4 col-md-6 col-sm-12 pt-4">
                         <div
-                            class="d-flex align-items-center justify-content-around rounded shadow py-3 px-5 div-search">
-                            <i class="fas fa-search text-secondary opacity-25"></i>
-                            <input type="text" class="input-search bg-light" placeholder="O que está procurando?">
+                            class="d-flex align-items-center justify-content-around rounded-5 shadow py-3 px-5 div-search" id="barra_busca">
+                            <i class="fas fa-search text-light opacity-25" id="lupa"></i>
+                            <input type="text" class="input-search text-light" placeholder="O que está procurando?">
                         </div>
                         <div class="pt-4">
                             <div id="card-videos" class="rounded-3 shadow py-3 px-5"></div>
