@@ -1,9 +1,9 @@
 const buttonConvert = document.querySelector(".button-convert");
 
-let nomeMoeda = "BTC";
+let nomeMoeda = "BRL";
 
 buttonConvert.addEventListener("click", function RequisicaoAPI() {
-  let url = "https://rest.coinapi.io/v1/exchangerate/BRL/" + nomeMoeda;
+  let url = "https://rest.coinapi.io/v1/exchangerate/BTC/" + nomeMoeda;
   const key = "22109CC0-5827-463E-91C2-88046A3C909A"
 
   let valueCoin = document.querySelector(".valorCoin");
