@@ -1,0 +1,49 @@
+<<<<<<< HEAD
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\application\CryptoApplication.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\services\CryptoAPI.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\application\StandardResponse.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\UsuarioDao.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\WalletDao.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\main\Main.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\application\WalletApplication.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\Crypto.java
+=======
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\services\interfaces\BadgesService.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\services\CryptoAPI.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\WalletDao.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\UserCredentials.java
+>>>>>>> f025dcfba5604765b05bade8ee86a5abba255f6e
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\services\UsuarioService.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\services\CryptoService.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\CryptoDao.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\Badge.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\Moeda.java
+<<<<<<< HEAD
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\PKWCoin.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\TransactionDao.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\helpers\DocumentHandlers.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\services\BadgeService.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\application\UserApplication.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\Usuario.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\application\BadgeApplication.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\DAO.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\Wallet.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\BadgeDao.java
+=======
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\helpers\DocumentHandlers.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\Usuario.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\services\interfaces\UsuarioService.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\Wallet.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\BadgeDao.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\application\CryptoApplication.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\application\StandardResponse.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\UsuarioDao.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\main\Main.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\application\WalletApplication.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\Crypto.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\PKWCoin.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\TransactionDao.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\application\UserApplication.java
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\dao\DAO.java
+>>>>>>> f025dcfba5604765b05bade8ee86a5abba255f6e
+C:\Users\André Luiz\Desktop\Cinc. Comp\TI2\TI2-Code\plmg-cc-ti2-2024-1-g21-proknow\Codigo\backend\java\src\main\java\models\Transaction.java
