@@ -13,11 +13,9 @@
       }
 
 body {
-  padding: 0;
-  flex-direction: column;
-  align-items: center;
   background: #fff;
 }
+
 
 
 footer {
@@ -83,7 +81,7 @@ main {
   display: grid;
   width: 100%;
   padding:  calc(var(--gap-size) * 1.5);
-  max-width: 960px;
+  max-width:max-content;
   grid-template-columns: 1fr 1fr;
   grid-gap: var(--gap-size);
 }
@@ -125,8 +123,7 @@ main {
   height: 75px;
 }
 
-#symbol-info {
-}
+
 
 #advanced-chart {
   height: 500px;

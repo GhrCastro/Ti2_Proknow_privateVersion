@@ -50,6 +50,12 @@ aside{
 .input-search{
     background:hsl(283, 77%, 82%);
     border-radius: 10px;
+    
+    
+}
+
+.input-search.text-light{
+    text-shadow:2px 2px 3px rgba(63, 37, 12, 0.911)!important;
 }
 
 .input-search::placeholder {
