@@ -14,3 +14,18 @@
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
+#divResp{
+    margin-bottom: 20px;
+}
+
+#btnSubmit{
+    background-color: #EDB529;
+    border-radius: 10px;
+    border-style:none;
+    padding: 10px;
+}
+
+#btnSubmit:hover{
+    background-color: #bd9532;
+}
