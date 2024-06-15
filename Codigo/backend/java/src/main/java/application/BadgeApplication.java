@@ -47,8 +47,7 @@ public class BadgeApplication {
 
         get("/badges", (req, res) -> {
             res.type("application/json");
-            return gson
-                    .toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(badgeService.getAllBadges())));
+            return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(badgeService.getAllBadges())));
         });
 
         /*
