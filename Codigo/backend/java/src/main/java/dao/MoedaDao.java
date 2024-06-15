@@ -11,11 +11,11 @@ import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 
 public interface MoedaDao {
 
-    @SqlUpdate("CREATE TABLE IF NOT EXISTS moedas (id SERIAL PRIMARY KEY, name VARCHAR(200), amount NUMERIC, symbol VARCHAR(10))")
+    @SqlUpdate("CREATE TABLE IF NOT EXISTS moedas (id SERIAL PRIMARY KEY, name VARCHAR(200), symbol VARCHAR(10))")
     void createTable();
 
-    @SqlUpdate("INSERT INTO moedas (name, amount, symbol) VALUES (:name, :amount, :symbol)")
-    void insertMoeda(@Bind("name") String name, @Bind("amount") BigDecimal amount, @Bind("symbol") String symbol);
+    @SqlUpdate("INSERT INTO moedas (id,name, symbol) VALUES (:id,:name, :symbol)")
+    void insertMoeda(@Bind("id") int id, @Bind("name") String name, @Bind("symbol") String symbol);
 
     @SqlQuery("SELECT * FROM moedas WHERE name = :name")
     @RegisterBeanMapper(Moeda.class)
