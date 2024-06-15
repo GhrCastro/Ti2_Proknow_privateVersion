@@ -8,6 +8,7 @@ import java.util.UUID;
 import dao.MoedaDao;
 import dao.TransactionDao;
 import dao.WalletDao;
+import dao.BadgeDao;
 import dao.DAO;
 import models.*;
 
@@ -16,11 +17,13 @@ public class WalletService {
     private final WalletDao walletDao;
     private final TransactionDao transactionDao;
     private final MoedaDao moedaDao;
+    private final UsuarioService usuarioService;
 
     public WalletService(DAO dao) {
         this.walletDao = dao.getJdbiContext().onDemand(WalletDao.class);
         this.transactionDao = dao.getJdbiContext().onDemand(TransactionDao.class);
         this.moedaDao = dao.getJdbiContext().onDemand(MoedaDao.class);
+        this.usuarioService = new UsuarioService(dao);
         createTableIfNotExists();
     }
 
@@ -40,23 +43,9 @@ public class WalletService {
         walletDao.insertWalletBalance(wallet.getWalletId(), pkw.getName(), BigDecimal.valueOf(150));
     }
 
-
     public Wallet getWalletByUserId(UUID userId) {
-        System.out.println("Entrei aqui\n");
+
         Wallet wallet = walletDao.findWalletByUserId(userId);
-
-        if (wallet != null) {
-            List<CurrencyBalance> balances = walletDao.findWalletBalances(wallet.getOwnerId());
-            wallet.setBalances(balances);
-            List<Transaction> transactions = walletDao.listWalletTransactions(wallet.getOwnerId());
-            wallet.setTransactions(transactions);
-        }
-        return wallet;
-    }
-
-    public Wallet getWalletById(UUID id) {
-        System.out.println("Entrei aqui\n");
-        Wallet wallet = walletDao.findWalletByUserId(id);
 
         if (wallet != null) {
             List<CurrencyBalance> balances = walletDao.findWalletBalances(wallet.getOwnerId());
@@ -73,8 +62,10 @@ public class WalletService {
         if (wallet != null && moeda != null) {
             wallet.deposit(moeda, BigDecimal.valueOf(amount));
             walletDao.updateWalletBalance(wallet.getOwnerId(), currency, wallet.getBalance(currency));
+
             Transaction tx = new Transaction(wallet.getOwnerId(), null, BigDecimal.valueOf(amount), currency);
-            transactionDao.insert(tx.getId(), tx.getToWallet(), tx.getFromWallet(), tx.getCreatedAt(), tx.getAmount(), tx.getCurrency(), tx.isReversed());
+            transactionDao.insert(tx.getId(), tx.getToWallet(), tx.getFromWallet(), tx.getCreatedAt(), tx.getAmount(),
+                    tx.getCurrency(), tx.isReversed());
         } else {
             throw new Exception("Wallet or currency not found");
         }
@@ -87,7 +78,8 @@ public class WalletService {
             wallet.withdraw(moeda, BigDecimal.valueOf(amount));
             walletDao.updateWalletBalance(wallet.getOwnerId(), currency, wallet.getBalance(currency));
             Transaction tx = new Transaction(null, wallet.getOwnerId(), BigDecimal.valueOf(amount), currency);
-            transactionDao.insert(tx.getId(), tx.getToWallet(), tx.getFromWallet(), tx.getCreatedAt(), tx.getAmount(), tx.getCurrency(), tx.isReversed());
+            transactionDao.insert(tx.getId(), tx.getToWallet(), tx.getFromWallet(), tx.getCreatedAt(), tx.getAmount(),
+                    tx.getCurrency(), tx.isReversed());
         } else {
             throw new Exception("Wallet or currency not found");
         }
@@ -108,8 +100,14 @@ public class WalletService {
             toWallet.deposit(moeda, BigDecimal.valueOf(amount));
             walletDao.updateWalletBalance(toWallet.getOwnerId(), currency, toWallet.getBalance(currency));
 
-            Transaction tx = new Transaction(fromWallet.getOwnerId(), toWallet.getOwnerId(), BigDecimal.valueOf(amount), currency);
-            transactionDao.insert(tx.getId(), tx.getToWallet(), tx.getFromWallet(), tx.getCreatedAt(), tx.getAmount(), tx.getCurrency(), tx.isReversed());
+            // Recebe badge transaction
+            usuarioService.addUserBadge(fromUserId, UUID.fromString("0c64e08b-0c64-4a7d-b2c2-989b59e5f9e6"));
+
+            Transaction tx = new Transaction(fromWallet.getOwnerId(), toWallet.getOwnerId(), BigDecimal.valueOf(amount),
+                    currency);
+            transactionDao.insert(tx.getId(), tx.getToWallet(), tx.getFromWallet(), tx.getCreatedAt(), tx.getAmount(),
+                    tx.getCurrency(), tx.isReversed());
+
         } catch (Exception e) {
             fromWallet.deposit(moeda, BigDecimal.valueOf(amount));
             walletDao.updateWalletBalance(fromWallet.getOwnerId(), currency, fromWallet.getBalance(currency));

@@ -27,7 +27,8 @@ public class Main {
 
 		port(4567);
 
-		DAO dao = new DAO();
+		DAO dao = new DAO(); // Conexão com Banco de Dados
+
 		UsuarioService usuarioService = new UsuarioService(dao);
 		CryptoService cryptoService = new CryptoService(dao);
 		BadgeService badgeService = new BadgeService(dao);

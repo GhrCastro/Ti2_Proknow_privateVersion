@@ -2,6 +2,7 @@ package application;
 
 import static spark.Spark.*;
 
+import java.util.List;
 import java.util.UUID;
 import com.google.gson.Gson;
 
@@ -18,8 +19,6 @@ public class BadgeApplication {
     }
 
     public void initializeRoutes() {
-
-        
 
         post("/badges", (req, res) -> {
             res.type("application/json");
@@ -81,5 +80,34 @@ public class BadgeApplication {
                 return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Badge não encontrada."));
             }
         });
+
+        // MEXER AQUI
+        // User Badge update
+        // patch("/badges/update-badge/:id", (req, res) -> { // post
+        //     res.type("application/json");
+
+        //     UUID id = UUID.fromString(req.params(":id"));
+        //     // String name = req.params(":badgeName");
+
+        //     // Encontrar a badge que se deseja fazer update pelo seu ID
+        //     Badge badgeToUpdate = badgeService.getBadgeById(id);            
+
+        //     if (badgeToUpdate == null) {
+        //         res.status(404);
+        //         return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Badge não encontrada."));            }
+                
+        //     try {
+        //         // Atualizar o campo 'enable' da badge
+        //         badgeToUpdate.setEnable();                
+                                
+
+        //         // badgeService.updateBadge(id, name);
+        //         return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Badge atualizado com Sucesso!"));
+        //     } catch (Exception e) {
+        //         // TODO: handle exception
+        //         res.status(400);
+        //         return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao aatualizar Badge do usuário."));
+        //     }
+        // });
     }
 }
