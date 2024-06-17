@@ -14,8 +14,10 @@ public interface MoedaDao {
     @SqlUpdate("CREATE TABLE IF NOT EXISTS moedas (id SERIAL PRIMARY KEY, name VARCHAR(200), symbol VARCHAR(10))")
     void createTable();
 
-    @SqlUpdate("INSERT INTO moedas (id,name, symbol) VALUES (:id,:name, :symbol)")
-    void insertMoeda(@Bind("id") int id, @Bind("name") String name, @Bind("symbol") String symbol);
+    //se insert moedas nao funcionar, altere o construtor Classe moeda
+
+    @SqlUpdate("INSERT INTO moedas (name, symbol) VALUES (:name, :symbol)")
+    void insertMoeda(@Bind("name") String name, @Bind("symbol") String symbol);
 
     @SqlQuery("SELECT * FROM moedas WHERE name = :name")
     @RegisterBeanMapper(Moeda.class)
@@ -29,3 +31,8 @@ public interface MoedaDao {
     @RegisterBeanMapper(Moeda.class)
     List<Moeda> listMoedas();
 }
+
+
+/*for each(listMoedas){
+    inserWalletBallances(getWalletId(), listMoedas.currency, 0);
+}*/

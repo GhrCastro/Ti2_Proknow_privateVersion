@@ -62,7 +62,7 @@ public class UserApplication {
                 usuarioService.addUserBadge(usuario.getId(), UUID.fromString("c081aab6-f162-49b4-b5b5-f5ba9b8e9214"));
 
                 // rewardService.rewardUser(usuario.getId(), "REGISTER");
-                
+
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuario)));
             } catch (IllegalArgumentException e) {
                 res.status(400);
@@ -166,5 +166,9 @@ public class UserApplication {
                         .toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao vincular Badge ao usuário." + e));
             }
         });
+
+        // moeda-wallet
+        
+
     }
 }

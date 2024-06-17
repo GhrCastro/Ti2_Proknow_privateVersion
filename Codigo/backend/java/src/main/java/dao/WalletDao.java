@@ -23,7 +23,8 @@ public interface WalletDao {
     void insertWallet(@Bind("id") UUID id, @Bind("userId") UUID userId);
 
     @SqlUpdate("INSERT INTO wallet_balances (wallet_id, currency, amount) VALUES (:walletId, :currency, :amount)")
-    void insertWalletBalance(@Bind("walletId") UUID walletId, @Bind("currency") String currency, @Bind("amount") BigDecimal amount);
+    void insertWalletBalance(@Bind("walletId") UUID walletId, @Bind("currency") String currency,
+            @Bind("amount") BigDecimal amount);
 
     @SqlQuery("SELECT id FROM wallets WHERE user_id = :userId")
     @RegisterBeanMapper(Wallet.class)
@@ -38,9 +39,11 @@ public interface WalletDao {
     List<CurrencyBalance> findWalletBalances(@Bind("walletId") UUID walletId);
 
     @SqlUpdate("UPDATE wallet_balances SET amount = :amount WHERE wallet_id = :walletId AND currency = :currency")
-    void updateWalletBalance(@Bind("walletId") UUID walletId, @Bind("currency") String currency, @Bind("amount") BigDecimal amount);
+    void updateWalletBalance(@Bind("walletId") UUID walletId, @Bind("currency") String currency,
+            @Bind("amount") BigDecimal amount);
 
     @SqlQuery("SELECT * FROM transactions WHERE from_wallet = :walletId OR to_wallet = :walletId")
     @RegisterBeanMapper(Transaction.class)
     List<Transaction> listWalletTransactions(@Bind("walletId") UUID walletId);
+
 }
