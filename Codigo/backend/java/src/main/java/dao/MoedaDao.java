@@ -31,3 +31,8 @@ public interface MoedaDao {
     @RegisterBeanMapper(Moeda.class)
     List<Moeda> listMoedas();
 }
+
+
+/*for each(listMoedas){
+    inserWalletBallances(getWalletId(), listMoedas.currency, 0);
+}*/

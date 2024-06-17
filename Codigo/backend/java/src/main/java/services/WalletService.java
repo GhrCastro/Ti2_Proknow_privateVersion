@@ -33,12 +33,36 @@ public class WalletService {
     }
 
     public void createWallet(UUID ownerId) {
+
+        // ESTA FUNCAO NAO ESTA SENDO CHAMADA EM LUGAR ALGUM
+        // USUARIOSERVICE ESTÁ INJETANDO DIRETAMENTE OS DADOS
+
         Wallet wallet = new Wallet(ownerId);
         Moeda pkw = new Moeda("PKW");
 
         wallet.deposit(pkw, BigDecimal.valueOf(150));
         walletDao.insertWallet(wallet.getWalletId(), ownerId);
         walletDao.insertWalletBalance(wallet.getWalletId(), pkw.getName(), BigDecimal.valueOf(150));
+
+        // ===========================
+        // Wallet_balances MOEDA
+        // ===========================
+
+        Moeda btc = new Moeda("BTC");
+        wallet.deposit(btc, BigDecimal.valueOf(0));
+        walletDao.insertWalletBalance(wallet.getWalletId(), btc.getName(), BigDecimal.valueOf(0));
+
+        Moeda eth = new Moeda("ETH");
+        wallet.deposit(eth, BigDecimal.valueOf(0));
+        walletDao.insertWalletBalance(wallet.getWalletId(), eth.getName(), BigDecimal.valueOf(0));
+
+        Moeda usd = new Moeda("USD");
+        wallet.deposit(usd, BigDecimal.valueOf(0));
+        walletDao.insertWalletBalance(wallet.getWalletId(), usd.getName(), BigDecimal.valueOf(0));
+
+        Moeda brl = new Moeda("BRL");
+        wallet.deposit(brl, BigDecimal.valueOf(0));
+        walletDao.insertWalletBalance(wallet.getWalletId(), brl.getName(), BigDecimal.valueOf(0));
     }
 
     public Wallet getWalletByUserId(UUID userId) {
@@ -88,9 +112,11 @@ public class WalletService {
             walletDao.updateWalletBalance(ownerWallet.getWalletId(), currency, ownerWallet.getBalance(currency));
 
             recipientWallet.deposit(moeda, BigDecimal.valueOf(amount));
-            walletDao.updateWalletBalance(recipientWallet.getWalletId(), currency, recipientWallet.getBalance(currency));
+            walletDao.updateWalletBalance(recipientWallet.getWalletId(), currency,
+                    recipientWallet.getBalance(currency));
 
-            Transaction tx = new Transaction(ownerWallet.getOwnerId(), recipientWallet.getWalletId(), BigDecimal.valueOf(amount), currency);
+            Transaction tx = new Transaction(ownerWallet.getOwnerId(), recipientWallet.getWalletId(),
+                    BigDecimal.valueOf(amount), currency);
             transactionDao.insert(tx.getId(), tx.getFromWallet(), tx.getToWallet(), tx.getCreatedAt(), tx.getAmount(),
                     tx.getCurrency(), tx.isReversed());
 
@@ -104,7 +130,8 @@ public class WalletService {
             if (ownerWallet != null && moeda != null) {
                 try {
                     ownerWallet.deposit(moeda, BigDecimal.valueOf(amount));
-                    walletDao.updateWalletBalance(ownerWallet.getWalletId(), currency, ownerWallet.getBalance(currency));
+                    walletDao.updateWalletBalance(ownerWallet.getWalletId(), currency,
+                            ownerWallet.getBalance(currency));
                 } catch (Exception rollbackException) {
                     System.err.println("Error during rollback: " + rollbackException.getMessage());
                     rollbackException.printStackTrace();
@@ -157,4 +184,5 @@ public class WalletService {
             throw new Exception("Erro ao realizar transferência: " + e.getMessage());
         }
     }
+
 }
