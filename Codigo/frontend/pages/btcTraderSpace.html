@@ -22,7 +22,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-
+    <link rel="stylesheet" href="../assets/css/btcTraderSpace.css">
     <link rel="stylesheet" href="../assets/css/sidenav.css">
     <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <link rel="stylesheet" href="../assets/css/header.css">
@@ -41,12 +41,12 @@
             onmouseout="toggleSidebar()">
             <ul class="nav nav-pills nav-flush flex-column mb-auto text-center ">
                 <li id="inicio" class="selected">
-                    <a href="/Codigo/frontend/pages/dashboard.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
+                    <a href="../pages/dashboard.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
                         data-bs-placement="right"><i class="material-icons fa-solid fa-home fa-xl mx-2"></i><span
                             class="txt">Inicio</span></a>
                 </li>
                 <li id="content-hub">
-                    <a href="#" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
+                    <a href="../pages/contenthub.html" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
                         data-bs-placement="right"><i class="material-icons fa-solid fa-book-open fa-xl mx-2"></i><span
                             class="txt">Content
                             Hub</span></a>
@@ -90,18 +90,16 @@
     </aside>
 
     <main class="flex-grow-1">
-        
         <header>
             <div class="row">
                 <div class="col-lg-8">
                     <h2 class="text-wrng m-3">Seja bem vindo, <span id="username" class="fw-bold"></span>!</h2>
                 </div>
-                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
+                <div class="col-lg-4 d-flex align-items-center justify-content-end ">
                     <div class="mx-5">
-                        <button class="wallet-button" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                            <img src="../assets/images/app-wallet-passes.png">
-                        </button>
+                            <button class="wallet-button btn " type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-wallet"></i></button>
+                        
 
                         <div class="offcanvas offcanvas-end wallet-modal" tabindex="-1" id="offcanvasRight"
                             aria-labelledby="offcanvasRightLabel">
@@ -128,13 +126,15 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search" id="barra_busca">
-                        <i class="fas fa-search text-secondary opacity-25" id="lupa"></i>
-                        <input type="text" class="input-search" placeholder="Buscar">
-                    </div>
+                        <div class="d-flex rounded-5 shadow py-3 px-4 mr-5 div-search" id="barra_busca">
+                            <i class="fas fa-search text-light opacity-75" id="lupa"></i>
+                            <input type="text" class="input-search text-light" placeholder="Buscar">
+                        </div>
                 </div>
             </div>
+            <hr class="style12">
         </header>
+        
     
     
 
@@ -154,7 +154,27 @@
                         </script>
                 </div>
             </section>
-
+            <section id="technical-analysis">Technical Analysis
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript"
+                        src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
+                            {
+                                "interval": "15m",
+                                    "width": "100%",
+                                        "isTransparent": true,
+                                            "height": "100%",
+                                                "symbol": "NASDAQ:AAPL",
+                                                    "showIntervalTabs": true,
+                                                        "displayMode": "single",
+                                                            "locale": "en",
+                                                                "colorTheme": "light"
+                            }
+                        </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </section>
 
 
 
@@ -184,48 +204,6 @@
                 <!-- TradingView Widget END -->
             </section>
 
-            <section id="fundamental-data">Fundamental Data
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript"
-                        src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
-                            {
-                                "colorTheme": "light",
-                                    "isTransparent": true,
-                                        "largeChartUrl": "",
-                                            "displayMode": "adaptive",
-                                                "width": "100%",
-                                                    "height": "100%",
-                                                        "symbol": "NASDAQ:AAPL",
-                                                            "locale": "en"
-                            }
-                        </script>
-                </div>
-                <!-- TradingView Widget END -->
-            </section>
-
-            <section id="technical-analysis">Technical Analysis
-                <!-- TradingView Widget BEGIN -->
-                <div class="tradingview-widget-container">
-                    <div class="tradingview-widget-container__widget"></div>
-                    <script type="text/javascript"
-                        src="https://s3.tradingview.com/external-embedding/embed-widget-technical-analysis.js" async>
-                            {
-                                "interval": "15m",
-                                    "width": "100%",
-                                        "isTransparent": true,
-                                            "height": "100%",
-                                                "symbol": "NASDAQ:AAPL",
-                                                    "showIntervalTabs": true,
-                                                        "displayMode": "single",
-                                                            "locale": "en",
-                                                                "colorTheme": "light"
-                            }
-                        </script>
-                </div>
-                <!-- TradingView Widget END -->
-            </section>
             <section id="top-stories">Top Stories
                 <!-- TradingView Widget BEGIN -->
                 <div class="tradingview-widget-container">
@@ -240,6 +218,27 @@
                                                 "displayMode": "adaptive",
                                                     "width": "100%",
                                                         "height": "100%",
+                                                            "locale": "en"
+                            }
+                        </script>
+                </div>
+                <!-- TradingView Widget END -->
+            </section>
+
+            <section id="fundamental-data">Fundamental Data
+                <!-- TradingView Widget BEGIN -->
+                <div class="tradingview-widget-container">
+                    <div class="tradingview-widget-container__widget"></div>
+                    <script type="text/javascript"
+                        src="https://s3.tradingview.com/external-embedding/embed-widget-financials.js" async>
+                            {
+                                "colorTheme": "light",
+                                    "isTransparent": true,
+                                        "largeChartUrl": "",
+                                            "displayMode": "adaptive",
+                                                "width": "100%",
+                                                    "height": "100%",
+                                                        "symbol": "NASDAQ:AAPL",
                                                             "locale": "en"
                             }
                         </script>
