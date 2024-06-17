@@ -7,6 +7,7 @@ import java.util.UUID;
 import dao.DAO;
 import dao.UsuarioDao;
 import dao.WalletDao;
+import models.CurrencyBalance;
 import models.Moeda;
 import models.UserBadge;
 import models.Usuario;
@@ -126,6 +127,20 @@ public class UsuarioService {
             return badges;
         } catch (Exception e) {
             System.err.println("Error fetching badges: " + e.getMessage());
+            e.printStackTrace(); // Mantém o stack trace original
+            throw new Exception("Erro ao gerar lista de badges", e);
+        }
+    }
+
+    // retorna todas as moedas que o usuario possui
+    public List<CurrencyBalance> getAllUserMoedas(UUID user_id) throws Exception {
+        try {
+            System.out.println("Fetching coins for user ID: " + user_id);
+            List<CurrencyBalance> moedas = walletDao.findWalletBalances(user_id);
+            System.out.println("Badges fetched successfully: " + moedas);
+            return moedas;
+        } catch (Exception e) {
+            System.err.println("Error fetching coins: " + e.getMessage());
             e.printStackTrace(); // Mantém o stack trace original
             throw new Exception("Erro ao gerar lista de badges", e);
         }

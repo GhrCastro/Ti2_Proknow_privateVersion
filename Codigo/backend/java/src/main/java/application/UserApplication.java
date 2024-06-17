@@ -163,12 +163,24 @@ public class UserApplication {
                 e.printStackTrace();
                 res.status(400);
                 return gson
-                        .toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao vincular Badge ao usuário." + e));
+                        .toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao receber badge." + e));
             }
         });
 
         // moeda-wallet
-        
+        get("/wallets/:id", (req, res) -> { // id:usuario
+            res.type("application/json");
+            UUID user_id = UUID.fromString(req.params(":id"));
 
+            try {
+               return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuarioService.getAllUserMoedas(user_id))));
+            } catch (Throwable e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                res.status(400);
+                return gson
+                        .toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao receber moeda" + e));
+            }
+        });
     }
 }
