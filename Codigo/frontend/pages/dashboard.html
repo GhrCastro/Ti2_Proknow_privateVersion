@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <link rel="stylesheet" href="../assets/css/sidenav.css">
     <link rel="stylesheet" href="../assets/css/header.css">
-    <link rel="stylesheet" href="/Codigo/frontend/assets/css/stylecardbarraroxa.css">
+    <link rel="stylesheet" href="../assets/css/stylecardbarraroxa.css">
     <title>Dashboard</title>
 </head>
 
@@ -44,7 +44,7 @@
                             class="txt">Inicio</span></a>
                 </li>
                 <li id="content-hub">
-                    <a href="#" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
+                    <a href="./contenthub.html" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
                         data-bs-placement="right"><i class="material-icons fa-solid fa-book-open fa-xl mx-2"></i><span
                             class="txt">Content
                             Hub</span></a>
@@ -65,6 +65,12 @@
                     <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page" data-bs-toggle="tooltip"
                         data-bs-placement="right"><i class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
                             class="txt">Journeys</span></a>
+                </li>
+                <li id="journeys">
+                    <a href="./graphicsAnalyse.html" class="nav-link py-3  rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
+                            class="txt">AI Analyse</span></a>
                 </li>
             </ul>
             <div class="dropdown"><a href="#"
@@ -99,10 +105,8 @@
                 </div>
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
                     <div class="mx-5">
-                        <button class="wallet-button" type="button" data-bs-toggle="offcanvas"
-                            data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-                            <img src="../assets/images/app-wallet-passes.png">
-                        </button>
+                        <button class="wallet-button btn " type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-wallet"></i></button>
 
                         <div class="offcanvas offcanvas-end wallet-modal" tabindex="-1" id="offcanvasRight"
                             aria-labelledby="offcanvasRightLabel">
@@ -129,12 +133,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search">
-                        <i class="fas fa-search text-secondary opacity-25"></i>
-                        <input type="text" class="input-search" placeholder="Buscar">
+                    <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search" id="barra_busca">
+                        <i class="fas fa-search text-light opacity-50"></i>
+                        <input type="text" class="input-search text-light" placeholder="Buscar" >
                     </div>
                 </div>
             </div>
+            <hr class="style12">
         </header>
         <!-- --------------- -->
 
@@ -206,6 +211,7 @@
             </div>
         </div>
     </div>
+
     </main>
 
     <script src="../assets/js/login.js"></script>

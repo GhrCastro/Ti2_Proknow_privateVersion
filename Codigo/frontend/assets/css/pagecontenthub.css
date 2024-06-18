@@ -31,6 +31,10 @@ aside{
     border-radius: 10px;
 }
 
+.input-search.text-light{
+    text-shadow:2px 2px 3px rgba(44, 12, 63, 0.911)!important;
+}
+
 .input-search::placeholder {
     color: rgb(255, 253, 252);
     opacity: 75%;
@@ -97,6 +101,14 @@ div#card-videos {
     max-height: 500px;
     overflow: auto;
     min-height: 0;
+}
+
+.rounded.div-content-video{
+    border-radius: 13px!important;
+}
+
+.rounded-3.shadow.py-3.px-5{
+    border-radius: 16px!important;
 }
 
 div#comments::-webkit-scrollbar,
@@ -180,11 +192,6 @@ form:has(.url-not-valid) label[for=url-video]::after {
     color: #f00;
 }
 
-/* Adicione estas regras CSS no final do seu arquivo CSS */
-
-/* ... (seu código existente) ... */
-
-/* Adicione estas regras CSS para tornar a página responsiva */
 
 @media (max-width: 768px) {
     .sidebar {
@@ -230,4 +237,160 @@ form:has(.url-not-valid) label[for=url-video]::after {
     }
 }
 
+.card.border-0{
+    border-radius: 16px!important;
+    background: linear-gradient(to top, #c79fd888, #ede1cb);
+}
 
+.d-flex.flex-row.align-items-center{
+   color:  #ff9604bb;
+}
+
+.fas.fa-reply.mx-2.text-purple-dark{
+    color: #8209d2;
+}
+
+
+.fw-bold.text-purple-dark{
+    color: #8209d2;
+}
+
+.like-comment.far.fa-heart.fs-3{
+    color:#8209d2!important;
+}
+
+span .mx-2{
+    color:#8209d2!important;
+}
+                                
+#send-comment{
+    color: #8209d2!important;
+    text-shadow: 2px 2px 3px rgba(131, 83, 179, 0.781);
+    background: linear-gradient(to bottom, #ff9604bb, #dd7e12ea);
+}
+
+#send-comment:hover{
+    background: linear-gradient(to bottom, #fbc876, hsla(282, 70%, 52%, 0.397));
+}
+
+div p{
+    color: rgb(147, 75, 4);
+    opacity: 75%;
+    font-size:larger;
+}
+
+.w-100{
+    color: #ae4ffc!important;
+    background-color: #f8f1e5;
+    border: #4252E1!important;
+    border-radius: 20px!important;
+}
+
+#text-area-comment{
+    color: #ae4ffc!important;
+    background:linear-gradient(to bottom, #ffecd6e5,#eec9fac4)!important;
+    border-radius: 20px!important;
+}
+
+#comment-on-the-video{
+    background:linear-gradient(to top, #ffecd6e5,#f3ddfac4)!important;
+    border-radius: 25px!important;
+}
+
+.fa-youtube{
+    color: #ff8d60;
+}
+
+.name-video{
+    color: #fd4a03!important;
+    text-shadow: 2px 2px 3px rgba(173, 114, 75, 0.753);
+}
+
+.card{
+    border-radius: 20px!important;
+    
+}
+
+#iframe-videos {
+    width: 100%;
+    border-radius: 8px;
+}
+.confirm-section {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.confirm-section p {
+    margin-left: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.checkbox {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: all 0.3s;
+}
+
+.checkbox:checked {
+    background-color: #8209d2;
+    border-color: #8209d2;
+}
+
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #dee2e6;
+}
+
+.footer p {
+    margin: 0;
+    color: #6c757d;
+}
+
+.footer #footer-link:hover{
+    color: #b52edf;
+}
+
+.footer a {
+    color: #dd7e12ea;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer a:hover {
+    color: #dd7e12ea;
+}
+
+span.text-muted.px-2{
+    color: #d23cff!important;
+}
+
+input#btncheck1.btn-check{
+    color:#4252E1!important;
+}
+
+label.btn.btn-outline-primary{
+    border:transparent;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(to bottom, #ff9604bb, #dd7e12ea);
+}
+
+label.btn.btn-outline-primary:hover{
+    border:transparent;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(to bottom, #fbc876, hsla(282, 70%, 52%, 0.397));
+}
+
+.card{
+    background: linear-gradient(to right, #e1aaf888, #ede1cb);
+}

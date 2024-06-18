@@ -10,14 +10,19 @@
 }
 
 .wallet-button{
-    border: none;
-    background-color: white;
-    width: 10px;
-    margin-right: 10px;
+    border: none!important;
+    height: 6vh;
+    width: 4vw;     
 }
 
-.wallet-button img{
-    width: 35px;
+.fa-wallet{
+    color: hsl(282, 83%, 65%);
+    font-size: 39px;
+}
+
+.fa-wallet:hover{
+    color: #f18c17;
+    font-size: 46px;
 }
 
 .div-valor{

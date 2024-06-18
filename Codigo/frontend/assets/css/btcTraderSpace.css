@@ -8,16 +8,7 @@
   color: #000;
 }
 
-      * {
-          box-sizing: border-box;
-      }
 
-body {
-  padding: 0;
-  flex-direction: column;
-  align-items: center;
-  background: #fff;
-}
 
 
 footer {
@@ -28,41 +19,6 @@ footer {
   gap: 12px;
 }
 
-
-
-header #row{
-  width: 100%;
-}
-
-header {
-  width: 90%;
-  justify-content: space-between;
-  padding: 0 var(--gap-size);
-  gap: calc(var(--gap-size) * 2);
-  flex-direction: row;
-}
-
-header #site-logo {
-  font-weight: 590;
-  font-size: 32px;
-  padding: 16px;
-  background: var(
-    --18-promo-gradient-02,
-    linear-gradient(90deg, #00bce5 0%, #2962ff 100%)
-  );
-  -webkit-text-fill-color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-}
-
-header input[type='search'] {
-  padding: 10px;
-  width: 100%;
-  height: 32px;
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-}
 
 footer {
   flex-direction: column;
@@ -83,26 +39,96 @@ main {
   display: grid;
   width: 100%;
   padding:  calc(var(--gap-size) * 1.5);
-  max-width: 960px;
+  max-width:inherit;
   grid-template-columns: 1fr 1fr;
   grid-gap: var(--gap-size);
+
+}
+
+header{
+  width: 100%!important;
+  grid-column:span 7;
+}
+
+
+
+#advanced-chart{
+  grid-column: span 7;
+  border-radius: 20px!important;
+}
+
+.tradingview-widget-container{
+  border-radius: 20px!important;
+}
+
+#symbol-info{
+  grid-column: span 1;
+  border-radius: 20px!important;
 }
 
 .span-full-grid,
-#symbol-info,
-#advanced-chart,
 #company-profile,
 #fundamental-data {
-  grid-column: span 2;
+  grid-column: span 7;
+  height: 90vh!important;
+  border-radius: 20px!important;
 }
 
-      .span-one-column,
-      #technical-analysis,
+#technical-analysis{
+  grid-column: span 6;
+  height: 56vh!important;
+  border-radius: 20px!important;
+}
+
+.span-one-column,
 #top-stories,
 #powered-by-tv {
-          grid-column: span 1;
-      }
+  grid-column: span 7;
+  height:68vh!important ;
+  border-radius: 20px!important;
+}
 
+@media(max-width:1496px ){
+
+  #advanced-chart{
+    grid-column: span 7;
+    border-radius: 20px!important;
+  }
+  
+  .tradingview-widget-container{
+    border-radius: 20px!important;
+  }
+  
+  #symbol-info{
+    grid-column: span 1;
+    border-radius: 20px!important;
+    height: 60vh!important;
+  }
+
+  .span-full-grid,
+  #company-profile,
+  #fundamental-data {
+    grid-column: span 7;
+    height: 110vh!important;
+    border-radius: 20px!important;
+  }
+  
+  #technical-analysis{
+    grid-column: span 6;
+    height: 60vh!important;
+    border-radius: 20px!important;
+  }
+  
+  .span-one-column,
+  #top-stories,
+  #powered-by-tv {
+    grid-column: span 7;
+    height: 80vh!important;
+    border-radius: 20px!important;
+  }
+
+
+}
 .skeleton,
 #ticker-tape,
 #symbol-info,
@@ -125,8 +151,7 @@ main {
   height: 75px;
 }
 
-#symbol-info {
-}
+
 
 #advanced-chart {
   height: 500px;

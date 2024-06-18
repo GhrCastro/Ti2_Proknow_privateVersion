@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fontes de Texto -->
+    <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400&display=swap">
+    <!-- Fim das fontes -->
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Fim do Bootstrap -->
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- Fim dos Scripts -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
+    <link rel="stylesheet" href="../assets/css/sidenav.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/aiPage.css">
+    <title>PKW A.I</title>
+</head>
+
+<body>
+    <aside>
+        <div id="sidebar" class="sidebar d-flex flex-column flex-shrink-0 h-100 " onmouseover="toggleSidebar()"
+            onmouseout="toggleSidebar()">
+            <ul class="nav nav-pills nav-flush flex-column  mb-auto text-center ">
+                <li id="inicio" class="selected">
+                    <a href="./dashboard.html" class="nav-link py-3 rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-solid fa-home fa-xl mx-2"></i><span class="txt">Inicio</span></a>
+                </li>
+                <li id="content-hub">
+                    <a href="./contenthub.html" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
+                        data-bs-placement="right"><i class="material-icons fa-solid fa-book-open fa-xl mx-2"></i><span
+                            class="txt">Content
+                            Hub</span></a>
+                </li>
+                <li id="trader-space">
+                    <a href="./btcTraderSpace.html" class="nav-link py-3 rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-solid fa-chart-line fa-xl mx-2"></i><span class="txt">Trader
+                            Space</span></a>
+                </li>
+                <li id="newsletter">
+                    <a href="./newsletter.html" class="nav-link py-3 rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-regular fa-newspaper fa-xl mx-2"></i><span
+                            class="txt">Newsletter</span></a>
+                </li>
+                <li id="journeys">
+                    <a href="./journeys.html" class="nav-link py-3  rounded-0" aria-current="page"
+                        data-bs-toggle="tooltip" data-bs-placement="right"><i
+                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
+                            class="txt">Journeys</span></a>
+                </li>
+            </ul>
+            <div class="dropdown"><a href="#"
+                    class="d-flex align-items-center justify-content-center p-3 link-body-emphasis text-decoration-none dropdown-toggle"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="thumbnail-profile">
+                        <img src="../assets/images/avatar.png">
+                    </div>
+                </a>
+                <ul class="dropdown-menu text-small">
+                    <li><a href="" class="dropdown-item text-dark">Perfil</a></li>
+                    <li><a href="" class="dropdown-item text-dark">Configuracoes</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a href="#" class="dropdown-item text-dark" onclick="logout()">Sair</a></li>
+                </ul>
+            </div>
+        </div>
+
+
+    </aside>
+
+    <div class="pushed-content container-fluid h-100 mb-4 mt-3 px-4">
+
+        <!-- Código Header -->
+        <header class="mb-3">
+            <div class="row justify-content-between">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
+                    <h2 id="welcomeUser"></h2>
+                </div>
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
+                    <div class="mx-5">
+                        <button class="wallet-button btn " type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-wallet"></i></button>
+
+                        <div class="offcanvas offcanvas-end wallet-modal" tabindex="-1" id="offcanvasRight"
+                            aria-labelledby="offcanvasRightLabel">
+                            <div class="offcanvas-header ">
+                                <h3 class="offcanvas-title" id="offcanvasRightLabel">Carteira</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="offcanvas-body wallet-modal-body">
+                                <div class="div-valor">
+                                    <button id="hidden-balance">
+                                        <img id="hidden-icon" src="../assets/images/disable-visualy-wallet.png">
+                                    </button>
+                                    <h4 id="balance">R$ 1920.89</h4>
+                                </div>
+                                <div class="d-flex div-button-wallet">
+                                    <button>
+                                        Depositar
+                                    </button>
+                                    <button>
+                                        Resgatar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search" id="barra_busca">
+                        <i class="fas fa-search text-light opacity-50"></i>
+                        <input type="text" class="input-search text-light" placeholder="Buscar">
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div id="div-content">
+            <div class="mb-3">
+                <h4>Anexe a imagem de seu Gráfico aqui!</h4>
+                <input class="form-control" type="file" id="formFile">
+            </div>
+
+            <div class="mb-3">
+                <img id="preview" src="#" alt="Preview da Imagem" />
+            </div>
+
+            <div class="mb-3" style="margin-top: 80px;">
+                <button type="button" id="btnSubmit" >Analisar</button>
+            </div>
+
+            <div id="divResp">
+                <h4 style="padding-right: 10px;">Resposta da Analise:</h4>
+                <input type="text" id="respInput" disabled placeholder="">
+                <p id="descResp"></p>
+            </div>
+
+        </div>
+</body>
+
+<script src="../assets/js/apiAI.js"></script>
+<script src="../assets/js/component/barra-roxa.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<script src="../assets/js/component/todolist-component.js"></script>
+<script src="../assets/js/component/grafico-linhas-desp.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+    integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+    crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/113fc1b747.js" crossorigin="anonymous"></script>

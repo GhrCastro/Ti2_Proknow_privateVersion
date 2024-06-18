@@ -37,12 +37,33 @@ public class UsuarioService {
                 walletDao.insertWallet(wallet.getWalletId(), usuario.getId());
                 walletDao.insertWalletBalance(wallet.getWalletId(), pkw.getName(), BigDecimal.valueOf(150));
 
+                // ===========================
+                // Wallet_balances MOEDA
+                // ===========================
+
+                Moeda btc = new Moeda("BTC");
+                wallet.deposit(btc, BigDecimal.valueOf(0));
+                walletDao.insertWalletBalance(wallet.getWalletId(), btc.getName(), BigDecimal.valueOf(0));
+
+                Moeda eth = new Moeda("ETH");
+                wallet.deposit(eth, BigDecimal.valueOf(0));
+                walletDao.insertWalletBalance(wallet.getWalletId(), eth.getName(), BigDecimal.valueOf(0));
+
+                Moeda usd = new Moeda("USD");
+                wallet.deposit(usd, BigDecimal.valueOf(0));
+                walletDao.insertWalletBalance(wallet.getWalletId(), usd.getName(), BigDecimal.valueOf(0));
+
+                Moeda brl = new Moeda("BRL");
+                wallet.deposit(brl, BigDecimal.valueOf(0));
+                walletDao.insertWalletBalance(wallet.getWalletId(), brl.getName(), BigDecimal.valueOf(0));
+
                 usuarioDao.insert(usuario.getId(), usuario.getName(), usuario.getCpf(), usuario.getEmail(),
                         usuario.getSalary(), usuario.getCellNumber(), usuario.getPassword(), usuario.getExpenses(),
                         usuario.getRegDate(), wallet.getWalletId());
 
                 // Recebe badge cadastro
-                //usuarioDao.insertUserBadge(usuario.getId(), UUID.fromString("c081aab6-f162-49b4-b5b5-f5ba9b8e9214"));
+                // usuarioDao.insertUserBadge(usuario.getId(),
+                // UUID.fromString("c081aab6-f162-49b4-b5b5-f5ba9b8e9214"));
 
             } catch (Exception e) {
                 System.err.println("Error creating user and wallet: " + e.getMessage());
