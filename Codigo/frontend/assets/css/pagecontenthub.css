@@ -274,7 +274,7 @@ span .mx-2{
 }
 
 div p{
-    color: rgb(124, 6, 221);
+    color: rgb(147, 75, 4);
     opacity: 75%;
     font-size:larger;
 }
@@ -294,6 +294,7 @@ div p{
 
 #comment-on-the-video{
     background:linear-gradient(to top, #ffecd6e5,#f3ddfac4)!important;
+    border-radius: 25px!important;
 }
 
 .fa-youtube{
@@ -307,9 +308,40 @@ div p{
 
 .card{
     border-radius: 20px!important;
+    
 }
 
+#iframe-videos {
+    width: 100%;
+    border-radius: 8px;
+}
+.confirm-section {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.confirm-section p {
+    margin-left: 10px;
+    margin-bottom: 0;
+    font-size: 16px;
+}
+
+.checkbox {
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    transition: all 0.3s;
+}
+
+.checkbox:checked {
+    background-color: #8209d2;
+    border-color: #8209d2;
+}
 
 .footer {
     background-color: #f8f9fa;
@@ -335,4 +367,30 @@ div p{
 
 .footer a:hover {
     color: #dd7e12ea;
+}
+
+span.text-muted.px-2{
+    color: #d23cff!important;
+}
+
+input#btncheck1.btn-check{
+    color:#4252E1!important;
+}
+
+label.btn.btn-outline-primary{
+    border:transparent;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(to bottom, #ff9604bb, #dd7e12ea);
+}
+
+label.btn.btn-outline-primary:hover{
+    border:transparent;
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+    background: linear-gradient(to bottom, #fbc876, hsla(282, 70%, 52%, 0.397));
+}
+
+.card{
+    background: linear-gradient(to right, #e1aaf888, #ede1cb);
 }
