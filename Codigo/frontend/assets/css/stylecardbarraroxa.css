@@ -150,7 +150,6 @@ main {
     gap: 5px;
     border-radius: 10px;
     border: 1px solid rgba(26, 39, 163, 0.55);
-    background: rgba(66, 82, 225, 0.3);
 }
 
 #abacate {
@@ -172,18 +171,5 @@ main {
     box-shadow: 0 5px 5px -5px #8c8b8b inset;
 }
 
-.div-search .fa-search {
-    margin-right: 5px;
-    font-size: 1.5rem;
-    width: 2rem;
-}
 
-.div-search .input-search {
-    width: 100%;
-    border: 0;
-}
-
-.div-search .input-search:focus {
-    outline: 0;
-}
 
