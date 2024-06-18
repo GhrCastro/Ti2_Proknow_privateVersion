@@ -3,12 +3,12 @@ export function cardComments(data){
     var card = `<div class="p-2">`
     data.forEach(data => {
         card += `
-        <div class="card border-0 mb-4">
-            <div class="card-body">
+        <div class="card border-0 mb-4" style="border-radius=12px!important;">
+            <div class="card-body" style="border-radius=12px!important;">
                 <div class="row">
                     <div class="col-lg-1 col-md-2 col-sm-12">
-                        <div class="d-flex flex-lg-row flex-md-column mb-3" style = "color: #4252E1;" >
-                            <i role="button" class="like-comment far fa-heart fs-3 " style = "color: #4252E1;"></i>
+                        <div class="d-flex flex-lg-row flex-md-column mb-3" style = "color:  #8209d2;" >
+                            <i role="button" class="like-comment far fa-heart fs-3 " style = "color:  #8209d2;"></i>
                             <span class="mx-2">${data.likes}</span>
                         </div>
                     </div>
