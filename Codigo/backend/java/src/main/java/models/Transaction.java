@@ -13,6 +13,8 @@ public class Transaction {
 	private String currency;
 	private boolean isReversed;
 
+	public Transaction() { }
+
 	public Transaction(UUID fromWallet, UUID toWallet, BigDecimal amount, String currency) {
 		this.id = UUID.randomUUID();
 		this.fromWallet = fromWallet;
@@ -27,6 +29,7 @@ public class Transaction {
 		this.isReversed = true;
 	}
 
+	// Getters
 	public UUID getId() {
 		return id;
 	}
@@ -53,5 +56,34 @@ public class Transaction {
 
 	public boolean isReversed() {
 		return isReversed;
+	}
+
+	// Setters
+	public void setId(UUID id) {
+		this.id = id;
+	}
+
+	public void setFromWallet(UUID fromWallet) {
+		this.fromWallet = fromWallet;
+	}
+
+	public void setToWallet(UUID toWallet) {
+		this.toWallet = toWallet;
+	}
+
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public void setReversed(boolean reversed) {
+		isReversed = reversed;
 	}
 }

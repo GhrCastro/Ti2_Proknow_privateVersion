@@ -15,7 +15,7 @@ public class Wallet {
 	}
 
 	public Wallet(UUID userId) {
-		this.id = UUID.randomUUID();
+		id = UUID.randomUUID();
 		this.userId = userId;
 		this.balances = new ArrayList<CurrencyBalance>();
 		this.transactions = new ArrayList<Transaction>();
@@ -108,5 +108,10 @@ public class Wallet {
 
 	public void setUserId(UUID userId) {
 		this.userId = userId;
+	}
+
+	@Override
+	public String toString() {
+		return "Wallet{" + "id=" + id + ", userId=" + userId + ", balances=" + balances + '}';
 	}
 }
