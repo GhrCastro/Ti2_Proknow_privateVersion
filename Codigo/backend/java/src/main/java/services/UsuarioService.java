@@ -28,7 +28,7 @@ public class UsuarioService {
         usuarioDao.createUserBadgesTable();
     }
 
-    public void addUsuario(Usuario usuario) {
+    public UUID addUsuario(Usuario usuario) {
         if (usuario.isValid()) {
             try {
                 Wallet wallet = new Wallet(usuario.getId());
@@ -65,6 +65,7 @@ public class UsuarioService {
                 // Recebe badge cadastro
                 // usuarioDao.insertUserBadge(usuario.getId(),
                 // UUID.fromString("c081aab6-f162-49b4-b5b5-f5ba9b8e9214"));
+                return wallet.getWalletId();
 
             } catch (Exception e) {
                 System.err.println("Error creating user and wallet: " + e.getMessage());
