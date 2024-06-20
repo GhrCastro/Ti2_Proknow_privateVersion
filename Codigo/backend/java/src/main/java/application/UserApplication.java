@@ -56,8 +56,8 @@ public class UserApplication {
             Usuario usuario = gson.fromJson(req.body(), Usuario.class);
             // System.out.println("###" + usuario);
             try {
-                usuarioService.addUsuario(usuario);
-
+                UUID wallet_id = usuarioService.addUsuario(usuario);
+                usuario.setWallet_id(wallet_id);
                 // Recebe badge cadastro
                 usuarioService.addUserBadge(usuario.getId(), UUID.fromString("c081aab6-f162-49b4-b5b5-f5ba9b8e9214"));
 
