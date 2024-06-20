@@ -90,6 +90,7 @@ public class UserApplication {
             // System.out.println("###" + userCredentials.getPassword());
 
             Usuario usuario = usuarioService.getUsuarioByEmail(userCredentials.getEmail());
+            System.out.println("###" + usuario.getWallet_id());
 
             if (usuario != null) {
                 // System.out.println("###" + usuario.getPassword());
