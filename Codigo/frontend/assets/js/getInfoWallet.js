@@ -2,7 +2,7 @@
 
 const convertValue = async (valueCoin, currency) => {
     let url = `https://rest.coinapi.io/v1/exchangerate/${currency}/BRL`;
-    const key = "22109CC0-5827-463E-91C2-88046A3C909A";
+    const key = "D7101F0B-0493-4D5B-BFEE-532789FC7B44";
   
     const options = {
       maxBodyLength: Infinity,
