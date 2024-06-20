@@ -151,34 +151,58 @@
         </footer>
     </main>
     <script>
+// Defina a função getSessionUser antes de usar
+function getSessionUser() {
+    const userJson = sessionStorage.getItem('usuario');
+    if (userJson) {
+        const user = JSON.parse(userJson);
+        return user;
+    } else {
+        return null;
+    }
+}
 
-        let videobutton = document.querySelector(".btn.btn-outline-primary");
-        videobutton.addEventListener("click", async function () {
-            console.log("im in!");
-            //setTimeout(10000); //tempo        
-    
-            const userBadge = {
-                'user_id': '8c6648a5-c32f-4e6c-9862-9306f8a1cee5',
-                'badge_id': '8d3b5e64-738f-4d54-88a0-f1ccbf7146f2'
-            }
-    
-            await fetch("http://localhost:4567/usuarios-badges", {
+let videobutton = document.querySelector(".btn.btn-outline-primary");
+videobutton.addEventListener("click", async function () {
+    console.log("im in!");
+
+    const user = getSessionUser();
+
+    if (user && user.id) {
+        const userId = user.id;
+        console.log(userId);
+
+        const userBadge = {
+            'user_id': userId,
+            'badge_id': '8d3b5e64-738f-4d54-88a0-f1ccbf7146f2'
+        }
+
+        try {
+            const response = await fetch("http://localhost:4567/usuarios-badges", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(userBadge)
-            })
-                .then(response => {
-                    console.log(response)
-                })
-                .catch((error) => {
-                    console.error(error)
-                })
-            
-            alert("Parabens! Você ganhou uma nova badge!");
-        })
-    
+            });
+
+            if (response.ok) {
+                console.log(response);
+                alert("Parabens! Você ganhou uma nova badge!");
+            } else {
+                console.error('Erro na resposta do servidor:', response.statusText);
+                alert("Erro ao ganhar a badge.");
+            }
+        } catch (error) {
+            console.error('Erro ao enviar a requisição:', error);
+            alert("Erro ao ganhar a badge.");
+        }
+    } else {
+        console.error('Usuário não encontrado ou sem ID.');
+        alert("Erro: usuário não encontrado.");
+    }
+});
+
     </script>
     <script>
         document.getElementById('btncheck1').addEventListener('click', function() {

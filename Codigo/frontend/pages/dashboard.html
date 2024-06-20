@@ -329,27 +329,53 @@
         adjustChartHeight();
     </script>
 
-    <script>
-        const valor = document.getElementById('valor');
-
-        function fetchData() {
-            try {
-                fetch('https://096c15c5-fbc7-47b3-88cc-86841c979950-00-2ay7iah48p50i.riker.replit.dev/')
-                    .then(response => response.json())
-                    .then(data => {
-                        return data.map(user => {
-                            console.log(user.incomings.salario);
-                            return user.incomings.salario;
-                        })
-                    })
-
-            } catch (error) {
-                console.log(error)
-            }
-            valor.innerHTML = fetchData();
+<script>
+    // Função para obter o usuário da sessão
+    function getSessionUser() {
+        const userJson = sessionStorage.getItem('usuario');
+        if (userJson) {
+            const user = JSON.parse(userJson);
+            return user;
+        } else {
+            return null;
         }
-    </script>
+    }
 
+    // Função para buscar dados do usuário da API local
+    function fetchUserData(userId, processUserData) {
+        fetch(`http://localhost:4567/usuarios/${userId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                processUserData(data); // Passa os dados do usuário para a função de processamento
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados do usuário:', error);
+                document.getElementById('valor').innerHTML = 'Erro ao carregar salário.';
+            });
+    }
+
+    // Função para processar e exibir os dados do usuário
+    function displayUserSalary(userData) {
+        const salario = userData.salary; // Assumindo que o salário está diretamente no objeto user
+        console.log(salario);
+        document.getElementById('valor').innerHTML = salario ? `Salário: ${salario}` : 'Salário não disponível.';
+    }
+
+    // Obter usuário da sessão
+    const user = getSessionUser();
+    if (user) {
+        const userId = user.id;
+        fetchUserData(userId, displayUserSalary); // Buscar dados do usuário e processá-los
+    } else {
+        console.error('Usuário não encontrado na sessão.');
+        document.getElementById('valor').innerHTML = 'Usuário não encontrado.';
+    }
+</script>   
    
 
 </body>
