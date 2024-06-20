@@ -133,10 +133,10 @@ public class UsuarioService {
     }
 
     // retorna todas as moedas que o usuario possui
-    public List<CurrencyBalance> getAllUserMoedas(UUID user_id) throws Exception {
+    public List<CurrencyBalance> getAllUserMoedas(UUID wallet_id) throws Exception {
         try {
-            System.out.println("Fetching coins for user ID: " + user_id);
-            List<CurrencyBalance> moedas = walletDao.findWalletBalances(user_id);
+            System.out.println("Fetching coins for user ID: " + wallet_id);
+            List<CurrencyBalance> moedas = walletDao.findWalletBalances(wallet_id);
             System.out.println("Badges fetched successfully: " + moedas);
             return moedas;
         } catch (Exception e) {
