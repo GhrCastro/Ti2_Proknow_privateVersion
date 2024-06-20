@@ -23,7 +23,7 @@ public class Usuario {
     private String password;
     private double expenses;
     private Date regDate;
-    private Wallet wallet;
+    private UUID wallet_id;
     // private ArrayList<Badge> badges;
 
     public Usuario() {
@@ -42,7 +42,7 @@ public class Usuario {
         this.password = password;
         this.expenses = expenses;
         this.regDate = new Date();
-        this.wallet = new Wallet(this.id);
+        this.wallet_id = null;
         // this.badges = new ArrayList<>();
     }
 
@@ -82,8 +82,8 @@ public class Usuario {
         return regDate;
     }
 
-    public Wallet getWallet() {
-        return wallet;
+    public UUID getWallet_id() {
+        return wallet_id;
     }
 
     // public ArrayList<Badge> getBadges() {
@@ -130,6 +130,10 @@ public class Usuario {
     // public void addBadge(Badge badge) {
     // badges.add(badge);
     // }
+
+    public void setWallet_id(UUID wallet_id){
+        this.wallet_id = wallet_id;
+    }
 
     public String getFormattedDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");

@@ -94,7 +94,7 @@ public class UsuarioService {
             if (existingUsuario != null) {
                 usuarioDao.update(id, usuario.getName(), usuario.getCpf(), usuario.getEmail(), usuario.getSalary(),
                         usuario.getCellNumber(), usuario.getPassword(), usuario.getExpenses(), usuario.getRegDate(),
-                        usuario.getWallet().getOwnerId());
+                        usuario.getWallet_id());
             } else {
                 throw new IllegalArgumentException("Usuário não encontrado");
             }
