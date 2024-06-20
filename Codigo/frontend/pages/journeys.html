@@ -17,7 +17,6 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <link rel="stylesheet" href="../assets/css/pagecontenthub.css">
     <link rel="stylesheet" href="../assets/css/sidenav.css">
     <link rel="stylesheet" href="../assets/css/badges.css">
 </head>
@@ -105,7 +104,7 @@
         </div>
 
     </aside>
-    
+
     <main>
         <div class="banner">
             <img src="../assets/images/journey.jpg" alt="">
@@ -121,98 +120,108 @@
             <div class="row">
                 <!-- Chame a função createCard para criar os cards desejados -->
                 <script>
+                function getBadges(processaDados) {
+    fetch("http://localhost:4567/badges")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            processaDados(data.data); // Exibe os badges no console, ou faça outro tipo de manipulação
+        })
+        .catch(error => {
+            console.error('Erro ao ler badges:', error);
+            displayMessage("Erro ao ler badges");
+        });
+}
 
-                    
-                    function getBadges(processaDados) {
-                        fetch("http://localhost:4567/badges")
-                            .then(response => {
-                                if (!response.ok) {
-                                    throw new Error('Network response was not ok ' + response.statusText);
-                                }
-                                return response.json();
-                            })
-                            .then(data => {
-                                processaDados(data.data) // Exibe os badges no console, ou faça outro tipo de manipulação
-                            })
-                            .catch(error => {
-                                console.error('Erro ao ler tarefas:', error);
-                                displayMessage("Erro ao ler tarefas");
-                            });
-                    }
+function getUserBadges(userId) {
+    return fetch(`http://localhost:4567/usuarios-badges/${userId}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            return data.data.map(entry => entry.badge_id); // Extrai apenas os badge_ids da resposta
+        })
+        .catch(error => {
+            console.error('Erro ao verificar badges do usuário:', error);
+            return [];
+        });
+}
 
-                    let badges = [ // colocar o backend aqui  ###
-                        //{ name: 'O inicio de uma Jornada', description: 'Crie sua conta', icon: '/assets/images/startup.png', enabled: true },
-                        //{ name: 'Gerando conhecimento', description: 'Assista ao seu primeiro video', icon: '/assets/images/startup.png', enabled: true },
-                        //{ name: 'Sem freio', description: 'Tenha um incremento de 400% nos seus bônus mensais', icon: '/assets/images/startup.png', enabled: false },
-                    ]
+const userId = "21c58399-6300-4f31-8476-f5b49939b7ba"; // Supondo que o ID do usuário seja conhecido e fixo para este exemplo
 
-                    getBadges(dados => {
-                        badges = dados;
-                        console.log(badges)
-                        createBadgeCard(badges);
-                    });
+getUserBadges(userId).then(userBadges => {
+    getBadges(badges => {
+        console.log(badges);
+        createBadgeCard(badges, userBadges);
+    });
+});
 
-                    function createBadgeCard(badges) {
+function createBadgeCard(badges, userBadges) {
+    badges.forEach(badge => {
+        const exists = userBadges.includes(badge.id);
+        
+        const cardContainer = document.createElement('div');
+        cardContainer.classList.add('card-container', 'col-md-4', 'mb-4', 'my-2');
 
-                        badges.forEach(badge => {  
-                            const cardContainer = document.createElement('div');
-                            cardContainer.classList.add('card-container', 'col-md-4', 'mb-4', 'my-2');
-    
-                            const cardInner = document.createElement('div');
-                            cardInner.classList.add('card-inner');
-    
-                            const cardFront = document.createElement('div');
-                            cardFront.classList.add('card-front', 'card');
-                            if (badge.enable) {
-                                cardFront.classList.add('enabled'); // Adiciona a classe apenas se badge está habilitado
-                            }
-    
-                            cardFront.classList.add('.card-front.enabled')
-    
-                            const cardBack = document.createElement('div');
-                            cardBack.classList.add('card-back', 'card', 'p-3');
-    
-                            let icon = document.createElement('img');
-                            icon.src = badge.linkImage // A URL do ícone
-                            console.log(icon.src);
-                            icon.alt = "Badge Icon";
-                            icon.classList.add('icon');
-                            const title = document.createElement('h5', 'h-50', 'mb-2');
-                            title.textContent = badge.name;
-                            title.classList.add('card-title');
-    
-                            cardFront.appendChild(icon);
-                            cardFront.appendChild(title);
-                            // Adiciona descrição no verso do card
-                            const requirements = document.createElement('b');
-                            requirements.textContent = 'Requisitos:';
-                            requirements.classList.add('card-text', 'align-self-start', 'mb-2');
-    
-                            cardBack.appendChild(requirements);
-    
-                            const description = document.createElement('p');
-                            description.textContent = badge.description;
-                            description.classList.add('card-text');
-    
-                            cardBack.appendChild(description);
-    
-                            cardInner.appendChild(cardFront);
-                            cardInner.appendChild(cardBack);
-                            cardContainer.appendChild(cardInner);
-    
-                            document.querySelector('.container .row').appendChild(cardContainer);
-                        });
+        const cardInner = document.createElement('div');
+        cardInner.classList.add('card-inner');
 
-                    }
+        const cardFront = document.createElement('div');
+        cardFront.classList.add('card-front', 'card');
 
+        if (exists) {
+            cardFront.classList.add('enabled'); // Adiciona a classe apenas se badge está habilitado
+        }
+
+        const cardBack = document.createElement('div');
+        cardBack.classList.add('card-back', 'card', 'p-3');
+
+        let icon = document.createElement('img');
+        icon.src = badge.linkImage; // A URL do ícone
+        console.log(icon.src);
+        icon.alt = "Badge Icon";
+        icon.classList.add('icon');
+        const title = document.createElement('h5');
+        title.textContent = badge.name;
+        title.classList.add('card-title');
+
+        cardFront.appendChild(icon);
+        cardFront.appendChild(title);
+        // Adiciona descrição no verso do card
+        const requirements = document.createElement('b');
+        requirements.textContent = 'Requisitos:';
+        requirements.classList.add('card-text', 'align-self-start', 'mb-2');
+
+        cardBack.appendChild(requirements);
+
+        const description = document.createElement('p');
+        description.textContent = badge.description;
+        description.classList.add('card-text');
+
+        cardBack.appendChild(description);
+
+        cardInner.appendChild(cardFront);
+        cardInner.appendChild(cardBack);
+        cardContainer.appendChild(cardInner);
+
+        document.querySelector('.container .row').appendChild(cardContainer);
+    });
+}
 
                 </script>
             </div>
         </div>
         <footer class="footer mt-auto py-3">
             <p><a id="footer-link"
-                    href="https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20232-g10-falta-de-educacao-financeira"
-                    >&copy; 2024 PROKNOW.</a> Todos os direitos reservados.</p>
+                    href="https://github.com/ICEI-PUC-Minas-PMGCC-TI/ti-1-pmg-cc-m-20232-g10-falta-de-educacao-financeira">&copy;
+                    2024 PROKNOW.</a> Todos os direitos reservados.</p>
         </footer>
     </main>
 
@@ -228,9 +237,6 @@
     <script src="../../assets/js/sidebar-loader.js"></script>
     <script src="https://kit.fontawesome.com/113fc1b747.js" crossorigin="anonymous"></script>
     <script src="../assets/js/login.js"></script>
-
-
-
 
 </body>
 

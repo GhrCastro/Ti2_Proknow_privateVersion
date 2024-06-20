@@ -2,7 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", async function () {
     try {
-        const apiPath = 'https://jsonserver-proknow.joopaulopaulo33.repl.co/usuarios';
+        const apiPath = 'https://096c15c5-fbc7-47b3-88cc-86841c979950-00-2ay7iah48p50i.riker.replit.dev/';
 
         async function getData(username) {
             const response = await fetch(`${apiPath}?login=${username}`);

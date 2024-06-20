@@ -50,7 +50,7 @@ async function login(email, password) {
     if (response.status == "SUCCESS") {
         sessionStorage.setItem("usuario", JSON.stringify(response.data));
 
-        window.location = './frontend/pages/dashboard.html';
+        window.location = './pages/dashboard.html';
 
         return true;
     }else{
