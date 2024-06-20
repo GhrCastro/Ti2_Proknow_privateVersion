@@ -168,13 +168,14 @@ public class UserApplication {
         });
 
         // moeda-wallet
-        
-        get("/wallets/:id", (req, res) -> { // id:usuario
+
+        get("/userCoins/:id", (req, res) -> { // id:usuario
             res.type("application/json");
-            UUID user_id = UUID.fromString(req.params(":id"));
+            UUID wallet_id = UUID.fromString(req.params(":id"));
 
             try {
-               return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, gson.toJsonTree(usuarioService.getAllUserMoedas(user_id))));
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS,
+                        gson.toJsonTree(usuarioService.getAllUserMoedas(wallet_id))));
             } catch (Throwable e) {
                 // TODO: handle exception
                 e.printStackTrace();
