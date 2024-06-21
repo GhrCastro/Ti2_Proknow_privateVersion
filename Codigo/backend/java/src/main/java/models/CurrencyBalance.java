@@ -26,4 +26,6 @@ public class CurrencyBalance {
 		this.amount = amount;
 	}
 
+	@Override
+	public String toString() { return "CurrencyBalance [currency=" + currency + ", amount=" + amount + "]"; }
 }

@@ -23,6 +23,10 @@ public interface MoedaDao {
     @RegisterBeanMapper(Moeda.class)
     Moeda findMoedaByName(@Bind("name") String name);
 
+    @SqlQuery("SELECT * FROM moedas WHERE symbol = :symbol")
+    @RegisterBeanMapper(Moeda.class)
+    Moeda findMoedaBySymbol(@Bind("symbol") String symbol);
+
     @SqlQuery("SELECT * FROM moedas WHERE id = :id")
     @RegisterBeanMapper(Moeda.class)
     Moeda findMoedaById(@Bind("id") int id);

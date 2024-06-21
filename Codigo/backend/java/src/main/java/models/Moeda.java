@@ -8,6 +8,8 @@ public class Moeda {
 	private BigDecimal amount;
 	private String symbol;
 
+    public  Moeda() { }
+
     public Moeda(String name) {
         this.name = name;
     }

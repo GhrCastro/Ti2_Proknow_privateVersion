@@ -47,6 +47,7 @@ public class WalletApplication {
 //            return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Carteira criada com sucesso."));
 //        });
 
+
         get("/wallets/:userId", (req, res) -> {
             res.type("application/json");
             UUID userId = UUID.fromString(req.params(":userId"));
@@ -60,15 +61,27 @@ public class WalletApplication {
             }
         });
 
-        post("/wallets/deposit/fromUser/:fromUser/toUser/:toUser", (req, res) -> {
-            System.out.println(" oi oi oio io i oioi");
+        post("/wallets/transfer/fromUser/:fromUser/toUser/:toUser", (req, res) -> {
             res.type("application/json");
-            UUID fromUser = UUID.fromString(req.params(":fromUser"));
-            UUID toUser = UUID.fromString(req.params(":toUser"));
-            String name = req.queryParams("name");
-            double amount = Double.parseDouble(req.queryParams("amount"));
             try {
-                walletService.deposit(fromUser, toUser, name, amount);
+                UUID fromUser = UUID.fromString(req.params(":fromUser").trim());
+                System.out.println(fromUser + "\n");
+                UUID toUser = UUID.fromString(req.params(":toUser").trim());
+                System.out.println(toUser + "\n");
+
+                String name = req.queryParams("name");
+                if (name == null || name.isEmpty()) {
+                    throw new IllegalArgumentException("Currency name is missing");
+                }
+
+                double amount;
+                try {
+                    amount = Double.parseDouble(req.queryParams("amount"));
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Invalid amount format");
+                }
+
+                walletService.transfer(fromUser, toUser, name, amount);
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Depósito realizado com sucesso."));
             } catch (Exception e) {
                 res.status(400);
@@ -89,20 +102,22 @@ public class WalletApplication {
                 return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao realizar saque: " + e.getMessage()));
             }
         });
-        post("/wallets/:fromUserId/transfer", (req, res) -> {
+
+        post("/wallets/deposit/:userId", (req, res) -> {
             res.type("application/json");
-            UUID fromUserId = UUID.fromString(req.params(":fromUserId"));
-            UUID toUserId = UUID.fromString(req.queryParams("toUserId"));
+            UUID userId = UUID.fromString(req.params(":userId"));
             String currency = req.queryParams("currency");
             double amount = Double.parseDouble(req.queryParams("amount"));
             try {
-                walletService.transfer(fromUserId, toUserId, currency, amount);
-                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Transferência realizada com sucesso."));
+                walletService.deposit(userId, currency, amount);
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Saque realizado com sucesso."));
             } catch (Exception e) {
                 res.status(400);
-                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao realizar transferência: " + e.getMessage()));
+                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao realizar saque: " + e.getMessage()));
             }
         });
+
+
     }
 }
 
