@@ -2,7 +2,7 @@
 
 const convertValue = async (valueCoin, currency) => {
     let url = `https://rest.coinapi.io/v1/exchangerate/${currency}/BRL`;
-    const key = "D7101F0B-0493-4D5B-BFEE-532789FC7B44";
+    const key = "8BDE967C-4824-4163-A442-B29899257D88";
   
     const options = {
       maxBodyLength: Infinity,
@@ -21,6 +21,9 @@ const convertValue = async (valueCoin, currency) => {
         const value = data.rate;
         console.log(value);
         result = parseFloat(valueCoin) * parseFloat(value);
+      })
+      .catch(error => {
+        console.error('Erro ao converter valor:', error);
       });
   
     return result;
@@ -30,18 +33,21 @@ async function getInfoWallet() {
     const user = getSessionUser();
     //console.log(user);
 
-    let userWallet = {};
+    let userWallet = [];
 
     await fetch(`http://localhost:4567/userCoins/${user.wallet_id}`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
-
             userWallet = data.data;
         })
-
         .catch(responseError => {
             console.error("Erro ao buscar informações da carteira do usuario!", responseError);
-        })
+        });
     
     console.log(userWallet);
     var balance = document.getElementById("balance");
@@ -50,7 +56,7 @@ async function getInfoWallet() {
     userName.innerText = `Seja Bem vindo, ${user.name}`;
 
     const walletBalances = document.getElementById('wallet-balances');
-    userWallet.forEach( coin => {
+    userWallet.forEach(coin => {
         walletBalances.innerHTML += `
             <div style="color:white; margin-left:10px; margin-bottom: 20px; margim-top: 10px; border-style: solid; border-radius:10px; border-color: white"> 
                 <h4 style="padding: 10px">${coin.currency}</h4>
@@ -59,13 +65,13 @@ async function getInfoWallet() {
         `;
     });
 
-    const valueBTC = await convertValue(userWallet[1].amount , userWallet[1].currency);
-    const valueETH = await convertValue(userWallet[2].amount , userWallet[2].currency);
-    const valueUSD = await convertValue(userWallet[3].amount , userWallet[3].currency);
+    const valueBTC = await convertValue(userWallet[1]?.amount, userWallet[1]?.currency);
+    const valueETH = await convertValue(userWallet[2]?.amount, userWallet[2]?.currency);
+    const valueUSD = await convertValue(userWallet[3]?.amount, userWallet[3]?.currency);
 
-    const soma = (valueBTC+valueETH+valueUSD+userWallet[4].amount).toFixed(2);
+    const soma = (valueBTC + valueETH + valueUSD + (userWallet[4]?.amount || 0)).toFixed(2);
 
-    balance.innerText = `R$ ${soma}`
+    balance.innerText = `R$ ${soma}`;
 
     console.log(valueBTC + " " + valueETH + " " + valueUSD);
 
@@ -80,9 +86,6 @@ async function getInfoWallet() {
             hidden_icon.classList.replace('fa-eye', 'fa-eye-slash'); // Corrected line
         }
     });
-    
-
-
 }
-    
+
 window.onload = getInfoWallet();

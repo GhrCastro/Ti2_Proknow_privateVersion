@@ -24,7 +24,7 @@ document.getElementById('btnSubmit').addEventListener('click', async function ()
     let respTransection;
 
     const withdraw = {
-        "currency": "PROKNOW",
+        "name": "PROKNOW",
         "amount": 5.0,
     };
     
