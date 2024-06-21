@@ -127,7 +127,7 @@ public class WalletService {
 
     public void withdraw(UUID userId, String currency, double amount) throws Exception {
         Wallet recipient = getWalletByUserId(userId);
-        Wallet admin = getWalletByUserId(UUID.fromString("33121974-2079-4bf7-8fd1-9ec3121aca12"));
+        Wallet admin = getWalletByUserId(UUID.fromString("a4d1b727-f79c-4f47-b3ef-e3c0dd0a44b1"));
         Moeda moeda = moedaDao.findMoedaByName(currency);
 
         if (recipient == null) {
@@ -136,15 +136,29 @@ public class WalletService {
         if (moeda == null) {
             throw new IllegalArgumentException("Currency not found");
         }
-        recipient.withdraw(moeda, BigDecimal.valueOf(amount));
-        walletDao.updateWalletBalance(recipient.getWalletId(), moeda.getName(), recipient.getBalance(moeda.getName()));
+        try {
+            BigDecimal balance = BigDecimal.valueOf(amount);
 
-        admin.deposit(moeda, BigDecimal.valueOf(amount));
-        walletDao.updateWalletBalance(admin.getWalletId(), moeda.getName(), admin.getBalance(moeda.getName()));
+            recipient.withdraw(moeda, balance);
+            walletDao.updateWalletBalance(recipient.getWalletId(), moeda.getName(), recipient.getBalance(moeda.getSymbol()));
 
-        Transaction tx = new Transaction(recipient.getWalletId(), admin.getWalletId(), BigDecimal.valueOf(amount), currency);
-        transactionDao.insert(tx.getId(), tx.getFromWallet(), tx.getToWallet(), tx.getCreatedAt(), tx.getAmount(),
-                tx.getCurrency(), tx.isReversed());
+            admin.deposit(moeda, balance);
+            walletDao.updateWalletBalance(admin.getWalletId(), moeda.getSymbol(), admin.getBalance(moeda.getSymbol()));
+
+            // Recebe badge transaction - tratar erros
+            //usuarioService.addUserBadge(fromUserId, UUID.fromString("0c64e08b-0c64-4a7d-b2c2-989b59e5f9e6"));
+
+            Transaction tx = new Transaction(recipient.getWalletId(), admin.getWalletId(), balance, currency);
+            transactionDao.insert(tx.getId(), tx.getFromWallet(), tx.getToWallet(), tx.getCreatedAt(), tx.getAmount(), tx.getCurrency(), tx.isReversed());
+
+            recipient.getTransactions().add(tx);
+            admin.getTransactions().add(tx);
+
+        }  catch (Exception e) {
+            recipient.deposit(moeda, BigDecimal.valueOf(amount));
+            walletDao.updateWalletBalance(recipient.getOwnerId(), moeda.getSymbol(), recipient.getBalance(currency));
+            throw new Exception("Erro ao realizar transferência: " + e.getMessage());
+        }
     }
 
     public void transfer(UUID fromUserId, UUID toUserId, String currency, double amount) throws Exception {
@@ -168,13 +182,8 @@ public class WalletService {
             fromWallet.withdraw(moeda, balance);
             walletDao.updateWalletBalance(fromWallet.getWalletId(), moeda.getName(), fromWallet.getBalance(moeda.getSymbol()));
 
-<<<<<<< HEAD
             toWallet.deposit(moeda, balance);
             walletDao.updateWalletBalance(toWallet.getWalletId(), moeda.getSymbol(), toWallet.getBalance(moeda.getSymbol()));
-=======
-            // Recebe badge transaction
-            // usuarioService.addUserBadge(fromUserId, UUID.fromString("0c64e08b-0c64-4a7d-b2c2-989b59e5f9e6"));
->>>>>>> 8da23f292bf785d6094bfeac55544addcab3daed
 
             // Recebe badge transaction - tratar erros
             //usuarioService.addUserBadge(fromUserId, UUID.fromString("0c64e08b-0c64-4a7d-b2c2-989b59e5f9e6"));

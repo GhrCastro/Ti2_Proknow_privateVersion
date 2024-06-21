@@ -19,10 +19,44 @@ document.getElementById('btnSubmit').addEventListener('click', async function ()
     const inputResp = document.getElementById('respInput');
     const respDesc = document.getElementById('descResp');
 
+    const user = getSessionUser();
+
+    let respTransection;
+
+    const withdraw = {
+        "currency": "PROKNOW",
+        "amount": 5.0,
+    };
+    
+    // Função para converter um objeto para o formato x-www-form-urlencoded
+    function encodeFormData(data) {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+            .join('&');
+    }
+
+    const encodedBody = encodeFormData(withdraw);
+
+    await fetch(`http://localhost:4567/wallets/withdraw/${user.id}`, {
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        method: 'POST',
+        body: encodedBody
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            respTransection = data
+        })
+        .catch((error) => {
+            console.error(error);
+        })
+
     const file = input.files[0];
     let predictions = [];
 
-    if (file) {
+    if (file && respTransection.status == "SUCCESS") {
 
         await fetch(apiPath , {
             headers: {

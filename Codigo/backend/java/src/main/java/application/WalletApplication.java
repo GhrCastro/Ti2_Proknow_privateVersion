@@ -91,7 +91,7 @@ public class WalletApplication {
 
         post("/wallets/withdraw/:userId", (req, res) -> {
             res.type("application/json");
-            UUID userId = UUID.fromString(req.params(":userId"));
+            UUID userId = UUID.fromString(req.params(":userId").trim());
             String currency = req.queryParams("currency");
             double amount = Double.parseDouble(req.queryParams("amount"));
             try {
