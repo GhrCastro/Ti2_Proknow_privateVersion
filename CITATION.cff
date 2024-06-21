@@ -1,31 +1,29 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: Proknow
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Dias Estevao
+    given-names: Joao Paulo
+  - family-names: Silva Gomes
+    given-names: Douglas Nicolas
+  - family-names: Souza Lima
+    given-names: Victor
+  - family-names: Rocha Cabral
+    given-names: André Luiz
+  - family-names: Rodrigues De Castro
+    given-names: Gustavo Henrique
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: Cardoso Brandao
+    given-names: Wladmir
   - name-suffix: Professor
     affiliation: PUC Minas
     family-names: 
-    given-names: 
-  - name-suffix: Professor
-    affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    given-names: Marco Paulo
 keywords:
-  - 
-  - 
-repository-code: 
+  - Educação Financeira
+  - Investimento em Criptomoeda
+repository-code: https://github.com/ICEI-PUC-Minas-CC-TI/plmg-cc-ti2-2024-1-g21-proknow/tree/master
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2024-06-21
