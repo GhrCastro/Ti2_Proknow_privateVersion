@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="776573bd-2242-4724-a79c-fca356ccdcc0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/WalletService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/WalletService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/WalletApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/WalletApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/MoedaDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/MoedaDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/dao/WalletDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dao/WalletDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/CurrencyBalance.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/CurrencyBalance.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Moeda.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Moeda.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Transaction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Transaction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Wallet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Wallet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/assets/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/assets/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/assets/css/journeys.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/assets/css/journeys.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/assets/css/stylecardbarraroxa.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/assets/css/stylecardbarraroxa.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/assets/js/apiAI.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/assets/js/apiAI.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/assets/js/getInfoWallet.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/assets/js/getInfoWallet.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/assets/js/send-new-video.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/assets/js/send-new-video.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/pages/btcTraderSpace.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/pages/btcTraderSpace.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/pages/contenthub.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/pages/contenthub.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/pages/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/pages/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/pages/graphicsAnalyse.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/pages/graphicsAnalyse.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/pages/journeys.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/pages/journeys.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/pages/newsletter.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/pages/newsletter.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../frontend/pages/register-new-videos-contenthub.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/pages/register-new-videos-contenthub.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,12 +48,33 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "wallet-service-updt",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Victor/Documents/FACULDADE/2 semestre/Trabalho Interdisciplinar 2/plmg-cc-ti2-2024-1-g21-proknow/Codigo/backend/java",
+    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <module name="proknow" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
