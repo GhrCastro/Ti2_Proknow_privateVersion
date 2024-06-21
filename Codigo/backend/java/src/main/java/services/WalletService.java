@@ -171,7 +171,7 @@ public class WalletService {
             toWallet.deposit(moeda, balance);
             walletDao.updateWalletBalance(toWallet.getWalletId(), moeda.getSymbol(), toWallet.getBalance(moeda.getSymbol()));
 
-            // Recebe badge transaction
+            // Recebe badge transaction - tratar erros
             //usuarioService.addUserBadge(fromUserId, UUID.fromString("0c64e08b-0c64-4a7d-b2c2-989b59e5f9e6"));
 
             Transaction tx = new Transaction(fromWallet.getWalletId(), toWallet.getWalletId(), balance, currency);
