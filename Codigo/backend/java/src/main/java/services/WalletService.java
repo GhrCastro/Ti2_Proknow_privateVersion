@@ -171,7 +171,7 @@ public class WalletService {
             walletDao.updateWalletBalance(toWallet.getOwnerId(), currency, toWallet.getBalance(currency));
 
             // Recebe badge transaction
-            usuarioService.addUserBadge(fromUserId, UUID.fromString("0c64e08b-0c64-4a7d-b2c2-989b59e5f9e6"));
+            // usuarioService.addUserBadge(fromUserId, UUID.fromString("0c64e08b-0c64-4a7d-b2c2-989b59e5f9e6"));
 
             Transaction tx = new Transaction(fromWallet.getOwnerId(), toWallet.getOwnerId(), BigDecimal.valueOf(amount),
                     currency);

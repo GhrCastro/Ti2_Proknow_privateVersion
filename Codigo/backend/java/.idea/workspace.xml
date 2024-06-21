@@ -5,41 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="776573bd-2242-4724-a79c-fca356ccdcc0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application/BadgeApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application/CryptoApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application/StandardResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application/StatusResponse.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application/TaskApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application/UserApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application/WalletApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/BadgeDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/CryptoDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/DAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/MoedaDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/TransactionDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/UsuarioDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dao/WalletDao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/helpers/DocumentHandlers.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/main/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Badge.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Crypto.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/CurrencyBalance.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Moeda.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/PKWCoin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Transaction.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/UserBadge.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/UserCredentials.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Usuario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/models/Wallet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/BadgeService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/CryptoAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/CryptoService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/RewardService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/TaskService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/UsuarioService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/services/WalletService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../frontend/assets/js/cryptoApi.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../frontend/assets/js/cryptoApi.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/WalletService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/WalletService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +27,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Usuario",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Victor/Documents/FACULDADE/2 semestre/Trabalho Interdisciplinar 2/plmg-cc-ti2-2024-1-g21-proknow/Codigo/backend/java",
     "settings.editor.selected.configurable": "preferences.lookFeel"
