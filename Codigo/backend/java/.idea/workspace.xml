@@ -5,7 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="776573bd-2242-4724-a79c-fca356ccdcc0" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/WalletService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/WalletService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/UserApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/UserApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/models/Usuario.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/models/Usuario.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/services/WalletService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/services/WalletService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +34,7 @@
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Victor/Documents/FACULDADE/2 semestre/Trabalho Interdisciplinar 2/plmg-cc-ti2-2024-1-g21-proknow/Codigo/backend/java",
+    "node.js.selected.package.tslint": "(autodetect)",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
