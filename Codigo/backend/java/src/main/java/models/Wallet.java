@@ -17,32 +17,30 @@ public class Wallet {
 	public Wallet(UUID userId) {
 		id = UUID.randomUUID();
 		this.userId = userId;
-		this.balances = new ArrayList<CurrencyBalance>();
-		this.transactions = new ArrayList<Transaction>();
+		this.balances = new ArrayList<>();
+		this.transactions = new ArrayList<>();
 	}
 
-	public void deposit(Moeda currency, BigDecimal amount) {
+	public void deposit(Moeda moeda, BigDecimal amount) {
 		for (CurrencyBalance balance : balances) {
-			if (balance.getCurrency().equals(currency.getName())) {
-				balance.setAmount(balance.getAmount().add(amount));
-				Transaction tx = new Transaction(null, this.userId, amount, currency.getName());
-				transactions.add(tx);
-
-				return;
+			if (balance.getCurrency().equals(moeda.getSymbol())) {
+				System.out.println("\nEntrei aqui em deposito\n" + balance.getAmount());
+				var value =balance.getAmount().add(amount);
+				balance.setAmount(value);
+				break;
 			}
 		}
-		balances.add(new CurrencyBalance(currency.getName(), amount));
+		balances.add(new CurrencyBalance(moeda.getName(), amount));
 	}
 
-	public void withdraw(Moeda currency, BigDecimal amount) throws Exception {
+	public void withdraw(Moeda moeda, BigDecimal amount) throws Exception {
 		for (CurrencyBalance balance : balances) {
-			if (balance.getCurrency().equals(currency.getName())) {
+			if (balance.getCurrency().equals(moeda.getSymbol())) {
 				if (balance.getAmount().compareTo(amount) >= 0) {
-					balance.setAmount(balance.getAmount().subtract(amount));
-					Transaction tx = new Transaction(this.userId, null, amount, currency.getName());
-					transactions.add(tx);
-
-					return;
+					System.out.println("\nEntrei aqui em withdrawl\n " + balance.getAmount());
+					var value = balance.getAmount().subtract(amount);
+					balance.setAmount(value);
+					break;
 				} else {
 					throw new Exception("Insufficient funds");
 				}
@@ -72,6 +70,7 @@ public class Wallet {
 	public BigDecimal getBalance(String currency) {
 		for (CurrencyBalance balance : balances) {
 			if (balance.getCurrency().equals(currency)) {
+				System.out.println(currency + ": " + balance.getAmount());
 				return balance.getAmount();
 			}
 		}
@@ -86,9 +85,6 @@ public class Wallet {
 		return id;
 	}
 
-	public void setWalletOwner(UUID userId) {
-		this.userId = userId;
-	}
 
 	public List<Transaction> getTransactions() {
 		return transactions;
@@ -110,8 +106,11 @@ public class Wallet {
 		this.userId = userId;
 	}
 
+
 	@Override
 	public String toString() {
 		return "Wallet{" + "id=" + id + ", userId=" + userId + ", balances=" + balances + '}';
 	}
+
+
 }
