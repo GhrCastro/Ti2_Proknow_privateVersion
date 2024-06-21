@@ -254,7 +254,7 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./frontend/assets/js/login.js"></script>
+    <script src="./assets/js/login.js"></script>
  
     <script>
 
@@ -395,7 +395,7 @@
                     alert('Usuário cadastrado com sucesso!');
                     $('#CadastroForm').modal('hide');
                     sessionStorage.setItem('usuario', JSON.stringify(respBody.data));
-                    window.location = './frontend/pages/dashboard.html';
+                    window.location = './pages/dashboard.html';
                 }
 
             } catch (error) {

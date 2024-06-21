@@ -7,6 +7,7 @@ import java.util.UUID;
 import dao.DAO;
 import dao.UsuarioDao;
 import dao.WalletDao;
+import models.CurrencyBalance;
 import models.Moeda;
 import models.UserBadge;
 import models.Usuario;
@@ -27,7 +28,7 @@ public class UsuarioService {
         usuarioDao.createUserBadgesTable();
     }
 
-    public void addUsuario(Usuario usuario) {
+    public UUID addUsuario(Usuario usuario) {
         if (usuario.isValid()) {
             try {
                 Wallet wallet = new Wallet(usuario.getId());
@@ -64,6 +65,7 @@ public class UsuarioService {
                 // Recebe badge cadastro
                 // usuarioDao.insertUserBadge(usuario.getId(),
                 // UUID.fromString("c081aab6-f162-49b4-b5b5-f5ba9b8e9214"));
+                return wallet.getWalletId();
 
             } catch (Exception e) {
                 System.err.println("Error creating user and wallet: " + e.getMessage());
@@ -93,7 +95,7 @@ public class UsuarioService {
             if (existingUsuario != null) {
                 usuarioDao.update(id, usuario.getName(), usuario.getCpf(), usuario.getEmail(), usuario.getSalary(),
                         usuario.getCellNumber(), usuario.getPassword(), usuario.getExpenses(), usuario.getRegDate(),
-                        usuario.getWallet().getOwnerId());
+                        usuario.getWallet_id());
             } else {
                 throw new IllegalArgumentException("Usuário não encontrado");
             }
@@ -126,6 +128,20 @@ public class UsuarioService {
             return badges;
         } catch (Exception e) {
             System.err.println("Error fetching badges: " + e.getMessage());
+            e.printStackTrace(); // Mantém o stack trace original
+            throw new Exception("Erro ao gerar lista de badges", e);
+        }
+    }
+
+    // retorna todas as moedas que o usuario possui
+    public List<CurrencyBalance> getAllUserMoedas(UUID wallet_id) throws Exception {
+        try {
+            System.out.println("Fetching coins for user ID: " + wallet_id);
+            List<CurrencyBalance> moedas = walletDao.findWalletBalances(wallet_id);
+            System.out.println("Badges fetched successfully: " + moedas);
+            return moedas;
+        } catch (Exception e) {
+            System.err.println("Error fetching coins: " + e.getMessage());
             e.printStackTrace(); // Mantém o stack trace original
             throw new Exception("Erro ao gerar lista de badges", e);
         }

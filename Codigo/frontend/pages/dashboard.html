@@ -29,6 +29,8 @@
     <link rel="stylesheet" href="../assets/css/sidenav.css">
     <link rel="stylesheet" href="../assets/css/header.css">
     <link rel="stylesheet" href="../assets/css/stylecardbarraroxa.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Dashboard</title>
 </head>
 
@@ -40,11 +42,11 @@
             <ul class="nav nav-pills nav-flush flex-column mb-auto text-center ">
                 <li id="inicio" class="selected">
                     <a href="../pages/dashboard.html" class="nav-link py-3 rounded-0" aria-current="page" data-bs-toggle="tooltip"
-                        data-bs-placement="right"><i class="material-icons fa-solid fa-home fa-xl mx-2"></i><span
+                        data-bs-placement="right"><i class="material-symbols-outlined fa-solid fa-home fa-xl mx-2"></i><span
                             class="txt">Inicio</span></a>
                 </li>
                 <li id="content-hub">
-                    <a href="#" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
+                    <a href="./contenthub.html" class="nav-link " aria-current="page" data-bs-toggle="tooltip"
                         data-bs-placement="right"><i class="material-icons fa-solid fa-book-open fa-xl mx-2"></i><span
                             class="txt">Content
                             Hub</span></a>
@@ -69,8 +71,9 @@
                 <li id="journeys">
                     <a href="./graphicsAnalyse.html" class="nav-link py-3  rounded-0" aria-current="page"
                         data-bs-toggle="tooltip" data-bs-placement="right"><i
-                            class="material-icons fa-regular fa-compass fa-xl mx-2"></i><span
-                            class="txt">AI Analyse</span></a>
+                            class="material-symbols-outlined fa-xl mx-2">psychology</i><span
+                            class="txt">IA Analyse</span></a>
+                            
                 </li>
             </ul>
             <div class="dropdown"><a href="#"
@@ -100,7 +103,7 @@
         <!-- Código Header -->
         <header class="mb-3">
             <div class="row justify-content-between">
-                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
+                <div class="text-wrng col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
                     <h2 id="welcomeUser">Seja Bem vindo, User</h2>
                 </div>
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
@@ -130,6 +133,8 @@
                                         Resgatar
                                     </button>
                                 </div>
+                                <h4 style="margin-top: 40px; color: white; margin-left: 10px;">Moedas:</h4>
+                                <div id="wallet-balances"></div>
                             </div>
                         </div>
                     </div>
@@ -185,7 +190,7 @@
 
                                     <div class="card-title d-flex justify-content-between align-items-center px-3">
                                         <h4>Despesas na semana</h4>
-                                        <div class="row offset-md-4"><i class="fa-solid fa-bell fa-xl"></i></div>
+                                        <div class="row offset-md-4"></div>
                                     </div>
                                     <div class="card-items">
                                         <canvas id="dados-card" width="400" height="200"></canvas>
@@ -203,7 +208,7 @@
                     <div class="card-title d-flex justify-content-between align-items-center px-3">
                         <h4>Seus gastos</h4>
                     </div>
-                    <div class="gastos card-body">
+                    <div class="gastos card-body" id="gastos">
                         <canvas class="chart-container w-100" id="expensesIncomingsChart"
                             style="height: 15vw;"></canvas>
                     </div>
@@ -216,7 +221,7 @@
 
     <script src="../assets/js/login.js"></script>
     <script src="../assets/js/getUser.js"></script>
-    <script src="../assets/js/getInfoWallet.js"></script>
+    <script type="module" src="../assets/js/getInfoWallet.js"></script>
     <script src="../assets/js/component/barra-roxa.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
@@ -324,27 +329,53 @@
         adjustChartHeight();
     </script>
 
-    <script>
-        const valor = document.getElementById('valor');
-
-        function fetchData() {
-            try {
-                fetch('https://jsonserver-proknow.joopaulopaulo33.repl.co/usuarios')
-                    .then(response => response.json())
-                    .then(data => {
-                        return data.map(user => {
-                            console.log(user.incomings.salario);
-                            return user.incomings.salario;
-                        })
-                    })
-
-            } catch (error) {
-                console.log(error)
-            }
-            valor.innerHTML = fetchData();
+<script>
+    // Função para obter o usuário da sessão
+    function getSessionUser() {
+        const userJson = sessionStorage.getItem('usuario');
+        if (userJson) {
+            const user = JSON.parse(userJson);
+            return user;
+        } else {
+            return null;
         }
-    </script>
+    }
 
+    // Função para buscar dados do usuário da API local
+    function fetchUserData(userId, processUserData) {
+        fetch(`http://localhost:4567/usuarios/${userId}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                processUserData(data); // Passa os dados do usuário para a função de processamento
+            })
+            .catch(error => {
+                console.error('Erro ao buscar dados do usuário:', error);
+                document.getElementById('valor').innerHTML = 'Erro ao carregar salário.';
+            });
+    }
+
+    // Função para processar e exibir os dados do usuário
+    function displayUserSalary(userData) {
+        const salario = userData.salary; // Assumindo que o salário está diretamente no objeto user
+        console.log(salario);
+        document.getElementById('valor').innerHTML = salario ? `Salário: ${salario}` : 'Salário não disponível.';
+    }
+
+    // Obter usuário da sessão
+    const user = getSessionUser();
+    if (user) {
+        const userId = user.id;
+        fetchUserData(userId, displayUserSalary); // Buscar dados do usuário e processá-los
+    } else {
+        console.error('Usuário não encontrado na sessão.');
+        document.getElementById('valor').innerHTML = 'Usuário não encontrado.';
+    }
+</script>   
    
 
 </body>

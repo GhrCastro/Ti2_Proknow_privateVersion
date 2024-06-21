@@ -108,10 +108,15 @@
                     </div>
                     <div class="col-lg-8 col-md-6 col-sm-12 pt-4">
                         <div class="card">
-                            <iframe id="iframe-videos" class="w-100 rounded" height="500" title="YouTube video player"
-                                frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowfullscreen></iframe>
+                            <iframe id="iframe-videos" height="500" title="YouTube video player"
+                                frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+                            </iframe>
+                            <div class="confirm-section">
+                                <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off">
+                                <label class="btn btn-outline-primary" for="btncheck1"><i id="status-icon" class="fa-regular fa-square"></i> Marcar como assistido</label>
+                            </div>
+                            
+                            
                         </div>
                         <div id="comments" class="d-flex flex-column mt-4"></div>
                         <div class="py-4">
@@ -145,6 +150,73 @@
                     >&copy; 2024 PROKNOW.</a> Todos os direitos reservados.</p>
         </footer>
     </main>
+    <script>
+// Defina a função getSessionUser antes de usar
+function getSessionUser() {
+    const userJson = sessionStorage.getItem('usuario');
+    if (userJson) {
+        const user = JSON.parse(userJson);
+        return user;
+    } else {
+        return null;
+    }
+}
+
+let videobutton = document.querySelector(".btn.btn-outline-primary");
+videobutton.addEventListener("click", async function () {
+    console.log("im in!");
+
+    const user = getSessionUser();
+
+    if (user && user.id) {
+        const userId = user.id;
+        console.log(userId);
+
+        const userBadge = {
+            'user_id': userId,
+            'badge_id': '8d3b5e64-738f-4d54-88a0-f1ccbf7146f2'
+        }
+
+        try {
+            const response = await fetch("http://localhost:4567/usuarios-badges", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userBadge)
+            });
+
+            if (response.ok) {
+                console.log(response);
+                alert("Parabens! Você ganhou uma nova badge!");
+            } else {
+                console.error('Erro na resposta do servidor:', response.statusText);
+                alert("Erro ao ganhar a badge.");
+            }
+        } catch (error) {
+            console.error('Erro ao enviar a requisição:', error);
+            alert("Erro ao ganhar a badge.");
+        }
+    } else {
+        console.error('Usuário não encontrado ou sem ID.');
+        alert("Erro: usuário não encontrado.");
+    }
+});
+
+    </script>
+    <script>
+        document.getElementById('btncheck1').addEventListener('click', function() {
+    var icon = document.getElementById('status-icon');
+    if (this.checked) {
+        icon.classList.remove('fa-regular', 'fa-square');
+        icon.classList.add('fa-solid', 'fa-square-check');
+    } else {
+        icon.classList.remove('fa-solid', 'fa-square-check');
+        icon.classList.add('fa-regular', 'fa-square');
+    }
+});
+
+    </script>
     <script src="../assets/js/login.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"

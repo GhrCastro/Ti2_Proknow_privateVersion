@@ -56,8 +56,8 @@ public class UserApplication {
             Usuario usuario = gson.fromJson(req.body(), Usuario.class);
             // System.out.println("###" + usuario);
             try {
-                usuarioService.addUsuario(usuario);
-
+                UUID wallet_id = usuarioService.addUsuario(usuario);
+                usuario.setWallet_id(wallet_id);
                 // Recebe badge cadastro
                 usuarioService.addUserBadge(usuario.getId(), UUID.fromString("c081aab6-f162-49b4-b5b5-f5ba9b8e9214"));
 
@@ -90,6 +90,7 @@ public class UserApplication {
             // System.out.println("###" + userCredentials.getPassword());
 
             Usuario usuario = usuarioService.getUsuarioByEmail(userCredentials.getEmail());
+            System.out.println("###" + usuario.getWallet_id());
 
             if (usuario != null) {
                 // System.out.println("###" + usuario.getPassword());
@@ -168,7 +169,22 @@ public class UserApplication {
         });
 
         // moeda-wallet
-        
+
+        get("/userCoins/:id", (req, res) -> { // id:usuario
+            res.type("application/json");
+            UUID wallet_id = UUID.fromString(req.params(":id"));
+
+            try {
+                return gson.toJson(new StandardResponse(StatusResponse.SUCCESS,
+                        gson.toJsonTree(usuarioService.getAllUserMoedas(wallet_id))));
+            } catch (Throwable e) {
+                // TODO: handle exception
+                e.printStackTrace();
+                res.status(400);
+                return gson
+                        .toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao receber moeda" + e));
+            }
+        });
 
     }
 }

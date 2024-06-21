@@ -92,7 +92,7 @@
         <header class="mb-3">
             <div class="row justify-content-between">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
-                    <h2 id="welcomeUser"></h2>
+                    <h2 id="welcomeUser">Seja Bem vindo, User</h2>
                 </div>
                 <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
                     <div class="mx-5">
@@ -121,17 +121,19 @@
                                         Resgatar
                                     </button>
                                 </div>
+                                <h4 style="margin-top: 40px; color: white; margin-left: 10px;">Moedas:</h4>
+                                <div id="wallet-balances"></div>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search" id="barra_busca">
                         <i class="fas fa-search text-light opacity-50"></i>
-                        <input type="text" class="input-search text-light" placeholder="Buscar">
+                        <input type="text" class="input-search text-light" placeholder="Buscar" >
                     </div>
                 </div>
             </div>
+            <hr class="style12">
         </header>
-
         <div id="div-content">
             <div class="mb-3">
                 <h4>Anexe a imagem de seu Gráfico aqui!</h4>
@@ -156,6 +158,9 @@
 </body>
 
 <script src="../assets/js/apiAI.js"></script>
+<script src="../assets/js/login.js"></script>
+<script src="../assets/js/getUser.js"></script>
+<script type="module" src="../assets/js/getInfoWallet.js"></script>
 <script src="../assets/js/component/barra-roxa.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

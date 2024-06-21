@@ -1,4 +1,4 @@
-const apiPath = 'https://analisador-proknow.cognitiveservices.azure.com/customvision/v3.0/Prediction/9830bce3-f815-4a6d-829e-10e2bcdf65d4/classify/iterations/Iteration3/image';
+const apiPath = 'https://analisador-proknow.cognitiveservices.azure.com/customvision/v3.0/Prediction/9830bce3-f815-4a6d-829e-10e2bcdf65d4/classify/iterations/Iteration4/image';
 
 
 document.getElementById('formFile').addEventListener('change', function () {
@@ -67,6 +67,8 @@ document.getElementById('btnSubmit').addEventListener('click', async function ()
             respDesc.innerHTML = "Geralmente formado no final de uma tendência de alta, há dois picos seguidos de altura similar (existindo uma cova entre eles). Sua existência demonstra uma possibilidade de reversão para queda."
         } else if(biggerPrecision.tagName == "Retângulos") {
             respDesc.innerHTML = "Os aumentos e reduções de preço permanecem equilibrados por um longo intervalo de tempo. Ele pode indicar tanto reversões quanto continuações."
+        }else if(biggerPrecision.tagName=="Padrão não identificado"){
+            respDesc.innerHTML = " "
         }
 
         //console.log(respDesc);
