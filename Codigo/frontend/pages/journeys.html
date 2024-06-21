@@ -10,7 +10,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:400&display=swap">
 
     <title>Journeys</title>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -36,18 +38,55 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0.5;
+        opacity: 90%;
     }
 
     .banner-text {
+       background-color: rgba(205, 171, 238, 0.507);
+       border-radius: 20px;
         position: absolute;
-        top: 50%;
-        left: 50%;
+        top: 35%;
+        left: 71%;
         transform: translate(-50%, -50%);
-        color: white;
-        font-size: 2em;
-        text-align: center;
-        text-shadow: -1px 0 black, 0 0.2px black, 0.2px 0 black, 0 -1px black;
+        color: rgb(250, 121, 1);
+        font-size: large;
+        text-align:center;
+        text-shadow: 2px 2px 3px rgb(89, 8, 114);
+    }
+
+    .banner-text p{
+        color: rgb(255, 255, 255);
+        opacity: 100%;
+        text-shadow:2px 2px 3px black ;
+        
+    }
+
+    .card-container{
+        margin:26px;
+    }
+
+    .disabled{
+        opacity: 78%;
+        background-color: brown;
+        margin: 9px;
+    }
+
+    .disabled b.card-text{
+        background-color: rgba(255, 60, 0, 0.233);
+        color: rgba(247, 246, 248, 0.856);
+        text-shadow: 2px 2px 3px rgba(43, 7, 65, 0.801);
+        opacity: 100%;
+        border-radius: 6px;
+    }
+
+    .disabled p.card-text{
+        color: rgb(249, 248, 250)!important;
+        text-shadow: 2px 2px 3px rgb(20, 2, 54);
+        opacity: 100%;
+    }
+
+    .off{
+        opacity: 46%;
     }
 </style>
 
@@ -95,8 +134,7 @@
                     </div>
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a href="#" class="dropdown-item text-dark">Perfil</a></li>
-                    <li><a href="#" class="dropdown-item text-dark">Configuracoes</a></li>
+                    <li><a href="./dashboard.html" class="dropdown-item text-dark">Perfil</a></li>
                     <li>
                         <hr class="dropdown-divider" style="color: lightgray;">
                     </li>
@@ -111,7 +149,7 @@
         <div class="banner">
             <img src="../assets/images/AI_proknow_journeys.jpeg" alt="">
             <div class="banner-text">
-                <h1>O que sao as Journeys?</h1>
+                <h1>O que são as Journeys?</h1>
                 <p>Pensando em tornar a jornada em busca de seu desenvolvimento mais imersiva e satisfatória,
                     gostariamos de lhes apresentar as Journeys. Acreditamos que reconhecimento faz parte do processo, e
                     por isso, estimulamos que assuma novos desafios, conquiste novas badges e torne-se uma das grandes
@@ -192,12 +230,14 @@ function createBadgeCard(badges, userBadges) {
         const cardFront = document.createElement('div');
         cardFront.classList.add('card-front', 'card');
 
+        
+        
+        const cardBack = document.createElement('div');
+        cardBack.classList.add('card-back', 'card', 'p-3');
         if (exists) {
             cardFront.classList.add('enabled'); // Adiciona a classe apenas se badge está habilitado
         }
-
-        const cardBack = document.createElement('div');
-        cardBack.classList.add('card-back', 'card', 'p-3');
+        
 
         let icon = document.createElement('img');
         icon.src = badge.linkImage; // A URL do ícone
@@ -212,7 +252,7 @@ function createBadgeCard(badges, userBadges) {
         cardFront.appendChild(title);
         // Adiciona descrição no verso do card
         const requirements = document.createElement('b');
-        requirements.textContent = 'Requisitos:';
+        requirements.innerHTML = '<i class="fa-solid fa-lock-open"></i> Requisitos:';
         requirements.classList.add('card-text', 'align-self-start', 'mb-2');
 
         cardBack.appendChild(requirements);
@@ -228,6 +268,13 @@ function createBadgeCard(badges, userBadges) {
         cardContainer.appendChild(cardInner);
 
         document.querySelector('.container .row').appendChild(cardContainer);
+        if(!cardFront.classList.contains('enabled')){
+            cardBack.classList.replace('card-back','card-front');
+            cardBack.classList.add('disabled');
+            cardFront.classList.add('off');
+            cardInner.classList.remove('card-inner');
+            requirements.innerHTML = '<i class="fa-solid fa-lock"></i> NÃO DESBLOQUEADA: Requisitos:';
+        }
     });
 }
 
