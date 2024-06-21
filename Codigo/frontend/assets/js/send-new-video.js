@@ -53,7 +53,7 @@ form.addEventListener('submit', async e => {
 
     const response = await postVideo(postNewVideo)
 
-    if(response.id) window.location = './index.html'
+    if(response.id) window.location = 'index.html'
 
 })
 

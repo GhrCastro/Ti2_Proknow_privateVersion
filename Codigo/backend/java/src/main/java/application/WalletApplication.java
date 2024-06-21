@@ -85,7 +85,7 @@ public class WalletApplication {
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Depósito realizado com sucesso."));
             } catch (Exception e) {
                 res.status(400);
-                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao realizar depósito: " + e.getMessage()));
+                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao realiclzar saque: " + e.getMessage()));
             }
         });
 
@@ -104,7 +104,7 @@ public class WalletApplication {
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Saque realizado com sucesso."));
             } catch (Exception e) {
                 res.status(400);
-                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao realizar saque: " + e.getMessage()));
+                return gson.toJson(new StandardResponse(StatusResponse.ERROR, "Erro ao realiclzar saque: " + e.getMessage()));
             }
         });
 

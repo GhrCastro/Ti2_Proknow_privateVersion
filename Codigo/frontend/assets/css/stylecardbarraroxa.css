@@ -172,4 +172,22 @@ main {
 }
 
 
+button.btn.btn-success.btn-sm.w-100{
+    color: #63e03d!important;
+    background-color: rgba(207, 250, 196, 0.39)!important;
+}
 
+button.btn.btn-success.btn-sm.w-100:hover{
+    color: rgba(255, 255, 255, 0.993)!important;
+    background: linear-gradient(to left, #84e666f8, #57cf32)!important;
+}
+
+button.btn.btn-danger.btn-sm.w-100{
+    color: #e03d3d!important;
+    background-color: rgba(250, 184, 184, 0.212);
+}
+
+button.btn.btn-danger.btn-sm.w-100:hover{
+    color: white!important;
+    background: linear-gradient(to left, #e75050,#be1b1b)!important;
+}
