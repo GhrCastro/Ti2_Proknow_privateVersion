@@ -1,9 +1,9 @@
 .wallet-modal{
-    background-color: #EDB529; 
+    background: linear-gradient(to top, #eabdfd88, #ffda95); 
 }
 
 .wallet-modal-body{
-    background-color: black;
+    background: rgba(0, 0, 0, 0.267);
     border-radius: 20px;
     width: 90%;
     margin: 10px auto; 
@@ -32,12 +32,13 @@
 
 .div-valor button{
     border: none;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
     width: 10px;
     margin-right: 10px;
 }
 
 .div-valor button img {
+    border-radius: 18px;
     width: 30px;
     margin-bottom: 15px ;
 }

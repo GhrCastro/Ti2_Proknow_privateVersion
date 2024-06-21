@@ -73,14 +73,14 @@ async function getInfoWallet() {
         if (balance.classList.contains("hidden")) {
             balance.classList.remove("hidden");
             balance.innerText = `R$ ${soma}`; // Retorna o saldo original ao mostrar
-            hidden_icon.src = "../assets/images/disable-visualy-wallet.png"
+            hidden_icon.classList.replace('fa-eye-slash', 'fa-eye'); // Corrected line
         } else {
             balance.classList.add("hidden");
             balance.innerText = "R$ ******"; // Substitui o saldo por asteriscos ao ocultar
-            hidden_icon.src = "../assets/images/enable-visualy-wallet.png"
-
+            hidden_icon.classList.replace('fa-eye', 'fa-eye-slash'); // Corrected line
         }
     });
+    
 
 
 }
