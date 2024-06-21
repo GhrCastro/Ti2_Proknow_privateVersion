@@ -83,51 +83,44 @@ public class WalletService {
     }
 
     public void deposit(UUID recipient, String name, double amount) throws Exception {
-        Wallet ownerWallet = getWalletByUserId(UUID.fromString("33121974-2079-4bf7-8fd1-9ec3121aca12")); //admin wallet
+        Wallet admin = getWalletByUserId(UUID.fromString("a4d1b727-f79c-4f47-b3ef-e3c0dd0a44b1"));
         Wallet recipientWallet = getWalletByUserId(recipient);
         Moeda moeda = moedaDao.findMoedaByName(name);
 
         if (recipientWallet == null) {
-            throw new IllegalArgumentException("Recipient wallet not found");
+            throw new IllegalArgumentException("Wallet not found");
         }
         if (moeda == null) {
             throw new IllegalArgumentException("Currency not found");
         }
-
         try {
-            ownerWallet.withdraw(moeda, BigDecimal.valueOf(amount));
-            walletDao.updateWalletBalance(ownerWallet.getWalletId(), moeda.getName(), ownerWallet.getBalance(moeda.getName()));
+            BigDecimal balance = BigDecimal.valueOf(amount);
 
-            recipientWallet.deposit(moeda, BigDecimal.valueOf(amount));
+            admin.withdraw(moeda, balance);
+            walletDao.updateWalletBalance(admin.getWalletId(), moeda.getName(), admin.getBalance(moeda.getSymbol()));
 
-            walletDao.updateWalletBalance(recipientWallet.getWalletId(), moeda.getName(), recipientWallet.getBalance(moeda.getName()));
+            recipientWallet.deposit(moeda, balance);
+            walletDao.updateWalletBalance(recipientWallet.getWalletId(), moeda.getSymbol(), recipientWallet.getBalance(moeda.getSymbol()));
 
-            Transaction tx = new Transaction(ownerWallet.getWalletId(), recipientWallet.getWalletId(), BigDecimal.valueOf(amount), moeda.getName());
+            // Recebe badge transaction - tratar erros
+            // usuarioService.addUserBadge(fromUserId, UUID.fromString("0c64e08b-0c64-4a7d-b2c2-989b59e5f9e6"));
+
+            Transaction tx = new Transaction(recipientWallet.getWalletId(), admin.getWalletId(), balance, name);
             transactionDao.insert(tx.getId(), tx.getFromWallet(), tx.getToWallet(), tx.getCreatedAt(), tx.getAmount(), tx.getCurrency(), tx.isReversed());
 
-            ownerWallet.getTransactions().add(tx);
             recipientWallet.getTransactions().add(tx);
+            admin.getTransactions().add(tx);
 
-        } catch (Exception e) {
-            System.err.println("Error during deposit: " + e.getMessage());
-            e.printStackTrace();
-
-            if (ownerWallet != null && moeda != null) {
-                try {
-                    ownerWallet.deposit(moeda, BigDecimal.valueOf(amount));
-                    walletDao.updateWalletBalance(ownerWallet.getWalletId(), moeda.getName(), ownerWallet.getBalance(moeda.getName()));
-                } catch (Exception rollbackException) {
-                    System.err.println("Error during rollback: " + rollbackException.getMessage());
-                    rollbackException.printStackTrace();
-                }
-            }
-            throw new RuntimeException("Failed to complete deposit transaction", e);
+        }  catch (Exception e) {
+            admin.deposit(moeda, BigDecimal.valueOf(amount));
+            walletDao.updateWalletBalance(admin.getOwnerId(), moeda.getSymbol(), admin.getBalance(moeda.getSymbol()));
+            throw new Exception("Erro ao realizar transferência: " + e.getMessage());
         }
     }
 
     public void withdraw(UUID userId, String currency, double amount) throws Exception {
         Wallet recipient = getWalletByUserId(userId);
-        Wallet admin = getWalletByUserId(UUID.fromString("33121974-2079-4bf7-8fd1-9ec3121aca12"));
+        Wallet admin = getWalletByUserId(UUID.fromString("a4d1b727-f79c-4f47-b3ef-e3c0dd0a44b1"));
         Moeda moeda = moedaDao.findMoedaByName(currency);
 
         if (recipient == null) {
@@ -136,15 +129,29 @@ public class WalletService {
         if (moeda == null) {
             throw new IllegalArgumentException("Currency not found");
         }
-        recipient.withdraw(moeda, BigDecimal.valueOf(amount));
-        walletDao.updateWalletBalance(recipient.getWalletId(), moeda.getName(), recipient.getBalance(moeda.getName()));
+        try {
+            BigDecimal balance = BigDecimal.valueOf(amount);
 
-        admin.deposit(moeda, BigDecimal.valueOf(amount));
-        walletDao.updateWalletBalance(admin.getWalletId(), moeda.getName(), admin.getBalance(moeda.getName()));
+            recipient.withdraw(moeda, balance);
+            walletDao.updateWalletBalance(recipient.getWalletId(), moeda.getName(), recipient.getBalance(moeda.getSymbol()));
 
-        Transaction tx = new Transaction(recipient.getWalletId(), admin.getWalletId(), BigDecimal.valueOf(amount), currency);
-        transactionDao.insert(tx.getId(), tx.getFromWallet(), tx.getToWallet(), tx.getCreatedAt(), tx.getAmount(),
-                tx.getCurrency(), tx.isReversed());
+            admin.deposit(moeda, balance);
+            walletDao.updateWalletBalance(admin.getWalletId(), moeda.getSymbol(), admin.getBalance(moeda.getSymbol()));
+
+            // Recebe badge transaction - tratar erros
+            //usuarioService.addUserBadge(fromUserId, UUID.fromString("0c64e08b-0c64-4a7d-b2c2-989b59e5f9e6"));
+
+            Transaction tx = new Transaction(recipient.getWalletId(), admin.getWalletId(), balance, currency);
+            transactionDao.insert(tx.getId(), tx.getFromWallet(), tx.getToWallet(), tx.getCreatedAt(), tx.getAmount(), tx.getCurrency(), tx.isReversed());
+
+            recipient.getTransactions().add(tx);
+            admin.getTransactions().add(tx);
+
+        }  catch (Exception e) {
+            recipient.deposit(moeda, BigDecimal.valueOf(amount));
+            walletDao.updateWalletBalance(recipient.getOwnerId(), moeda.getSymbol(), recipient.getBalance(currency));
+            throw new Exception("Erro ao realizar transferência: " + e.getMessage());
+        }
     }
 
     public void transfer(UUID fromUserId, UUID toUserId, String currency, double amount) throws Exception {

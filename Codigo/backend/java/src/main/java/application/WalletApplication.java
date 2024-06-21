@@ -91,11 +91,16 @@ public class WalletApplication {
 
         post("/wallets/withdraw/:userId", (req, res) -> {
             res.type("application/json");
-            UUID userId = UUID.fromString(req.params(":userId"));
-            String currency = req.queryParams("currency");
-            double amount = Double.parseDouble(req.queryParams("amount"));
             try {
-                walletService.withdraw(userId, currency, amount);
+                UUID userId = UUID.fromString(req.params(":userId").trim());
+                String name = req.queryParams("name");
+                double amount;
+                try {
+                    amount = Double.parseDouble(req.queryParams("amount"));
+                } catch (NumberFormatException e) {
+                    throw new IllegalArgumentException("Invalid amount format");
+                }
+                walletService.withdraw(userId, name, amount);
                 return gson.toJson(new StandardResponse(StatusResponse.SUCCESS, "Saque realizado com sucesso."));
             } catch (Exception e) {
                 res.status(400);
