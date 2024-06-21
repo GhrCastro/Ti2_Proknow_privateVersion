@@ -90,23 +90,22 @@
     </aside>
 
     <main class="flex-grow-1">
-        <header>
-            <div class="row">
-                <div class="col-lg-8">
-                    <h2 class="text-wrng m-3">Seja bem vindo, <span id="username" class="fw-bold"></span>!</h2>
+        <header class="mb-3">
+            <div class="row justify-content-between">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
+                    <h2 id="welcomeUser">Seja Bem vindo, User</h2>
                 </div>
-                <div class="col-lg-4 d-flex align-items-center justify-content-end ">
+                <div class="col-12 col-sm-8 col-md-6 col-lg-4 col-xl-3 d-flex align-items-center  g-2">
                     <div class="mx-5">
-                            <button class="wallet-button btn " type="button" data-bs-toggle="offcanvas"
+                        <button class="wallet-button btn " type="button" data-bs-toggle="offcanvas"
                                 data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="fa-solid fa-wallet"></i></button>
-                        
 
                         <div class="offcanvas offcanvas-end wallet-modal" tabindex="-1" id="offcanvasRight"
                             aria-labelledby="offcanvasRightLabel">
                             <div class="offcanvas-header ">
                                 <h3 class="offcanvas-title" id="offcanvasRightLabel">Carteira</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-                                        aria-label="Close"></button> 
+                                        aria-label="Close"></button>
                             </div>
                             <div class="offcanvas-body wallet-modal-body">
                                 <div class="div-valor">
@@ -123,13 +122,15 @@
                                         Resgatar
                                     </button>
                                 </div>
+                                <h4 style="margin-top: 40px; color: white; margin-left: 10px;">Moedas:</h4>
+                                <div id="wallet-balances"></div>
                             </div>
                         </div>
                     </div>
-                        <div class="d-flex rounded-5 shadow py-3 px-4 mr-5 div-search" id="barra_busca">
-                            <i class="fas fa-search text-light opacity-50" id="lupa"></i>
-                            <input type="text" class="input-search text-light" placeholder="Buscar">
-                        </div>
+                    <div class="d-flex rounded-5 shadow py-3 px-4 mr-3 div-search" id="barra_busca">
+                        <i class="fas fa-search text-light opacity-50"></i>
+                        <input type="text" class="input-search text-light" placeholder="Buscar" >
+                    </div>
                 </div>
             </div>
             <hr class="style12">
