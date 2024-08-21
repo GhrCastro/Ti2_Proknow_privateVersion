@@ -16,7 +16,7 @@ A PROKNOW tem como objetivo simplificar e democratizar o acesso ao mercado de cr
 
 ## Algumas partes do Projeto:
 
-## Tela inicial
+## **Tela inicial**
 
 
 ![Captura de tela 2024-08-21 133155](https://github.com/user-attachments/assets/13f177f3-70df-4c05-a623-cddf9d24dcb4)
@@ -24,13 +24,13 @@ A PROKNOW tem como objetivo simplificar e democratizar o acesso ao mercado de cr
 ![Captura de tela 2024-08-21 133128](https://github.com/user-attachments/assets/372d7159-f308-44db-8490-e4624332eb60)
 ##
 
-##Cadastro
+## **Cadastro**
 
 
 ![Captura de tela 2024-08-21 133210](https://github.com/user-attachments/assets/2ebcffee-ef97-4539-af62-bf13d355d75e)
 ##
 
-##Dashboard de dados e área inicial do usuário
+## **Dashboard de dados e área inicial do usuário**
 
 
 ![Captura de tela 2024-08-21 133302](https://github.com/user-attachments/assets/5d7b580b-8af1-4677-8397-fb22f1f3e42b)
@@ -40,7 +40,7 @@ A PROKNOW tem como objetivo simplificar e democratizar o acesso ao mercado de cr
 ![Captura de tela 2024-08-21 133330](https://github.com/user-attachments/assets/527dddce-574b-48fb-a298-79fcc87f8ec3)
 ##
 
-##Trading view
+## **Trading view**
 
 
 //Área onde o usuário poderia ver algumas informações sobre stock-market e criptomoedas de sua escolha:
@@ -48,13 +48,13 @@ A PROKNOW tem como objetivo simplificar e democratizar o acesso ao mercado de cr
 ![Captura de tela 2024-08-21 133906](https://github.com/user-attachments/assets/9a72cedc-15c8-4128-83bd-ec47b8aedf57)
 ##
 
-##Área de consumo de conteúdos diários: Newsletter
+## **Área de consumo de conteúdos diários: Newsletter**
 
 
 ![Captura de tela 2024-08-21 134113](https://github.com/user-attachments/assets/3ac22708-4a5b-4148-b8b0-92a2d23e1889)
 ##
 
-##Journeys 
+## **Journeys**
 
 
   Idealizada como uma forma de gamificar o aprendizado e o consumo de conteúdos no projeto, daríamos Badges (ou insígnias de conquista) ao usuário de acordo com as ações que tomasse:
