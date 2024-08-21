@@ -17,6 +17,8 @@ A PROKNOW tem como objetivo simplificar e democratizar o acesso ao mercado de cr
 ## Algumas partes do Projeto:
 
 **Tela inicial**
+
+##
 ![Captura de tela 2024-08-21 133155](https://github.com/user-attachments/assets/13f177f3-70df-4c05-a623-cddf9d24dcb4)
 
 ![Captura de tela 2024-08-21 133128](https://github.com/user-attachments/assets/372d7159-f308-44db-8490-e4624332eb60)
