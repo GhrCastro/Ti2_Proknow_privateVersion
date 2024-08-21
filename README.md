@@ -13,11 +13,12 @@ A PROKNOW tem como objetivo simplificar e democratizar o acesso ao mercado de cr
 ## **Sobre o projeto**:
   A proknow seria originalmente uma corretora de criptoativos, mas durante o fluxo do projeto, uma nova funcionalidade principal foi pensada: seria um hub de aprendizado e conteúdo de investimentos e ativos digitais, onde os usuários poderiam aprender de maneira gamificada, além disso, através de um modelo de negócios onde os usuários comprariam a moeda digital da "corretora", a PKW afim de usá-la para desbloquear conteúdos, esta também seria uma cripto, e poderia ser convertida em valor real, já que poderia ser investida e as lições aprendidas na plataforma aplicadas com seu uso.
 
+O repositório original do projeto se encontra aqui: https://github.com/ICEI-PUC-Minas-CC-TI/plmg-cc-ti2-2024-1-g21-proknow
+
 ## Instruções de utilização
 
 [É necessária a abertura de um servidor sql, seja em postgres ou MySql, para que se utilize o DB do projeto, além disso, tenha certeza de substituir os endpoints relacionados nas partes que referem aos dataBases, seja nos códigos em java ou em javascript.]
 
-O repositório original do projeto se encontra aqui: https://github.com/ICEI-PUC-Minas-CC-TI/plmg-cc-ti2-2024-1-g21-proknow
 
 ## Algumas partes do Projeto:
 
