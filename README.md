@@ -50,7 +50,9 @@ O repositório original do projeto se encontra aqui: https://github.com/ICEI-PUC
 
 
 //Área onde o usuário poderia ver algumas informações sobre stock-market e criptomoedas de sua escolha:
+
 ![Captura de tela 2024-08-21 133856](https://github.com/user-attachments/assets/c6d994d1-16d4-4e22-86db-0504a9a48fa3)
+
 ![Captura de tela 2024-08-21 133906](https://github.com/user-attachments/assets/9a72cedc-15c8-4128-83bd-ec47b8aedf57)
 ##
 
@@ -64,6 +66,7 @@ O repositório original do projeto se encontra aqui: https://github.com/ICEI-PUC
 
 
   Idealizada como uma forma de gamificar o aprendizado e o consumo de conteúdos no projeto, daríamos Badges (ou insígnias de conquista) ao usuário de acordo com as ações que tomasse:
+  
 ![image](https://github.com/user-attachments/assets/5c529cdb-c6d0-4104-b3ac-b20b3009aee7)
 
 
