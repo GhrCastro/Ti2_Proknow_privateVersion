@@ -6,15 +6,13 @@ A PROKNOW tem como objetivo simplificar e democratizar o acesso ao mercado de cr
 
 * João Paulo
 * Andre Luiz
-* Gustavo
+* Gustavo Henrique
 * Douglas
 * Victor
 
-## Professores responsáveis
-
-* [Nome completo do professor 1]
-* [Nome completo do professor 2]
-
 ## Instruções de utilização
 
-[Assim que a primeira versão do sistema estiver disponível, deverá complementar com as instruções de utilização. Descreva como instalar eventuais dependências e como executar a aplicação.]
+[É necessária a abertura de um servidor sql, seja em postgres ou MySql, para que se utilize o DB do projeto, além, disso tenha certeaz de substituir os endpoints relacionados nas partes que referem aos dataBases, seja nas partes de java ou em javascript.]
+
+
+![image](https://github.com/user-attachments/assets/5c529cdb-c6d0-4104-b3ac-b20b3009aee7)
