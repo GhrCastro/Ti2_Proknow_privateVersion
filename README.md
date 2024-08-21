@@ -12,7 +12,7 @@ A PROKNOW tem como objetivo simplificar e democratizar o acesso ao mercado de cr
 
 ## Instruções de utilização
 
-[É necessária a abertura de um servidor sql, seja em postgres ou MySql, para que se utilize o DB do projeto, além disso, tenha certeza de substituir os endpoints relacionados nas partes que referem aos dataBases, seja nas partes de java ou em javascript.]
+[É necessária a abertura de um servidor sql, seja em postgres ou MySql, para que se utilize o DB do projeto, além disso, tenha certeza de substituir os endpoints relacionados nas partes que referem aos dataBases, seja nos códigos em java ou em javascript.]
 
 O repositório original do projeto se encontra aqui: https://github.com/ICEI-PUC-Minas-CC-TI/plmg-cc-ti2-2024-1-g21-proknow
 
